@@ -1,37 +1,124 @@
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import dayjs from 'dayjs'
+import {
+  signup,
+  checkNickname,
+  sendCode,
+  checkCode,
+} from '../../services/apiAuth.js'
+import { useNavigate } from 'react-router-dom'
 
 const SignupForm = () => {
-  const { register, formState, getValues, handleSubmit, trigger } = useForm({
+  const [showCodeInput, setShowCodeInput] = useState(false)
+  const [emailChecked, setEmailChecked] = useState(false)
+  const [remainingTime, setRemainingTime] = useState(null)
+  const [timerInterval, setTimerInterval] = useState(null)
+  const [isSending, setIsSending] = useState(false)
+
+  const navigate = useNavigate()
+
+  const {
+    register,
+    setError,
+    formState: { errors },
+    getValues,
+    handleSubmit,
+    trigger,
+    setValue,
+    clearErrors,
+  } = useForm({
     mode: 'onBlur',
+    defaultValues: {
+      email: '',
+      nickname: '',
+      username: '',
+      password: '',
+      passwordConfirm: '',
+      verificationCode: '',
+      gender: 'other',
+      interestCategory: ['default'],
+    },
   })
-  const { errors } = formState
-  const onSubmit = (data) => {
-    console.log(data)
+  // const { errors } = formState
+
+  const onSubmit = async (data) => {
+    const { passwordConfirm, verificationCode, ...formData } = data
+    try {
+      const resonse = await signup(formData)
+      navigate('/login')
+    } catch (err) {
+      console.error('회원가입 중 에러 발생->에러바운더리')
+    }
   }
 
-  const onChangeEmail = () => {
-    trigger('email') // Trigger validation for the email field onChange
+  const checkDuplicate = async (nickname) => {
+    const response = await checkNickname({ nickname })
+    const isUsable = response.data
+    return isUsable
   }
 
-  const checkDuplicate = async (value) => {
-    console.log(value)
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let random = Math.random()
-        if (random > 0.5) {
-          resolve(false)
-        } else {
-          resolve(true)
-        }
-      }, 10)
-    })
+  const startTimer = (verificationSentTime) => {
+    const interval = setInterval(() => {
+      const currentTime = dayjs()
+      const elapsedTime = currentTime.diff(verificationSentTime, 'milliseconds')
+      const remaining = 3 * 60 * 1000 - elapsedTime
+      setRemainingTime(Math.max(0, remaining))
+      if (remaining <= 0) {
+        clearInterval(interval)
+      }
+    }, 1000)
+    setTimerInterval(interval)
   }
 
-  const sendVerificationEmail = () => {
-    console.log('이메일인증하기 버튼 클릭됨')
+  const checkVerification = async ({ code, email }) => {
+    try {
+      const response = await checkCode({ code, email })
+      setShowCodeInput(false)
+      setEmailChecked(true)
+      console.log('인증코드 확인')
+      console.log(response)
+    } catch (err) {
+      console.log('err')
+      console.log(err)
+      setError('verificationCode', { type: 'manual', message: err.message })
+    } finally {
+      setIsSending(false)
+    }
+
+    // setIsNotPass(true)
+  }
+
+  const sendVerification = async (email) => {
+    setError('verificationCode', { message: '' })
+    if (timerInterval) clearInterval(timerInterval)
+    try {
+      const response = await sendCode({ email, type: 'signup' })
+      if (response) {
+        setShowCodeInput(true)
+        const verificationSentTime = dayjs()
+        setRemainingTime(3 * 60 * 1000)
+        startTimer(verificationSentTime)
+      }
+    } catch (err) {
+      if (err.message === '이미 가입된 이메일 입니다') {
+        setError('email', {
+          type: 'manual',
+          message: '이미 가입된 이메일입니다',
+        })
+      }
+    } finally {
+      setIsSending(false)
+    }
   }
 
   const onError = (errors, e) => console.error(errors, e)
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60)
+    const seconds = Math.floor(timeInSeconds % 60)
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+  }
 
   return (
     <form
@@ -53,6 +140,8 @@ const SignupForm = () => {
       <input
         type="text"
         id="email"
+        disabled={emailChecked}
+        placeholder="이메일"
         {...register('email', {
           required: '필수 입력 항목입니다.',
           pattern: {
@@ -61,6 +150,7 @@ const SignupForm = () => {
           },
           onChange: () => {
             trigger('email')
+            showCodeInput && setShowCodeInput(false)
           },
         })}
         className={`${
@@ -70,7 +160,79 @@ const SignupForm = () => {
         }`}
       ></input>
       {<p className="block text-xs text-red-400">{errors?.email?.message}</p>}
+      <button
+        type="button"
+        onClick={() => {
+          setIsSending(true)
+          const email = getValues().email
+          sendVerification(email)
+          setValue('verificationCode', '')
+        }}
+        disabled={
+          isSending ||
+          errors?.email ||
+          !getValues().email ||
+          showCodeInput ||
+          emailChecked
+        }
+        className="rounded  bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-400"
+      >
+        {emailChecked ? '이메일 인증 완료' : '이메일 인증하기'}
+      </button>
 
+      {showCodeInput && (
+        <div>
+          <span className="block text-xs text-slate-600">
+            {remainingTime >= 0 &&
+              `남은 시간: ${formatTime(remainingTime / 1000)}`}
+          </span>
+          <span className="block text-xs text-slate-600">
+            이메일로 전송된 인증코드를 입력해주세요
+          </span>
+          <input
+            type="text"
+            id="verificationCode"
+            placeholder="인증코드 6자리 입력"
+            maxLength={6}
+            {...register('verificationCode', {
+              required: '필수 입력 항목입니다.',
+            })}
+            className={`${'w-[20rem] rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'}`}
+          ></input>
+          <button
+            type="button"
+            onClick={() => {
+              const code = getValues().verificationCode
+              checkVerification({ code, email: getValues().email })
+            }}
+            disabled={!getValues().verificationCode || remainingTime === 0}
+            className="my-2 -ml-16 rounded bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-400"
+          >
+            확인
+          </button>
+          {remainingTime > 0 && (
+            <p className="block text-xs text-red-400">
+              {errors?.verificationCode?.message}
+            </p>
+          )}
+          {remainingTime === 0 && (
+            <p className="block text-xs text-red-400">
+              인증코드가 만료되었습니다.
+            </p>
+          )}
+          <button
+            type="button"
+            onClick={() => {
+              const email = getValues().email
+              setValue('verificationCode', '')
+              sendVerification(email)
+            }}
+            className="my-2 rounded bg-purple-300 px-2 py-1 text-xs text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-400"
+          >
+            재전송
+          </button>
+        </div>
+      )}
       <label
         htmlFor="password"
         className={`${
@@ -87,6 +249,7 @@ const SignupForm = () => {
       <input
         type="password"
         id="password"
+        placeholder="비밀번호"
         {...register('password', {
           required: '필수 입력 항목입니다.',
           pattern: {
@@ -106,7 +269,6 @@ const SignupForm = () => {
           {errors?.password?.message}
         </p>
       }
-
       <label
         htmlFor="passwordConfirm"
         className={`${
@@ -120,6 +282,7 @@ const SignupForm = () => {
       <input
         type="password"
         id="passwordConfirm"
+        placeholder="비밀번호 확인"
         {...register('passwordConfirm', {
           required: '필수 입력 항목입니다.',
           validate: (value) =>
@@ -138,9 +301,38 @@ const SignupForm = () => {
       }
 
       <label
-        htmlFor="nickName"
+        htmlFor="username"
         className={`${
-          errors?.nickName
+          errors?.username
+            ? 'block text-sm font-semibold text-red-700'
+            : 'block text-sm font-semibold'
+        }`}
+      >
+        이름
+      </label>
+      <input
+        type="text"
+        id="username"
+        placeholder="이름"
+        {...register('username', {
+          required: '필수 입력 항목입니다.',
+        })}
+        className={`${
+          errors?.username
+            ? 'block w-full rounded-md border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+            : 'block w-full rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'
+        }`}
+      ></input>
+      {
+        <p className="block text-xs text-red-400">
+          {errors?.username?.message}
+        </p>
+      }
+
+      <label
+        htmlFor="nickname"
+        className={`${
+          errors?.nickname
             ? 'block text-sm font-semibold text-red-700'
             : 'block text-sm font-semibold'
         }`}
@@ -152,8 +344,9 @@ const SignupForm = () => {
       </span>
       <input
         type="text"
-        id="nickName"
-        {...register('nickName', {
+        id="nickname"
+        placeholder="별명 (2~20자)"
+        {...register('nickname', {
           required: '필수 입력 항목입니다.',
           minLength: {
             value: 2,
@@ -164,23 +357,156 @@ const SignupForm = () => {
             message: '20자 이하로 입력해주세요.',
           },
           validate: async (value) => {
-            const isDuplicated = await checkDuplicate(value)
-            return !isDuplicated || '다른 사용자가 사용중인 닉네임입니다'
+            const isUsable = await checkDuplicate(value)
+            return isUsable || '다른 사용자가 사용중인 닉네임입니다'
           },
+          onChange: () => clearErrors('nickname'),
         })}
         className={`${
-          errors?.nickName
+          errors?.nickname
             ? 'block w-full rounded-md border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
             : 'block w-full rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'
         }`}
       ></input>
       {
         <p className="block text-xs text-red-400">
-          {errors?.nickName?.message}
+          {errors?.nickname?.message}
         </p>
       }
 
-      <button type="submit">제출</button>
+      <div>
+        <label
+          className={`${
+            errors?.gender
+              ? 'block text-sm font-semibold text-red-700'
+              : 'block text-sm font-semibold'
+          }`}
+        >
+          성별
+        </label>
+        <label>
+          <input
+            {...register('gender', { required: true })}
+            type="radio"
+            value="male"
+          />
+          남자
+        </label>
+        <label>
+          <input
+            {...register('gender', { required: true })}
+            type="radio"
+            value="female"
+          />
+          여자
+        </label>
+        <label>
+          <input
+            {...register('gender', { required: true })}
+            type="radio"
+            value="other"
+          />
+          선택안함
+        </label>
+      </div>
+
+      <input {...register('profileImage', { value: 'null' })} type="hidden" />
+      <input {...register('provider', { value: 'local' })} type="hidden" />
+      {/* <input type="hidden" {...register('profileImage')} value="null" />
+      <input type="hidden" {...register('provider')} value="normal" /> */}
+
+      <div>
+        <label
+          className={`${
+            errors?.interestCategory
+              ? 'block text-sm font-semibold text-red-700'
+              : 'block text-sm font-semibold'
+          }`}
+        >
+          관심사
+        </label>
+        <label>
+          <input
+            {...register('interestCategory', {
+              validate: {
+                atLeastOne: (value) => {
+                  return value && value.length > 0
+                },
+              },
+            })}
+            type="checkbox"
+            value="culture"
+          />
+          문화예술
+        </label>
+        <label>
+          <input
+            {...register('interestCategory')}
+            type="checkbox"
+            value="food"
+          />
+          음식
+        </label>
+        <label>
+          <input
+            {...register('interestCategory')}
+            type="checkbox"
+            value="sports"
+          />
+          스포츠
+        </label>
+        <label>
+          <input
+            {...register('interestCategory')}
+            type="checkbox"
+            value="tour"
+          />
+          관광
+        </label>
+        <label>
+          <input
+            {...register('interestCategory')}
+            type="checkbox"
+            value="religion"
+          />
+          종교
+        </label>
+        <label>
+          <input
+            {...register('interestCategory')}
+            type="checkbox"
+            value="wellbing"
+          />
+          건강/휴양
+        </label>
+        <label>
+          <input
+            {...register('interestCategory')}
+            type="checkbox"
+            value="social"
+          />
+          소셜활동
+        </label>
+        <label>
+          <input
+            {...register('interestCategory')}
+            type="checkbox"
+            value="default"
+          />
+          없음
+        </label>
+
+        {/* Display error message if no interest category is selected */}
+        {errors.interestCategory && (
+          <p className="block text-xs text-red-400">필수 입력 항목입니다</p>
+        )}
+      </div>
+      <button
+        type="submit"
+        className="rounded  bg-purple-300 px-2 py-1 text-purple-900 outline-none hover:bg-purple-400 active:bg-purple-500"
+      >
+        회원가입하기
+      </button>
     </form>
   )
 }
