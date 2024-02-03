@@ -123,62 +123,70 @@ const SignupForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className={
-        'mx-auto w-2/3 space-y-6 rounded-md border-2 border-purple-600 bg-white p-4 text-purple-950 shadow-md'
-      }
+      className={'mx-auto w-[20rem] space-y-6 text-slate-950'}
     >
-      <label
-        htmlFor="email"
-        className={`${
-          errors?.email
-            ? 'block text-sm font-semibold text-red-700'
-            : 'block text-sm font-semibold'
-        }`}
-      >
-        이메일
-      </label>
-      <input
-        type="text"
-        id="email"
-        disabled={emailChecked}
-        placeholder="이메일"
-        {...register('email', {
-          required: '필수 입력 항목입니다.',
-          pattern: {
-            value: /\S+@\S+\.\S+/,
-            message: '이메일 형식으로 입력해 주세요',
-          },
-          onChange: () => {
-            trigger('email')
-            showCodeInput && setShowCodeInput(false)
-          },
-        })}
-        className={`${
-          errors?.email
-            ? 'block w-full rounded-md border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-            : 'block w-full rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'
-        }`}
-      ></input>
-      {<p className="block text-xs text-red-400">{errors?.email?.message}</p>}
-      <button
-        type="button"
-        onClick={() => {
-          setIsSending(true)
-          const email = getValues().email
-          sendVerification(email)
-          setValue('verificationCode', '')
-        }}
-        disabled={
-          isSending ||
-          errors?.email ||
-          !getValues().email ||
-          showCodeInput ||
-          emailChecked
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="email"
+          className={`${
+            errors?.email
+              ? 'mb-1 block text-sm font-semibold text-red-700'
+              : 'mb-1 block text-sm font-semibold'
+          }`}
+        >
+          이메일
+        </label>
+        <input
+          type="text"
+          id="email"
+          disabled={emailChecked}
+          placeholder="이메일"
+          {...register('email', {
+            required: '필수 입력 항목입니다.',
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: '이메일 형식으로 입력해 주세요',
+            },
+            onChange: () => {
+              trigger('email')
+              showCodeInput && setShowCodeInput(false)
+            },
+          })}
+          className={`${
+            errors?.email
+              ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+              : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
+          }`}
+        ></input>
+        {
+          <p className="my-1 block text-xs text-red-400">
+            {errors?.email?.message}
+          </p>
         }
-        className="rounded  bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-400"
-      >
-        {emailChecked ? '이메일 인증 완료' : '이메일 인증하기'}
-      </button>
+        <button
+          type="button"
+          onClick={() => {
+            setIsSending(true)
+            const email = getValues().email
+            sendVerification(email)
+            setValue('verificationCode', '')
+          }}
+          disabled={
+            isSending ||
+            errors?.email ||
+            !getValues().email ||
+            showCodeInput ||
+            emailChecked
+          }
+          className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+        >
+          {isSending
+            ? '로딩스피너'
+            : emailChecked
+              ? '이메일 인증 완료'
+              : '이메일 인증하기'}
+        </button>
+      </div>
 
       {showCodeInput && (
         <div>
@@ -197,7 +205,7 @@ const SignupForm = () => {
             {...register('verificationCode', {
               required: '필수 입력 항목입니다.',
             })}
-            className={`${'w-[20rem] rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'}`}
+            className={`${'w-[20rem]block rounded-md border-2 border-slate-300 p-2 outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'}`}
           ></input>
           <button
             type="button"
@@ -211,12 +219,12 @@ const SignupForm = () => {
             확인
           </button>
           {remainingTime > 0 && (
-            <p className="block text-xs text-red-400">
+            <p className="my-1 block text-xs text-red-400">
               {errors?.verificationCode?.message}
             </p>
           )}
           {remainingTime === 0 && (
-            <p className="block text-xs text-red-400">
+            <p className="my-1 block text-xs text-red-400">
               인증코드가 만료되었습니다.
             </p>
           )}
@@ -233,181 +241,197 @@ const SignupForm = () => {
           </button>
         </div>
       )}
-      <label
-        htmlFor="password"
-        className={`${
-          errors?.password
-            ? 'block text-sm font-semibold text-red-700'
-            : 'block text-sm font-semibold'
-        }`}
-      >
-        비밀번호
-      </label>
-      <span className="block text-xs text-slate-600">
-        영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.
-      </span>
-      <input
-        type="password"
-        id="password"
-        placeholder="비밀번호"
-        {...register('password', {
-          required: '필수 입력 항목입니다.',
-          pattern: {
-            value:
-              /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-            message: '비밀번호는 영문, 숫자를 포함하여 8자 이상이어야 합니다.',
-          },
-        })}
-        className={`${
-          errors?.password
-            ? 'block w-full rounded-md border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-            : 'block w-full rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'
-        }`}
-      ></input>
-      {
-        <p className="block text-xs text-red-400">
-          {errors?.password?.message}
-        </p>
-      }
-      <label
-        htmlFor="passwordConfirm"
-        className={`${
-          errors?.passwordConfirm
-            ? 'block text-sm font-semibold text-red-700'
-            : 'block text-sm font-semibold'
-        }`}
-      >
-        비밀번호 확인
-      </label>
-      <input
-        type="password"
-        id="passwordConfirm"
-        placeholder="비밀번호 확인"
-        {...register('passwordConfirm', {
-          required: '필수 입력 항목입니다.',
-          validate: (value) =>
-            value === getValues().password || '비밀번호와 일치하지 않습니다',
-        })}
-        className={`${
-          errors?.passwordConfirm
-            ? 'block w-full rounded-md border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-            : 'block w-full rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'
-        }`}
-      ></input>
-      {
-        <p className="block text-xs text-red-400">
-          {errors?.passwordConfirm?.message}
-        </p>
-      }
 
-      <label
-        htmlFor="username"
-        className={`${
-          errors?.username
-            ? 'block text-sm font-semibold text-red-700'
-            : 'block text-sm font-semibold'
-        }`}
-      >
-        이름
-      </label>
-      <input
-        type="text"
-        id="username"
-        placeholder="이름"
-        {...register('username', {
-          required: '필수 입력 항목입니다.',
-        })}
-        className={`${
-          errors?.username
-            ? 'block w-full rounded-md border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-            : 'block w-full rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'
-        }`}
-      ></input>
-      {
-        <p className="block text-xs text-red-400">
-          {errors?.username?.message}
-        </p>
-      }
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="password"
+          className={`${
+            errors?.password
+              ? 'mb-1 block text-sm font-semibold text-red-700'
+              : 'mb-1 block text-sm font-semibold'
+          }`}
+        >
+          비밀번호
+        </label>
+        <span className="my-1 block text-xs text-slate-600">
+          영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.
+        </span>
+        <input
+          type="password"
+          id="password"
+          placeholder="비밀번호"
+          {...register('password', {
+            required: '필수 입력 항목입니다.',
+            pattern: {
+              value:
+                /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+              message:
+                '비밀번호는 영문, 숫자를 포함하여 8자 이상이어야 합니다.',
+            },
+          })}
+          className={`${
+            errors?.password
+              ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+              : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
+          }`}
+        ></input>
+        {
+          <p className="my-1 block text-xs text-red-400">
+            {errors?.password?.message}
+          </p>
+        }
+      </div>
 
-      <label
-        htmlFor="nickname"
-        className={`${
-          errors?.nickname
-            ? 'block text-sm font-semibold text-red-700'
-            : 'block text-sm font-semibold'
-        }`}
-      >
-        닉네임
-      </label>
-      <span className="block text-xs text-slate-600">
-        다른 유저와 겹치지 않도록 입력해주세요(2~20자)
-      </span>
-      <input
-        type="text"
-        id="nickname"
-        placeholder="별명 (2~20자)"
-        {...register('nickname', {
-          required: '필수 입력 항목입니다.',
-          minLength: {
-            value: 2,
-            message: '2자 이상 입력해주세요.',
-          },
-          maxLength: {
-            value: 20,
-            message: '20자 이하로 입력해주세요.',
-          },
-          validate: async (value) => {
-            const isUsable = await checkDuplicate(value)
-            return isUsable || '다른 사용자가 사용중인 닉네임입니다'
-          },
-          onChange: () => clearErrors('nickname'),
-        })}
-        className={`${
-          errors?.nickname
-            ? 'block w-full rounded-md border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-            : 'block w-full rounded-md border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2 disabled:border-purple-300 disabled:bg-purple-50'
-        }`}
-      ></input>
-      {
-        <p className="block text-xs text-red-400">
-          {errors?.nickname?.message}
-        </p>
-      }
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="passwordConfirm"
+          className={`${
+            errors?.passwordConfirm
+              ? 'mb-1 block text-sm font-semibold text-red-700'
+              : 'mb-1 block text-sm font-semibold'
+          }`}
+        >
+          비밀번호 확인
+        </label>
+        <input
+          type="password"
+          id="passwordConfirm"
+          placeholder="비밀번호 확인"
+          {...register('passwordConfirm', {
+            required: '필수 입력 항목입니다.',
+            validate: (value) =>
+              value === getValues().password || '비밀번호와 일치하지 않습니다',
+          })}
+          className={`${
+            errors?.passwordConfirm
+              ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+              : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
+          }`}
+        ></input>
+        {
+          <p className="my-1 block text-xs text-red-400">
+            {errors?.passwordConfirm?.message}
+          </p>
+        }
+      </div>
 
-      <div>
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="username"
+          className={`${
+            errors?.username
+              ? 'mb-1 block text-sm font-semibold text-red-700'
+              : 'mb-1 block text-sm font-semibold'
+          }`}
+        >
+          이름
+        </label>
+        <input
+          type="text"
+          id="username"
+          placeholder="이름"
+          {...register('username', {
+            required: '필수 입력 항목입니다.',
+          })}
+          className={`${
+            errors?.username
+              ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+              : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
+          }`}
+        ></input>
+        {
+          <p className="my-1 block text-xs text-red-400">
+            {errors?.username?.message}
+          </p>
+        }
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="nickname"
+          className={`${
+            errors?.nickname
+              ? 'mb-1 block text-sm font-semibold text-red-700'
+              : 'mb-1 block text-sm font-semibold'
+          }`}
+        >
+          닉네임
+        </label>
+        <span className="my-1 block text-xs text-slate-600">
+          다른 유저와 겹치지 않도록 입력해주세요(2~20자)
+        </span>
+        <input
+          type="text"
+          id="nickname"
+          placeholder="별명 (2~20자)"
+          {...register('nickname', {
+            required: '필수 입력 항목입니다.',
+            minLength: {
+              value: 2,
+              message: '2자 이상 입력해주세요.',
+            },
+            maxLength: {
+              value: 20,
+              message: '20자 이하로 입력해주세요.',
+            },
+            validate: async (value) => {
+              const isUsable = await checkDuplicate(value)
+              return isUsable || '다른 사용자가 사용중인 닉네임입니다'
+            },
+            onChange: () => clearErrors('nickname'),
+          })}
+          className={`${
+            errors?.nickname
+              ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+              : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
+          }`}
+        ></input>
+        {
+          <p className="my-1 block text-xs text-red-400">
+            {errors?.nickname?.message}
+          </p>
+        }
+      </div>
+
+      <div className="flex flex-col gap-1.5">
         <label
           className={`${
             errors?.gender
-              ? 'block text-sm font-semibold text-red-700'
-              : 'block text-sm font-semibold'
+              ? 'mb-1 block text-sm font-semibold text-red-700'
+              : 'mb-1 block text-sm font-semibold'
           }`}
         >
           성별
         </label>
-        <label>
-          <input
-            {...register('gender', { required: true })}
-            type="radio"
-            value="male"
-          />
-          남자
-        </label>
-        <label>
-          <input
-            {...register('gender', { required: true })}
-            type="radio"
-            value="female"
-          />
-          여자
-        </label>
-        <label>
-          <input
-            {...register('gender', { required: true })}
-            type="radio"
-            value="other"
-          />
-          선택안함
-        </label>
+        <div className="flex justify-around">
+          <label>
+            <input
+              {...register('gender', { required: true })}
+              type="radio"
+              value="male"
+              className="h-4 w-4 accent-purple-500"
+            />
+            <span className="ml-2">남자</span>
+          </label>
+          <label>
+            <input
+              {...register('gender', { required: true })}
+              type="radio"
+              value="female"
+              className="h-4 w-4 accent-purple-500"
+            />
+            <span className="ml-2">여자</span>
+          </label>
+          <label>
+            <input
+              {...register('gender', { required: true })}
+              type="radio"
+              value="other"
+              className="h-4 w-4 accent-purple-500"
+            />
+            <span className="ml-2">선택안함</span>
+          </label>
+        </div>
       </div>
 
       <input {...register('profileImage', { value: 'null' })} type="hidden" />
@@ -415,12 +439,12 @@ const SignupForm = () => {
       {/* <input type="hidden" {...register('profileImage')} value="null" />
       <input type="hidden" {...register('provider')} value="normal" /> */}
 
-      <div>
+      <div className="flex flex-col gap-1.5">
         <label
           className={`${
             errors?.interestCategory
-              ? 'block text-sm font-semibold text-red-700'
-              : 'block text-sm font-semibold'
+              ? 'mb-1 block text-sm font-semibold text-red-700'
+              : 'mb-1 block text-sm font-semibold'
           }`}
         >
           관심사
@@ -498,12 +522,14 @@ const SignupForm = () => {
 
         {/* Display error message if no interest category is selected */}
         {errors.interestCategory && (
-          <p className="block text-xs text-red-400">필수 입력 항목입니다</p>
+          <p className="my-1 block text-xs text-red-400">
+            필수 입력 항목입니다
+          </p>
         )}
       </div>
       <button
         type="submit"
-        className="rounded  bg-purple-300 px-2 py-1 text-purple-900 outline-none hover:bg-purple-400 active:bg-purple-500"
+        className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
       >
         회원가입하기
       </button>
