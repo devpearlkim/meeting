@@ -1,17 +1,24 @@
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { login } from '../../services/apiAuth.js'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm()
-  const [errorMessage, setErrorMessage] = useState('')
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const navigate = useNavigate()
+  const onSubmit = async (formData) => {
+    try {
+      await login(formData)
+      toast.success('로그인에 성공했습니다')
+      navigate('/')
+    } catch (error) {
+      toast.error('이메일/비밀번호가 올바르지 않습니다')
+    }
   }
 
   return (
