@@ -4,7 +4,7 @@ export async function signup(formData) {
   console.log({ ...formData })
   try {
     const response = await axios.post(
-      'http://13.209.35.28/api/v1/auth/signup',
+      'http://15.164.233.81/api/v1/auth/signup',
       {
         ...formData,
       },
@@ -22,7 +22,7 @@ export async function signup(formData) {
 export async function sendCode({ email, type }) {
   try {
     const response = await axios.post(
-      'http://13.209.35.28/api/v1/auth/send-code',
+      'http://15.164.233.81/api/v1/auth/send-code',
       {
         email,
         type,
@@ -41,7 +41,7 @@ export async function sendCode({ email, type }) {
 export async function checkCode({ email, code }) {
   try {
     const response = await axios.get(
-      `http://13.209.35.28/api/v1/auth/auth-code?email=${email}&code=${code}`,
+      `http://15.164.233.81/api/v1/auth/auth-code?email=${email}&code=${code}`,
     )
 
     if (response.status !== 200) throw new Error('이미 있는 닉네임 입니다')
@@ -59,7 +59,7 @@ export async function checkCode({ email, code }) {
 export async function checkNickname({ nickname }) {
   try {
     const response = await axios.get(
-      `http://13.209.35.28/api/v1/users/check-nickname?nickname=${nickname}`,
+      `http://15.164.233.81/api/v1/users/check-nickname?nickname=${nickname}`,
     )
 
     if (response.status !== 200) throw new Error('이미 있는 닉네임 입니다')
@@ -72,10 +72,13 @@ export async function checkNickname({ nickname }) {
 
 export async function login({ email, password }) {
   try {
-    const response = await axios.post('http://13.209.35.28/api/v1/auth/login', {
-      email,
-      password,
-    })
+    const response = await axios.post(
+      'http://15.164.233.81/api/v1/auth/login',
+      {
+        email,
+        password,
+      },
+    )
 
     return response.data
   } catch (error) {

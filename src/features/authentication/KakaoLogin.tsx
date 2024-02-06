@@ -5,8 +5,9 @@ const KakaoLogin = () => {
   const navigate = useNavigate()
 
   const handleKakaoLogin = () => {
-    const url = ''
-    navigate(url)
+    const url = 'http://15.164.233.81/api/v1/auth/kakao'
+    // navigate(url)
+    window.location.href = url
   }
 
   return (
