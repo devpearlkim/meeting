@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { login } from '../../services/apiAuth.js'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import KakaoLogin from './KakaoLogin.js'
 
 const LoginForm = () => {
   const {
@@ -22,37 +23,46 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="flex items-center justify-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="w-1/4">
-        <div>
-          <input
-            type="text"
-            id="email"
-            placeholder="이메일"
-            className={`${
-              errors?.email
-                ? 'disabled:border-red-30 block w-full rounded-sm border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2'
-                : 'block w-full rounded-sm border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2'
-            }`}
-            {...register('email', { required: '필수 입력사항 입니다' })}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            id="password"
-            placeholder="비밀번호"
-            className={`${
-              errors?.password
-                ? 'block w-full rounded-sm border-2 border-red-400 p-2 outline-none ring-red-300 focus:border-red-500 focus:ring-2'
-                : 'block w-full rounded-sm border-2 border-purple-400 p-2 outline-none ring-purple-300 focus:border-purple-500 focus:ring-2'
-            }`}
-            {...register('password', { required: '필수 입력사항 입니다' })}
-          />
-        </div>
-        <button type="submit">로그인</button>
-      </form>
-    </div>
+    // <div className="flex items-center justify-center">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={'mx-auto w-[20rem] space-y-2 text-slate-950'}
+    >
+      <KakaoLogin />
+      <div className="flex flex-col">
+        <input
+          type="text"
+          id="email"
+          placeholder="이메일"
+          className={`${
+            errors?.email
+              ? 'w-full rounded-md border border-red-400 p-2 px-4 py-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+              : 'py-4text-sm w-full rounded-md border border-slate-300 p-2 px-4 py-4 outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
+          }`}
+          {...register('email', { required: '필수 입력사항 입니다' })}
+        />
+      </div>
+      <div className="flex flex-col">
+        <input
+          type="password"
+          id="password"
+          placeholder="비밀번호"
+          className={`${
+            errors?.password
+              ? 'w-full rounded-md border border-red-400 p-2 px-4 py-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
+              : 'w-full rounded-md border border-slate-300 p-2 px-4 py-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
+          }`}
+          {...register('password', { required: '필수 입력사항 입니다' })}
+        />
+      </div>
+      <button
+        type="submit"
+        className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+      >
+        로그인
+      </button>
+    </form>
+    // </div>
   )
 }
 
