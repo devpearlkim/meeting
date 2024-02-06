@@ -78,6 +78,9 @@ export async function login({ email, password }) {
         email,
         password,
       },
+      {
+        withCredentials: true, // Setting withCredentials to true
+      },
     )
 
     return response.data
