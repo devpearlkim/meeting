@@ -16,7 +16,8 @@ const LoginForm = () => {
     try {
       await login(formData)
       toast.success('로그인에 성공했습니다')
-      navigate('/')
+      // navigate('/')
+      window.location.href = 'http://52.62.68.140'
     } catch (error) {
       toast.error('이메일/비밀번호가 올바르지 않습니다')
     }
