@@ -84,7 +84,6 @@ export default function CalendarInput() {
             onSelect={handleDayClick}
             disabled={disabledDays}
             locale={ko}
-            numberOfMonths={2}
           />
         </div>
       )}

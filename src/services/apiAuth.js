@@ -1,14 +1,12 @@
 import axios from 'axios'
 
 export async function signup(formData) {
-  console.log({ ...formData })
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
   try {
-    const response = await axios.post(
-      'http://15.164.233.81/api/v1/auth/signup',
-      {
-        ...formData,
-      },
-    )
+    const response = await axios.post(`${backendURI}/auth/signup`, {
+      ...formData,
+    })
 
     if (response.status !== 200) {
       throw new Error('회원가입 과정에서 오류발생')
@@ -19,15 +17,15 @@ export async function signup(formData) {
     throw new Error('회원가입 과정에서 오류발생: ' + error.message)
   }
 }
+
 export async function sendCode({ email, type }) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
   try {
-    const response = await axios.post(
-      'http://15.164.233.81/api/v1/auth/send-code',
-      {
-        email,
-        type,
-      },
-    )
+    const response = await axios.post(`${backendURI}/auth/send-code`, {
+      email,
+      type,
+    })
 
     return response.data
   } catch (error) {
@@ -39,9 +37,11 @@ export async function sendCode({ email, type }) {
 }
 
 export async function checkCode({ email, code }) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
   try {
     const response = await axios.get(
-      `http://15.164.233.81/api/v1/auth/auth-code?email=${email}&code=${code}`,
+      `${backendURI}/auth/auth-code?email=${email}&code=${code}`,
     )
 
     if (response.status !== 200) throw new Error('이미 있는 닉네임 입니다')
@@ -57,9 +57,11 @@ export async function checkCode({ email, code }) {
 }
 
 export async function checkNickname({ nickname }) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
   try {
     const response = await axios.get(
-      `http://15.164.233.81/api/v1/users/check-nickname?nickname=${nickname}`,
+      `${backendURI}/users/check-nickname?nickname=${nickname}`,
     )
 
     if (response.status !== 200) throw new Error('이미 있는 닉네임 입니다')
@@ -71,17 +73,13 @@ export async function checkNickname({ nickname }) {
 }
 
 export async function login({ email, password }) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
   try {
-    const response = await axios.post(
-      'http://15.164.233.81/api/v1/auth/login',
-      {
-        email,
-        password,
-      },
-      // {
-      //   withCredentials: true,
-      // },
-    )
+    const response = await axios.post(`${backendURI}/auth/login`, {
+      email,
+      password,
+    })
 
     return response.data
   } catch (error) {

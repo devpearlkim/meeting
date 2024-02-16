@@ -38,24 +38,24 @@ const CategoryInput = () => {
   }
 
   return (
-    <div>
+    <div className="flex gap-2">
       <button
         onClick={() => handleCategoryClick('맛집')}
-        className={selectedCategory === '맛집' ? 'selected' : ''}
+        className={`my-2 inline-block rounded-full bg-blue-500 px-3 py-2 text-sm text-white ${selectedCategory === '맛집' ? 'selected' : ''}`}
       >
         맛집
       </button>
       <button
-        onClick={() => handleCategoryClick('여행')}
-        className={selectedCategory === '여행' ? 'selected' : ''}
+        onClick={() => handleCategoryClick('맛집')}
+        className={`my-2 inline-block rounded-full bg-blue-500 px-3 py-2 text-sm text-white ${selectedCategory === '맛집' ? 'selected' : ''}`}
       >
-        여행
+        맛집
       </button>
       <button
-        onClick={() => handleCategoryClick('수다')}
-        className={selectedCategory === '수다' ? 'selected' : ''}
+        onClick={() => handleCategoryClick('맛집')}
+        className={`my-2 inline-block rounded-full bg-blue-500 px-3 py-2 text-sm text-white ${selectedCategory === '맛집' ? 'selected' : ''}`}
       >
-        수다
+        맛집
       </button>
     </div>
   )

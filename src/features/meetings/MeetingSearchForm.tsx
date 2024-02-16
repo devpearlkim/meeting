@@ -16,14 +16,23 @@ const MeetingSearchFrom = () => {
   const currentCategory = new URLSearchParams(location.search).get('category')
 
   const onSubmit = (formData) => {
-    const queryParams = `?search=${formData.search}&location=${formData.location}`
-    console.log(formData)
-    // navigate('/searchList', { state: formData });
-    // 현재 카테고리를 유지하면서 새로운 검색어를 추가합니다.
-    const categoryQuery = currentCategory ? `&category=${currentCategory}` : ''
+    let queryParams = ''
+    if (formData.search && !formData.location) {
+      queryParams = `?search=${formData.search}`
+    } else if (!formData.search && formData.location) {
+      queryParams = `?location=${formData.location}`
+    } else if (formData.search && formData.location) {
+      queryParams = `?search=${formData.search}&location=${formData.location}`
+    }
 
+    let categoryQuery = ''
+    if (currentCategory) {
+      categoryQuery =
+        queryParams !== '' && currentCategory
+          ? `&category=${currentCategory}`
+          : `?category=${currentCategory}`
+    }
     navigate(`/list${queryParams}${categoryQuery}`, { state: formData })
-    // reset()
   }
 
   return (
