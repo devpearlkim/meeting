@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import Autocomplete from 'react-google-autocomplete'
+import { useLocation } from 'react-router-dom'
 
 function LocationInput() {
   const { setValue } = useFormContext()
   const [location, setLocation] = useState(null)
+  const searchParams = new URLSearchParams(useLocation().search)
+  const initialLocation = searchParams.get('location')
+
+  useEffect(() => {
+    if (initialLocation) {
+      setLocation(initialLocation)
+      setValue('location', initialLocation)
+    }
+  }, [initialLocation, setValue])
 
   const handlePlaceSelected = (place) => {
     const formattedAddress = place.formatted_address
@@ -16,6 +26,7 @@ function LocationInput() {
     <div className="">
       <Autocomplete
         apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+        defaultValue={initialLocation ?? ''}
         onPlaceSelected={handlePlaceSelected}
         options={{
           types: ['(regions)'],

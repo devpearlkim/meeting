@@ -33,31 +33,35 @@ const MeetingSearchFrom = () => {
           : `?category=${currentCategory}`
     }
     navigate(`/list${queryParams}${categoryQuery}`, { state: formData })
+    resetField('search')
+    resetField('location')
   }
 
   return (
-    <div className="w-fit">
+    <div className="flex w-full flex-col gap-2">
       <FormProvider {...methods}>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex justify-around rounded-3xl border-2 border-slate-200"
-        >
-          <div className="flex">
-            <SearchBarInput />
-            <CalendarInput />
-            <LocationInput />
-            <LimitNumInput />
-          </div>
-          <div className="flex items-start pl-5 pr-2 pt-2">
-            <button type="submit">
-              <img
-                className="w-10"
-                src={searchGlassImage}
-                alt="검색 돋보기 아이콘"
-              />
-            </button>
-          </div>
-        </form>
+        <div className="flex justify-center">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex w-fit justify-around rounded-3xl border-2 border-slate-200"
+          >
+            <div className="flex">
+              <SearchBarInput />
+              <CalendarInput />
+              <LocationInput />
+              <LimitNumInput />
+            </div>
+            <div className="flex items-start pl-5 pr-2 pt-2">
+              <button type="submit">
+                <img
+                  className="w-10"
+                  src={searchGlassImage}
+                  alt="검색 돋보기 아이콘"
+                />
+              </button>
+            </div>
+          </form>
+        </div>
       </FormProvider>
       <CategoryInput />
     </div>
