@@ -43,7 +43,7 @@ export default function CalendarInput() {
   return (
     <div ref={calendarRef} className="">
       <div className="flex justify-center">
-        <div>
+        <div className="shrink-0">
           <IconButton disabled>
             <CalendarToday />
           </IconButton>
@@ -58,7 +58,7 @@ export default function CalendarInput() {
             readOnly
           />
         </div>
-        <div className="pl-2">
+        <div className="shrink-0 pl-2">
           <IconButton disabled>
             <CalendarToday />
           </IconButton>

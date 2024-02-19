@@ -10,7 +10,10 @@ const PostDetail = () => {
     isLoading,
     error,
     data: postDetail,
-  } = useQuery({ queryKey: ['postDetail', postId], queryFn: getPostDetail })
+  } = useQuery<any>({
+    queryKey: ['postDetail', postId],
+    queryFn: getPostDetail,
+  })
 
   const handleCategoryClick = (categoryId) => {
     navigate(`/list?category=${categoryId}`)
