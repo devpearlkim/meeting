@@ -18,15 +18,16 @@ const List = () => {
   const locationParam = queryParams.get('location') || ''
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
-  const [sort, setSort] = useState('latest')
+  const [sort, setSort] = useState('default')
 
   useEffect(() => {
     const valuesFromSearchForm = location.state || {}
-    setSearchFormValues({
+    setSearchFormValues((prevValues) => ({
+      ...prevValues,
       ...valuesFromSearchForm,
       search,
       location: locationParam,
-    })
+    }))
   }, [location.state, search, locationParam])
 
   const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery({
@@ -96,9 +97,8 @@ const List = () => {
                 onChange={handleSortChange}
                 value={sort}
               >
-                <option value="latest">최신순</option>
-                <option value="oldest">오래된 순</option>
-                <option value="popular">인기순</option>
+                <option value="default">기본</option>
+                <option value="current">최신순</option>
               </select>
             </div>
 

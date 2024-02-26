@@ -19,7 +19,7 @@ const PostForm = () => {
       toast.error('내용을 작성해주세요')
       return
     }
-    if (!data.date) {
+    if (!data.meeting_date) {
       toast.error('날짜를 입력해주세요')
       return
     }
@@ -33,6 +33,10 @@ const PostForm = () => {
     }
     if (data.count > 50) {
       toast.error('모집인원은 최대 50명입니다')
+      return
+    }
+    if (!data.categories.length) {
+      toast.error('카테고리를 입력해주세요')
       return
     }
     addPost(data)

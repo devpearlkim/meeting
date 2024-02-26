@@ -8,13 +8,13 @@ const CountInput = () => {
   const handleDecrement = () => {
     const newCount = count - 1
     setCount(newCount)
-    setValue('count', newCount)
+    setValue('member_limit', newCount)
   }
 
   const handleIncrement = () => {
     const newCount = count + 1
     setCount(newCount)
-    setValue('count', newCount)
+    setValue('member_limit', newCount)
   }
 
   const handleInputChange = (e) => {
@@ -22,7 +22,7 @@ const CountInput = () => {
     if (!isNaN(value)) {
       const newCount = parseInt(value)
       setCount(newCount)
-      setValue('count', newCount)
+      setValue('member_limit', newCount)
     }
   }
 

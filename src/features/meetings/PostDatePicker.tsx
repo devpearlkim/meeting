@@ -73,7 +73,7 @@ export default function DatePickerDialog() {
       return
     }
     setSelected(date)
-    setValue('date', format(date, 'yyyy-MM-dd'))
+    setValue('meeting_date', format(date, 'yyyy-MM-dd'))
     if (date) {
       setInputValue(format(date, 'y-MM-dd'))
       closePopper()
