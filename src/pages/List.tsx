@@ -17,10 +17,10 @@ const List = () => {
   const search = queryParams.get('search') || ''
   const locationParam = queryParams.get('location') || ''
   const [showModal, setShowModal] = useState(false)
-  const [reportedPostId, setReportedPostId] = useState(null) // 신고된 postId
+  const [reportedPostId, setReportedPostId] = useState(null)
+  const [sort, setSort] = useState('latest')
 
   useEffect(() => {
-    // 나머지 값들을 state에서 가져옵니다.
     const valuesFromSearchForm = location.state || {}
     setSearchFormValues({
       ...valuesFromSearchForm,
@@ -30,13 +30,17 @@ const List = () => {
   }, [location.state, search, locationParam])
 
   const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery({
-    queryKey: ['posts', searchFormValues, category],
+    queryKey: ['posts', searchFormValues, category, sort],
     queryFn: getPost,
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.at(-1)?.id,
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
   })
+
+  const handleSortChange = (e) => {
+    setSort(e.target.value)
+  }
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -54,36 +58,19 @@ const List = () => {
 
   const [showTextarea, setShowTextarea] = useState(false)
   const [reportReason, setReportReason] = useState('')
-  // const [customReason, setCustomReason] = useState('')
-  // const [showCustomInput, setShowCustomInput] = useState(false)
 
   const handleReportReasonChange = (reason) => {
     if (reportReason === reason) {
-      setReportReason('') // 이미 선택된 경우 다시 클릭하면 선택 취소
+      setReportReason('')
     } else {
-      setReportReason(reason) // 새로운 이유 선택
+      setReportReason(reason)
     }
-    // if (value === 'custom') {
-    //   setShowCustomInput(true)
-    // } else {
-    //   setShowCustomInput(false)
-    // }
   }
 
-  // const handleCustomReasonChange = (e) => {
-  //   // setCustomReason(e.target.value)
-  //   setReportReason(e.target.value)
-  // }
-
   const handleReport = () => {
-    console.log('Reported Post ID:', reportedPostId)
-
     let reason = reportReason
-
-    console.log('신고 사유:', reason)
     setShowModal(false)
-    setReportedPostId(null) // 신고 후 postId 초기화
-    // setShowCustomInput(false)
+    setReportedPostId(null)
     setReportReason('')
   }
 
@@ -104,7 +91,11 @@ const List = () => {
                   글쓰기
                 </button>
               </Link>
-              <select className="rounded-md border border-gray-300 px-4 py-2">
+              <select
+                className="rounded-md border border-gray-300 px-4 py-2"
+                onChange={handleSortChange}
+                value={sort}
+              >
                 <option value="latest">최신순</option>
                 <option value="oldest">오래된 순</option>
                 <option value="popular">인기순</option>
@@ -138,7 +129,6 @@ const List = () => {
                 style={{ height: 50 }}
               />
             )}
-            {/* <div className="mt-6 flex gap-6"></div> */}
           </div>
         </div>
       </div>

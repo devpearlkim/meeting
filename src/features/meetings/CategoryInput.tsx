@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-const CategoryInput = () => {
+const CategoryInput = ({ mode }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const currentCategories = new URLSearchParams(location.search).getAll(
@@ -15,6 +16,8 @@ const CategoryInput = () => {
     setSelectedCategories(currentCategories[0]?.split('%') ?? [])
   }, [location.search])
 
+  const { setValue } = useFormContext()
+
   const handleCategoryClick = (categoryId) => {
     let updatedCategories = [...selectedCategories]
     const index = updatedCategories.indexOf(categoryId.toString())
@@ -23,6 +26,13 @@ const CategoryInput = () => {
       updatedCategories.splice(index, 1)
     } else {
       updatedCategories.push(categoryId.toString())
+    }
+
+    if (mode === 'post') {
+      const newCategories = updatedCategories
+      setSelectedCategories(updatedCategories)
+      setValue('categories', newCategories)
+      return
     }
 
     const newSearch = updatedCategories
@@ -53,12 +63,15 @@ const CategoryInput = () => {
   ]
 
   return (
-    <div className="flex flex-nowrap gap-2 overflow-x-auto">
+    <div
+      className={`flex gap-2 ${mode === 'post' ? 'flex-wrap' : 'overflow-x-auto'}`}
+    >
       {categories.map((category) => (
         <button
           key={category.id}
           onClick={() => handleCategoryClick(category.id)}
-          className={`my-2 inline-block flex-shrink-0 rounded-full px-3 py-2 text-sm ${
+          type="button"
+          className={`inline-block flex-shrink-0 rounded-full px-3 py-2 text-sm ${
             selectedCategories.includes(category.id)
               ? 'bg-blue-500 text-white'
               : 'border border-blue-500 bg-white text-blue-500 hover:bg-blue-100'

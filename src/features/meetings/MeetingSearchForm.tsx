@@ -62,8 +62,8 @@ const MeetingSearchFrom = () => {
             </div>
           </form>
         </div>
+        <CategoryInput />
       </FormProvider>
-      <CategoryInput />
     </div>
   )
 }

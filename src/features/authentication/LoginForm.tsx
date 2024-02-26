@@ -16,15 +16,13 @@ const LoginForm = () => {
     try {
       await login(formData)
       toast.success('로그인에 성공했습니다')
-      // navigate('/')
-      window.location.href = 'http://15.164.233.81'
+      window.location.href = import.meta.env.VITE_HOME_URI
     } catch (error) {
       toast.error('이메일/비밀번호가 올바르지 않습니다')
     }
   }
 
   return (
-    // <div className="flex items-center justify-center">
     <form
       onSubmit={handleSubmit(onSubmit)}
       className={'mx-auto w-[20rem] space-y-2 text-slate-950'}
@@ -63,7 +61,6 @@ const LoginForm = () => {
         로그인
       </button>
     </form>
-    // </div>
   )
 }
 

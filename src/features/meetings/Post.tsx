@@ -3,16 +3,23 @@ import { Link } from 'react-router-dom'
 import { PiSirenLight } from 'react-icons/pi'
 
 const Post = ({ post, setShowModal, setReportedPostId }) => {
-  const handleReportClick = (postId) => {
-    setReportedPostId(post.id) // postId 설정
-    setShowModal(true) // 모달 열기
+  const handleReportClick = () => {
+    setReportedPostId(post.id)
+    setShowModal(true)
+  }
+  const deleteLike = () => {
+    // apiDeleteLike호출
+    post.isLike = !post.isLike
+  }
+  const addLike = () => {
+    // apiAddLike호출
+    post.isLike = !post.isLike
   }
 
   return (
     <div>
       <div className="my-3 flex w-[320px] flex-col overflow-hidden rounded-lg bg-white shadow">
         <Link to={`/detail/${post.id}`} key={post.id}>
-          {/* <div> */}
           <img
             src="https://loremflickr.com/320/240?random=1"
             className="h-52 w-full object-cover"
@@ -60,10 +67,11 @@ const Post = ({ post, setShowModal, setReportedPostId }) => {
               </div>
             </div>
           </div>
-          {/* </div> */}
         </Link>
         <div className="mt-auto flex items-center justify-between gap-4 border-t border-slate-300 px-2 pb-2 pt-4">
-          <button>좋아요</button>
+          <button onClick={post.isLike ? deleteLike : addLike}>
+            {post.isLike ? '꽉찬하트' : '빈하트'}
+          </button>
           <button onClick={handleReportClick}>
             <PiSirenLight />
           </button>
