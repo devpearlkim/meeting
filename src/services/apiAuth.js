@@ -86,3 +86,13 @@ export async function login({ email, password }) {
     throw new Error('로그인에 실패했습니다')
   }
 }
+
+export async function getUserInfo() {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+  try {
+    const response = await axios.get(`${backendURI}/users/profile`)
+    return response.data
+  } catch (error) {
+    throw new Error('글 추가하는 중 오류발생')
+  }
+}
