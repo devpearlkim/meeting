@@ -101,6 +101,7 @@ const PostForm = () => {
             모집인원
           </label>
           <CountInput />
+          {/* 상위에서 동적으로 쓸때 */}
         </div>
         <div>
           <label

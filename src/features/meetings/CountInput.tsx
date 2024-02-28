@@ -9,6 +9,8 @@ const CountInput = () => {
     const newCount = count - 1
     setCount(newCount)
     setValue('member_limit', newCount)
+
+    //watch, useEffect onChange->상위->useState
   }
 
   const handleIncrement = () => {
