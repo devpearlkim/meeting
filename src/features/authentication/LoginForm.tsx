@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import { login } from '../../services/apiAuth.js'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import KakaoLogin from './KakaoLogin.js'
+import KakaoLogin from './KakaoLogin.jsx'
 
 const LoginForm = () => {
   const {
