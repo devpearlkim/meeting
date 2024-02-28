@@ -51,7 +51,6 @@ export async function checkCode({ email, code }) {
     if (error.response.status === 401) {
       throw new Error('올바른 인증 코드가 아닙니다')
     }
-    console.error(error.message)
     throw new Error('인증코드 확인 과정에서 오류 발생')
   }
 }
