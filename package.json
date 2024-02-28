@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 8080",
-    "build": "vite build --max-old-space-size=",
+    "build": "vite build --max-old-space-size=1024",
     "lint": "eslint . --ext js,jsx,ts,tsx --no-cache",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{ts,tsx}\""
