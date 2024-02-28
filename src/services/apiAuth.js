@@ -73,6 +73,7 @@ export async function checkNickname({ nickname }) {
 
 export async function login({ email, password }) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
+  console.log('backendURI', backendURI)
 
   try {
     const response = await axios.post(`${backendURI}/auth/login`, {
