@@ -1,10 +1,8 @@
 import axios from 'axios'
 
 export async function signup(formData) {
-  const backendURI = import.meta.env.VITE_BACKEND_URI
-
   try {
-    const response = await axios.post(`${backendURI}/auth/signup`, {
+    const response = await axios.post(`api/auth/signup`, {
       ...formData,
     })
 
@@ -19,10 +17,8 @@ export async function signup(formData) {
 }
 
 export async function sendCode({ email, type }) {
-  const backendURI = import.meta.env.VITE_BACKEND_URI
-
   try {
-    const response = await axios.post(`${backendURI}/auth/send-code`, {
+    const response = await axios.post(`api/auth/send-code`, {
       email,
       type,
     })
@@ -37,11 +33,9 @@ export async function sendCode({ email, type }) {
 }
 
 export async function checkCode({ email, code }) {
-  const backendURI = import.meta.env.VITE_BACKEND_URI
-
   try {
     const response = await axios.get(
-      `${backendURI}/auth/auth-code?email=${email}&code=${code}`,
+      `api/auth/auth-code?email=${email}&code=${code}`,
     )
 
     if (response.status !== 200) throw new Error('이미 있는 닉네임 입니다')
@@ -56,11 +50,9 @@ export async function checkCode({ email, code }) {
 }
 
 export async function checkNickname({ nickname }) {
-  const backendURI = import.meta.env.VITE_BACKEND_URI
-
   try {
     const response = await axios.get(
-      `${backendURI}/users/check-nickname?nickname=${nickname}`,
+      `api/users/check-nickname?nickname=${nickname}`,
     )
 
     if (response.status !== 200) throw new Error('이미 있는 닉네임 입니다')
@@ -72,10 +64,8 @@ export async function checkNickname({ nickname }) {
 }
 
 export async function login({ email, password }) {
-  const backendURI = import.meta.env.VITE_BACKEND_URI
-
   try {
-    const response = await axios.post(`${backendURI}/auth/login`, {
+    const response = await axios.post(`api/auth/login`, {
       email,
       password,
     })
@@ -87,9 +77,8 @@ export async function login({ email, password }) {
 }
 
 export async function getUserInfo() {
-  const backendURI = import.meta.env.VITE_BACKEND_URI
   try {
-    const response = await axios.get(`${backendURI}/users/profile`)
+    const response = await axios.get(`api/users/profile`)
     return response.data
   } catch (error) {
     throw new Error('글 추가하는 중 오류발생')
