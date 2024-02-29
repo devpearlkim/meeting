@@ -132,8 +132,6 @@ const List = () => {
           </div>
         </div>
       </div>
-
-      {/* 모달 */}
       {showModal && (
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-screen items-center justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
