@@ -17,8 +17,6 @@ export const AppRoutes = () => {
         <Route path="/list" element={<List />} />
         <Route path="/detail/:postId" element={<PostDetail />} />
         <Route path="/write" element={<WritePost />} />
-
-        {/* Default route when the path is "/". */}
       </Route>
     </Routes>
   )
