@@ -1,20 +1,5 @@
 {
   "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "${VITE_BACKEND_URI}/:path*"
-    },
-    {
-      "source": "/api/:path*/",
-      "destination": "${VITE_BACKEND_URI}/:path*/"
-    },
-    {
-      "source": "/api/:resource/:path*",
-      "destination": "${VITE_BACKEND_URI}/:resource/:path*"
-    }
-  ],
-
   "headers": [
     {
       "source": "/api/(.*)",
