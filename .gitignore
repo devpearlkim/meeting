@@ -44,3 +44,4 @@ release/build
 
 # OSX
 .DS_Store
+.vercel

@@ -3,6 +3,7 @@ import axios from 'axios'
 export async function getPost({ queryKey, pageParam }) {
   console.log(queryKey)
 
+  const backendURI = import.meta.env.VITE_BACKEND_URI
   const perPage = import.meta.env.VITE_PER_PAGE
   const { search, minValue, maxValue, location, from, to } = queryKey[1]
   const categoryArr = queryKey[2]?.split('%').map((cat) => parseInt(cat)) ?? []
@@ -47,7 +48,7 @@ export async function getPost({ queryKey, pageParam }) {
   }
 
   try {
-    const response = await axios.get(`api/meetings`, {
+    const response = await axios.get(`${backendURI}/meetings`, {
       params,
     })
     return response.data
@@ -58,9 +59,10 @@ export async function getPost({ queryKey, pageParam }) {
 
 export async function getPostDetail({ queryKey }) {
   const postId = queryKey[1]
+  const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.get(`api/meetings/${postId}`)
+    const response = await axios.get(`${backendURI}/meetings/${postId}`)
     return response.data
   } catch (error) {
     throw new Error('글 상세정보 불러오는 중 오류발생')
@@ -68,11 +70,12 @@ export async function getPostDetail({ queryKey }) {
 }
 
 export async function addPost(formData) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
   const categories = formData.categories.map((category) => parseInt(category))
   try {
     console.log(formData)
     console.log(categories)
-    const response = await axios.post(`api/meetings`, {
+    const response = await axios.post(`${backendURI}/meetings`, {
       ...formData,
       categories,
     })
@@ -83,8 +86,10 @@ export async function addPost(formData) {
 }
 
 export async function getCategories() {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
   try {
-    const response = await axios.get(`api/categories`)
+    const response = await axios.get(`${backendURI}/categories`)
 
     return response.data
   } catch (error) {
