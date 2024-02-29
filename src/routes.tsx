@@ -13,6 +13,7 @@ export const AppRoutes = () => {
       <Route path="/" element={<Main />} />
       <Route path="/signup" element={<NewUsers />} />
       <Route path="/login" element={<Login />} />
+      {/* <Route path="/login" element={<Login />} /> */}
       <Route element={<AppLayout />}>
         <Route path="/list" element={<List />} />
         <Route path="/detail/:postId" element={<PostDetail />} />
