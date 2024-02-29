@@ -3,15 +3,15 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "${VITE_BACKEND_URI}/:path*"
+      "destination": "https://jwpj.net/:path*"
     },
     {
       "source": "/api/:path*/",
-      "destination": "${VITE_BACKEND_URI}/:path*/"
+      "destination": "https://jwpj.net/:path*/"
     },
     {
       "source": "/api/:resource/:path*",
-      "destination": "${VITE_BACKEND_URI}/:resource/:path*"
+      "destination": "https://jwpj.net/:resource/:path*"
     }
   ],
   "headers": [
