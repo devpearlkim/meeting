@@ -1,8 +1,6 @@
 import axios from 'axios'
 
 export async function getPost({ queryKey, pageParam }) {
-  console.log(queryKey)
-
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const perPage = import.meta.env.VITE_PER_PAGE
   const { search, minValue, maxValue, location, from, to } = queryKey[1]
@@ -72,13 +70,21 @@ export async function getPostDetail({ queryKey }) {
 export async function addPost(formData) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const categories = formData.categories.map((category) => parseInt(category))
+  const token = sessionStorage.getItem('token')
+
   try {
-    console.log(formData)
-    console.log(categories)
-    const response = await axios.post(`${backendURI}/meetings`, {
-      ...formData,
-      categories,
-    })
+    const response = await axios.post(
+      `${backendURI}/meetings`,
+      {
+        ...formData,
+        categories,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
     return response.data
   } catch (error) {
     throw new Error('글 추가하는 중 오류발생')

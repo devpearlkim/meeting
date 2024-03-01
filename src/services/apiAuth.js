@@ -81,12 +81,8 @@ export async function login({ email, password }) {
       password,
     })
 
-    console.log(response)
-    console.log(response.headers)
     const token = response.headers.get('Authorization')
-    console.log(token)
     if (token) {
-      console.log('토큰:', token)
       sessionStorage.setItem('token', token)
     }
     return response.data
