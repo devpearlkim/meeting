@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 const CountInput = () => {
@@ -8,15 +8,18 @@ const CountInput = () => {
   const handleDecrement = () => {
     const newCount = count - 1
     setCount(newCount)
-    setValue('member_limit', newCount)
-
+    // setValue('member_limit', newCount)
     //watch, useEffect onChange->상위->useState
   }
+
+  useEffect(() => {
+    setValue('member_limit', count)
+  }, [count])
 
   const handleIncrement = () => {
     const newCount = count + 1
     setCount(newCount)
-    setValue('member_limit', newCount)
+    // setValue('member_limit', newCount)
   }
 
   const handleInputChange = (e) => {
@@ -24,7 +27,7 @@ const CountInput = () => {
     if (!isNaN(value)) {
       const newCount = parseInt(value)
       setCount(newCount)
-      setValue('member_limit', newCount)
+      // setValue('member_limit', newCount)
     }
   }
 

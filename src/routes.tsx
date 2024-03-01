@@ -6,9 +6,9 @@ import Main from './pages/Main'
 import List from './pages/List'
 import PostDetail from './pages/PostDetail'
 import WritePost from './pages/WritePost'
-import MyProfile from './pages/MyProfile'
-// import MyMeetings from './pages/profile/myMeetings'
-// import MyApplies from './pages/profile/myApplies'
+// import MyProfile from './pages/MyProfile'
+import MyMeetings from './pages/profile/MyMeetings'
+import MyApplies from './pages/profile/MyApplies'
 import BookMark from './pages/profile/BookMark'
 
 export const AppRoutes = () => {
@@ -21,11 +21,11 @@ export const AppRoutes = () => {
         <Route path="/list" element={<List />} />
         <Route path="/detail/:postId" element={<PostDetail />} />
         <Route path="/write" element={<WritePost />} />
-        <Route path="/profile" element={<MyProfile />}>
-          {/* <Route path="/" element={<MyMeetings />} /> */}
-          {/* <Route path="/profile/applies" element={<MyApplies />} /> */}
-          {/* <Route path="/profile/bookmark" element={<BookMark />} /> */}
-        </Route>
+        {/* <Route path="/profile" element={<MyProfile />}> */}
+        <Route path="/myMeetings" element={<MyMeetings />} />
+        <Route path="/applies" element={<MyApplies />} />
+        <Route path="/bookmark" element={<BookMark />} />
+        {/* </Route> */}
       </Route>
     </Routes>
   )
