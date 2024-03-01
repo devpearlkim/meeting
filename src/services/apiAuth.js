@@ -87,6 +87,7 @@ export async function login({ email, password }) {
     console.log(token)
     if (token) {
       console.log('토큰:', token)
+      sessionStorage.setItem('token', token)
     }
     return response.data
   } catch (error) {
