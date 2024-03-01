@@ -8,7 +8,8 @@ const KakaoLogin = () => {
   console.log(window.location.href)
 
   const handleKakaoLogin = () => {
-    const url = `{VITE_BACKEND_URI}/auth/kakao`
+    const backendURI = import.meta.env.VITE_BACKEND_URI
+    const url = `${backendURI}/auth/kakao`
     window.location.href = url
   }
 
