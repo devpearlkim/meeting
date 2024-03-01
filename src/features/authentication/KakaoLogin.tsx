@@ -8,8 +8,7 @@ const KakaoLogin = () => {
   console.log(window.location.href)
 
   const handleKakaoLogin = () => {
-    const url = 'http://15.164.233.81/api/v1/auth/kakao'
-    // navigate(url)
+    const url = `{VITE_BACKEND_URI}/auth/kakao`
     window.location.href = url
   }
 
