@@ -11,6 +11,7 @@ const MyProfile = () => {
       <div className="mx-10 flex w-full flex-col">
         <Tab path={pathname} />
         <div className="flex w-4/5">
+          <div>마이프로필</div>
           <Outlet />
         </div>
       </div>
