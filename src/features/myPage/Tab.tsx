@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
 const sidebarItems = [
-  { path: '/my', text: '모임정보' },
-  { path: '/my/applies', text: '신청내역' },
-  { path: '/my/bookmark', text: '북마크' },
+  { path: '/profile', text: '모임정보' },
+  { path: '/profile/applies', text: '신청내역' },
+  { path: '/profile/bookmark', text: '북마크' },
 ]
 
 const Sidebar = ({ path }: { path: string }) => {

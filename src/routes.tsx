@@ -23,8 +23,8 @@ export const AppRoutes = () => {
         <Route path="/write" element={<WritePost />} />
         <Route path="/profile" element={<MyProfile />}>
           <Route index element={<MyMeetings />} />
-          <Route path="/my/applies" element={<MyApplies />} />
-          <Route path="/my/bookmark" element={<BookMark />} />
+          <Route path="/profile/applies" element={<MyApplies />} />
+          <Route path="/profile/bookmark" element={<BookMark />} />
         </Route>
       </Route>
     </Routes>
