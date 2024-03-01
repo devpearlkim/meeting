@@ -8,7 +8,6 @@ const ImageUpload = () => {
   const handleFileInputChange = (e) => {
     const selectedFile = e.target.files[0]
     setFile(selectedFile)
-    console.log(selectedFile)
     setValue('image', selectedFile.name)
     e.target.value = null
   }
