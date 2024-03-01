@@ -81,6 +81,10 @@ export async function login({ email, password }) {
       password,
     })
 
+    const token = response.headers.authorization
+    if (token) {
+      console.log('토큰:', token)
+    }
     return response.data
   } catch (error) {
     throw new Error('로그인에 실패했습니다')
