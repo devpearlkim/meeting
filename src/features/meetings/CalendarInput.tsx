@@ -8,7 +8,10 @@ import { CalendarToday } from '@mui/icons-material'
 import { ko } from 'date-fns/locale'
 
 export default function CalendarInput() {
-  const [selectedRange, setSelectedRange] = useState()
+  const [selectedRange, setSelectedRange] = useState({
+    from: new Date(),
+    to: new Date(),
+  })
   const [showCalendar, setShowCalendar] = useState(false)
   const calendarRef = useRef(null)
   const { setValue } = useFormContext()
@@ -21,10 +24,13 @@ export default function CalendarInput() {
     setShowCalendar(true)
   }
 
+  useEffect(() => {
+    setValue('from', format(selectedRange.from, 'yyyy-MM-dd'))
+    setValue('to', format(selectedRange.to || selectedRange.from, 'yyyy-MM-dd'))
+  }, [selectedRange])
+
   const handleDayClick = (range) => {
     setSelectedRange(range)
-    setValue('from', format(range.from, 'yyyy-MM-dd'))
-    setValue('to', format(range.to || range.from, 'yyyy-MM-dd'))
   }
 
   useEffect(() => {

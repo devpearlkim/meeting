@@ -6,6 +6,7 @@ import CalendarInput from './CalendarInput'
 import CategoryInput from './CategoryInput'
 import { useLocation, useNavigate } from 'react-router-dom'
 import searchGlassImage from '../../assets/images/searchglass.png'
+import { useEffect } from 'react'
 
 const MeetingSearchFrom = () => {
   const methods = useForm()
@@ -36,6 +37,10 @@ const MeetingSearchFrom = () => {
     resetField('search')
     resetField('location')
   }
+
+  useEffect(() => {
+    handleSubmit(onSubmit)()
+  }, [])
 
   return (
     <div className="flex w-full flex-col gap-2">

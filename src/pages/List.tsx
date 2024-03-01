@@ -10,7 +10,7 @@ import SkeletonPost from '../features/meetings/SkeletonPost .js'
 import { PiSirenLight } from 'react-icons/pi'
 
 const List = () => {
-  const [searchFormValues, setSearchFormValues] = useState(null)
+  const [searchFormValues, setSearchFormValues] = useState({})
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search)
   const category = queryParams.get('category') ?? []

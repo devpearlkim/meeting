@@ -5,9 +5,6 @@ const SearchBarInput = () => {
   const { register } = useFormContext()
   const searchParams = new URLSearchParams(useLocation().search)
   const initialSearch = searchParams.get('search') ?? ''
-  console.log('initialSearch')
-  console.log(initialSearch)
-
   return (
     <div className="">
       <input

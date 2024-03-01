@@ -1,16 +1,23 @@
 import axios from 'axios'
 
 export async function getPost({ queryKey, pageParam }) {
+  console.log('data fetching')
+  console.log(queryKey)
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const perPage = import.meta.env.VITE_PER_PAGE
   const { search, minValue, maxValue, location, from, to } = queryKey[1]
-  const categoryArr = queryKey[2]?.split('%').map((cat) => parseInt(cat)) ?? []
+  console.log(from)
+  let categoryArr = []
+  if (queryKey[2].length) {
+    categoryArr = queryKey[2]?.split('%').map((cat) => parseInt(cat))
+  }
   const sort = queryKey[3]
   const params = {
     perPage,
     sort,
     cursorId: pageParam,
   }
+  console.log('params는: ', params)
   if (minValue !== undefined) {
     params.member_min = minValue
   }
@@ -26,17 +33,6 @@ export async function getPost({ queryKey, pageParam }) {
   if (to) {
     params.date_end = to
   }
-  if (!from && !to) {
-    const today = new Date()
-    const year = today.getFullYear()
-    const month = String(today.getMonth() + 1).padStart(2, '0')
-    const day = String(today.getDate()).padStart(2, '0')
-
-    const formattedDate = `${year}-${month}-${day}`
-
-    params.date_start = formattedDate
-    params.date_end = formattedDate
-  }
   if (categoryArr.length) {
     params.categories = categoryArr
   }
@@ -44,10 +40,12 @@ export async function getPost({ queryKey, pageParam }) {
     params.location = location
   }
 
+  console.log('params는: ', params)
   try {
     const response = await axios.get(`${backendURI}/meetings`, {
       params,
     })
+    console.log('response : ', response.data)
     return response.data
   } catch (error) {
     throw new Error('Error fetching meetings')
