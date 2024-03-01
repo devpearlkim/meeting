@@ -14,7 +14,7 @@ export async function signup(formData) {
 
     return response.data
   } catch (error) {
-    throw new Error('회원가입 과정에서 오류발생: ' + error.message)
+    throw new Error('회원가입 과정에서 오류발생' + error.message)
   }
 }
 
