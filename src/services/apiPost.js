@@ -11,7 +11,6 @@ export async function getPost({ queryKey, pageParam }) {
     sort,
     cursorId: pageParam,
   }
-
   if (minValue !== undefined) {
     params.member_min = minValue
   }
@@ -71,6 +70,7 @@ export async function addPost(formData) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const categories = formData.categories.map((category) => parseInt(category))
   const token = sessionStorage.getItem('token')
+  console.log(formData)
 
   try {
     const response = await axios.post(
