@@ -11,10 +11,18 @@ export async function getProfile() {
       },
     })
 
-    console.log('정보조회결과', response)
-    // sessionStorage.setItem('id', data.id)
+    console.log('정보조회결과', response.data.data.username)
+    console.log('정보조회결과', response.data.data.nickname)
+    console.log('정보조회결과', response.data.data.email)
+    const userInfo = {
+      username: response.data.data.username,
+      nickname: response.data.data.nickname,
+      email: response.data.data.email,
+    }
 
-    return response.data
+    sessionStorage.setItem('userInfo', userInfo)
+
+    return null
   } catch (error) {
     throw new Error('유저 정보 조회 중 오류 발생')
   }
