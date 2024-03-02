@@ -8,17 +8,17 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate(-1)
+      // navigate(-1)
     }
   }, [token])
 
-  if (!token) {
-    return (
-      <div>
-        <LoginForm />
-      </div>
-    )
-  }
+  // if (!token) {
+  return (
+    <div>
+      <LoginForm />
+    </div>
+  )
+  // }
   return null
 }
 
