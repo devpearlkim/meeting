@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
-import { login } from '../../services/apiAuth.js'
+import { login } from '../../services/apiAuth'
+import { getProfile } from '../../services/apiUser'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import KakaoLogin from './KakaoLogin.jsx'
@@ -16,6 +17,7 @@ const LoginForm = () => {
     try {
       await login(formData)
       toast.success('로그인에 성공했습니다.')
+      await getProfile()
       // navigate('/list')
     } catch (error) {
       toast.error('이메일/비밀번호가 올바르지 않습니다')
