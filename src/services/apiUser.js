@@ -11,9 +11,6 @@ export async function getProfile() {
       },
     })
 
-    console.log('정보조회결과', response.data.data.username)
-    console.log('정보조회결과', response.data.data.nickname)
-    console.log('정보조회결과', response.data.data.email)
     const userInfo = {
       username: response.data.data.username,
       nickname: response.data.data.nickname,
@@ -21,6 +18,8 @@ export async function getProfile() {
     }
 
     sessionStorage.setItem('userInfo', userInfo)
+    console.log(session.getItem('userInfo'))
+    console.log(JSON.stringify(session.getItem('userInfo')))
 
     return null
   } catch (error) {
