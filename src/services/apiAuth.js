@@ -81,7 +81,8 @@ export async function login({ email, password }) {
       password,
     })
     const token = response.headers.get('Authorization')
-
+    console.log(token)
+    console.log(token.replace('Bearer ', ''))
     if (token) {
       sessionStorage.setItem('token', token.replace('Bearer ', ''))
     }
