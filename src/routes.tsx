@@ -22,7 +22,7 @@ export const AppRoutes = () => {
         <Route path="/detail/:postId" element={<PostDetail />} />
         <Route path="/write" element={<WritePost />} />
         {/* <Route path="/profile" element={<MyProfile />}> */}
-        <Route path="/myMeetings" element={<MyMeetings />} />
+        <Route path="/profile/:userId" element={<MyMeetings />} />
         <Route path="/applies" element={<MyApplies />} />
         <Route path="/bookmark" element={<BookMark />} />
         {/* </Route> */}

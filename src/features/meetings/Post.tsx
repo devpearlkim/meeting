@@ -29,7 +29,7 @@ const Post = ({ post, setShowModal, setReportedPostId }) => {
           />
           <div className="flex flex-1 flex-col p-3">
             <div className="flex justify-between">
-              <Link to={`/myMeetings`}>
+              <Link to={`/profile`}>
                 <div className="flex gap-2">
                   <img
                     className="h-10 w-10 rounded-full"

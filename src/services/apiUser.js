@@ -17,7 +17,7 @@ export async function getProfile() {
       email: response.data.data.email,
     }
 
-    sessionStorage.setItem('userInfo', userInfo)
+    sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
 
     return null
   } catch (error) {
