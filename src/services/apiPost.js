@@ -69,11 +69,6 @@ export async function addPost(formData) {
   const categories = formData.categories.map((category) => parseInt(category))
   const token = sessionStorage.getItem('token')
 
-  const test = {
-    ...formData,
-    categories,
-  }
-  console.log(test)
   try {
     const response = await axios.post(
       `${backendURI}/meetings`,

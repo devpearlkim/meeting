@@ -34,7 +34,13 @@ const List = () => {
     queryKey: ['posts', searchFormValues, category, sort],
     queryFn: getPost,
     initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.at(-1)?.id,
+    getNextPageParam: (lastPage) => {
+      if (lastPage && lastPage.data && lastPage.data.length > 0) {
+        return lastPage.data[lastPage.data.length - 1]?.meetingId
+      }
+      return null
+    },
+
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
   })
@@ -51,11 +57,13 @@ const List = () => {
     !isFetching && hasNextPage && fetchNextPage()
   }, 3000)
 
+  console.log(hasNextPage)
+
   useEffect(() => {
-    if (inView) {
+    if (inView && hasNextPage && !isFetching) {
       throttledFetchNextPage()
     }
-  }, [inView])
+  }, [inView, hasNextPage, isFetching, throttledFetchNextPage])
 
   const [showTextarea, setShowTextarea] = useState(false)
   const [reportReason, setReportReason] = useState('')
@@ -80,6 +88,7 @@ const List = () => {
     setReportReason('')
   }
 
+  console.log('data', data)
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
@@ -104,14 +113,12 @@ const List = () => {
 
             {data?.pages.map((page, i) => (
               <div key={i} className="flex flex-wrap justify-between gap-2">
-                {page.map((post) => (
-                  // <Link to={`/detail/${post.id}`} key={post.id}>
+                {page.data?.map((post) => (
                   <Post
                     post={post}
                     setShowModal={setShowModal}
                     setReportedPostId={setReportedPostId}
                   />
-                  // </Link>
                 ))}
               </div>
             ))}
