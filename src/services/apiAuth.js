@@ -82,9 +82,7 @@ export async function login({ email, password }) {
     })
     const token = response.headers.get('Authorization')
 
-    console.log(token.startsWith('Bearer '))
-    if (token && token.startsWith('Bearer ')) {
-      console.log('if문')
+    if (token) {
       sessionStorage.setItem('token', token.replace('Bearer ', ''))
     }
 
