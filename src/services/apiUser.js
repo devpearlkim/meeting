@@ -18,8 +18,6 @@ export async function getProfile() {
     }
 
     sessionStorage.setItem('userInfo', userInfo)
-    console.log(session.getItem('userInfo'))
-    console.log(JSON.stringify(session.getItem('userInfo')))
 
     return null
   } catch (error) {
