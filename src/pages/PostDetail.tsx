@@ -3,11 +3,11 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getPostDetail } from '../services/apiPost.js'
 import { useState } from 'react'
 
-const data.data = () => {
+const postDetail = () => {
   const navigate = useNavigate()
   const { postId } = useParams()
 
-  const { isLoading, error, data.data } = useQuery<any>({
+  const { isLoading, error, data } = useQuery<any>({
     queryKey: ['postDetail', postId],
     queryFn: getPostDetail,
   })
@@ -28,7 +28,7 @@ const data.data = () => {
     navigate(`/list?category=${categoryId}`)
   }
 
-  console.log(data.data)
+  console.log(data)
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -52,7 +52,9 @@ const data.data = () => {
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
               <h2 className="text-4xl font-bold">{data.data.title}</h2>
-              <Link to={`/list?location=${encodeURIComponent(data.data.location)}`}>
+              <Link
+                to={`/list?location=${encodeURIComponent(data.data.location)}`}
+              >
                 <span>{data.data.location}</span>
               </Link>
               <Link to={`/profile/${data.data.host.userId}`}>
@@ -101,4 +103,4 @@ const data.data = () => {
   )
 }
 
-export default data.data
+export default postDetail
