@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { getdata } from '../services/apiPost.js'
+import { getPostDetail } from '../services/apiPost.js'
 import { useState } from 'react'
 
 const data = () => {
@@ -9,7 +9,7 @@ const data = () => {
 
   const { isLoading, error, data } = useQuery<any>({
     queryKey: ['postDetail', postId],
-    queryFn: getdata,
+    queryFn: getPostDetail,
   })
 
   const [isLiked, setIsLiked] = useState(data?.isLiked)
