@@ -55,18 +55,19 @@ const PostDetail = () => {
               >
                 <span>{postDetail.location}</span>
               </Link>
-              <Link to={`/profile/${postDetail.host.userId}`}>
+              {console.log(postDetail)}
+              {/* <Link to={`/profile/${postDetail.host.userId}`}>
                 <div className="flex gap-2">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={postDetail.profileImage}
+                    src={postDetail.host.profileImage}
                     alt="프로필이미지"
                   />
                   <span className="block text-sm font-semibold text-slate-400">
                     {postDetail.host.username}
                   </span>
                 </div>
-              </Link>
+              </Link> */}
               <div>{postDetail.created_at}</div>
               <div>{postDetail.meeting_date}</div>
               <div>
