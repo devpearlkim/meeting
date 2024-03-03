@@ -16,7 +16,7 @@ const PostDetail = () => {
     queryFn: getPostDetail,
   })
 
-  const [isLiked, setIsLiked] = useState(postDetail.isLiked)
+  const [isLiked, setIsLiked] = useState(postDetail.isLiked ?? false)
 
   const deleteLike = () => {
     // apiDeleteLike호출
