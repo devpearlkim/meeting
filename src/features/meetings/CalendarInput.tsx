@@ -12,6 +12,7 @@ export default function CalendarInput() {
     from: new Date(),
     to: new Date(),
   })
+
   const [showCalendar, setShowCalendar] = useState(false)
   const calendarRef = useRef(null)
   const { setValue } = useFormContext()
