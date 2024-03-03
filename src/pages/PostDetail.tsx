@@ -80,7 +80,7 @@ const PostDetail = () => {
           <div className="flex gap-2 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <div className="flex flex-wrap gap-2">
-                {postDetail?.categories.map((category) => (
+                {/* {postDetail?.categories.map((category) => (
                   <button
                     key={category.categoryId}
                     onClick={() => handleCategoryClick(category.categoryId)}
@@ -88,7 +88,7 @@ const PostDetail = () => {
                   >
                     {category.name}
                   </button>
-                ))}
+                ))} */}
               </div>
               <div>{postDetail.description}</div>
             </div>
