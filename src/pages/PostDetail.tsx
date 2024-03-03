@@ -3,16 +3,16 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getPostDetail } from '../services/apiPost.js'
 import { useState } from 'react'
 
-const data = () => {
+const data.data = () => {
   const navigate = useNavigate()
   const { postId } = useParams()
 
-  const { isLoading, error, data } = useQuery<any>({
+  const { isLoading, error, data.data } = useQuery<any>({
     queryKey: ['postDetail', postId],
     queryFn: getPostDetail,
   })
 
-  const [isLiked, setIsLiked] = useState(data?.isLiked)
+  const [isLiked, setIsLiked] = useState(data.data?.isLiked)
 
   const deleteLike = () => {
     // apiDeleteLike호출
@@ -28,7 +28,7 @@ const data = () => {
     navigate(`/list?category=${categoryId}`)
   }
 
-  console.log(data)
+  console.log(data.data)
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -36,14 +36,14 @@ const data = () => {
 
   return (
     <div className="mx-auto flex max-w-screen-lg flex-col overflow-hidden bg-yellow-300 py-4">
-      {data && (
+      {data.data && (
         <>
           {/* 디테일페이지 헤더부분 */}
           <div className="flex gap-4 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <img
                 className="h-80 w-full rounded object-cover"
-                src={data.image}
+                src={data.data.image}
                 alt="메인이미지"
               />
             </div>
@@ -51,26 +51,26 @@ const data = () => {
               <button onClick={isLiked ? deleteLike : addLike}>
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
-              <h2 className="text-4xl font-bold">{data.title}</h2>
-              <Link to={`/list?location=${encodeURIComponent(data.location)}`}>
-                <span>{data.location}</span>
+              <h2 className="text-4xl font-bold">{data.data.title}</h2>
+              <Link to={`/list?location=${encodeURIComponent(data.data.location)}`}>
+                <span>{data.data.location}</span>
               </Link>
-              <Link to={`/profile/${data.host.userId}`}>
+              <Link to={`/profile/${data.data.host.userId}`}>
                 <div className="flex gap-2">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={data.host.profileImage}
+                    src={data.data.host.profileImage}
                     alt="프로필이미지"
                   />
                   <span className="block text-sm font-semibold text-slate-400">
-                    {data.host.username}
+                    {data.data.host.username}
                   </span>
                 </div>
               </Link>
-              <div>{data.created_at}</div>
-              <div>{data.meeting_date}</div>
+              <div>{data.data.created_at}</div>
+              <div>{data.data.meeting_date}</div>
               <div>
-                {data.participants_number}/{data.member_limit}
+                {data.data.participants_number}/{data.data.member_limit}
               </div>
             </div>
           </div>
@@ -79,7 +79,7 @@ const data = () => {
           <div className="flex gap-2 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <div className="flex flex-wrap gap-2">
-                {data?.categories.map((category) => (
+                {data.data?.categories.map((category) => (
                   <button
                     key={category.categoryId}
                     onClick={() => handleCategoryClick(category.categoryId)}
@@ -89,7 +89,7 @@ const data = () => {
                   </button>
                 ))}
               </div>
-              <div>{data.description}</div>
+              <div>{data.data.description}</div>
             </div>
             <div className="md:w-1/2">
               <div>모임참여멤버들</div>
@@ -101,4 +101,4 @@ const data = () => {
   )
 }
 
-export default data
+export default data.data
