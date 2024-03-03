@@ -23,7 +23,7 @@ const Post = ({ post, setShowModal, setReportedPostId }) => {
       <div className="my-3 flex w-[320px] flex-col overflow-hidden rounded-lg bg-white shadow">
         <Link to={`/detail/${post.meetingId}`} key={post.meetingId}>
           <img
-            src="https://loremflickr.com/320/240?random=1"
+            src={post.image}
             className="h-52 w-full object-cover"
             alt="메인이미지"
           />
@@ -33,7 +33,7 @@ const Post = ({ post, setShowModal, setReportedPostId }) => {
                 <div className="flex gap-2">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src="https://loremflickr.com/320/240?random=2"
+                    src={post.profileImage}
                     alt="프로필이미지"
                   />
                   <span className="block text-sm font-semibold text-slate-400">
@@ -42,28 +42,22 @@ const Post = ({ post, setShowModal, setReportedPostId }) => {
                 </div>
               </Link>
               <span className="block text-sm font-semibold text-slate-400">
-                2024-03-01
+                {post.meeting_date}
               </span>
             </div>
             <h3 className="mb-2 mt-3 text-lg font-bold">{post.title}</h3>
             <div className="my-2">
               <div className="flex justify-between">
                 <div className="flex gap-1">
-                  <button className="inline-block rounded-full bg-blue-500 px-3 py-1 text-xs text-white">
-                    맛집
-                  </button>
-                  <button className="inline-block rounded-full bg-blue-500 px-3 py-1 text-xs text-white">
-                    맛집
-                  </button>
-                  <button className="inline-block rounded-full bg-blue-500 px-3 py-1 text-xs text-white">
-                    맛집
-                  </button>
-                  <button className="inline-block rounded-full bg-blue-500 px-3 py-1 text-xs text-white">
-                    맛집
-                  </button>
-                  ...
+                  {post.categories.map((category) => (
+                    <button className="inline-block rounded-full bg-blue-500 px-3 py-1 text-xs text-white">
+                      {category.name}
+                    </button>
+                  ))}
                 </div>
-                <div>1/10</div>
+                <div>
+                  {post.participants_number}/{post.member_limit}
+                </div>
               </div>
             </div>
           </div>
