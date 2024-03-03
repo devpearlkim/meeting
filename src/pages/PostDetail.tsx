@@ -7,12 +7,8 @@ const data = () => {
   const navigate = useNavigate()
   const { postId } = useParams()
 
-  const {
-    isLoading,
-    error,
-    data: data,
-  } = useQuery<any>({
-    queryKey: ['data', postId],
+  const { isLoading, error, data } = useQuery<any>({
+    queryKey: ['postDetail', postId],
     queryFn: getdata,
   })
 
