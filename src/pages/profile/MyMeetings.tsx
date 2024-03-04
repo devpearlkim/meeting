@@ -1,15 +1,17 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Profile from '../../features/myPage/Profile'
-import Tab from '../../features/myPage/Sidebar'
+import Sidebar from '../../features/myPage/Sidebar'
 
 const MyMeetings = () => {
   const { pathname } = useLocation()
+  const { userId } = useParams()
+  console.log(pathname, userId)
 
   return (
     <div className="flex">
       <Profile />
       <div className="mx-10 flex w-full flex-col">
-        <Tab path={pathname} />
+        <Sidebar path={pathname} userId={userId} />
         <div className="flex w-4/5">
           <div>모임정보페이지</div>
         </div>
