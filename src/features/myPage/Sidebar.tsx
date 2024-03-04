@@ -7,6 +7,9 @@ const Sidebar = ({ path, userId }) => {
   const [isMyProfile, setIsMyProfile] = useState(
     loginedId === userId ? true : false,
   )
+
+  console.log('loginedId', loginedId)
+  console.log('userId', userId)
   let sidebarItems = isMyProfile
     ? [
         {
