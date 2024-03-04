@@ -102,12 +102,11 @@ export default function DatePickerDialog({ default_meeting_date }) {
         <input
           size={12}
           type="text"
-          placeholder={format(new Date(), 'y-MM-dd')}
+          placeholder={default_meeting_date ?? format(new Date(), 'y-MM-dd')}
           value={inputValue}
-          defaultValue={parse(default_meeting_date, 'y-MM-dd', new Date())}
           onChange={handleInputChange}
-          onClick={handleInputClick} // 이 부분 추가
-          ref={inputRef} // ref 추가
+          onClick={handleInputClick}
+          ref={inputRef}
           className="font-semibold"
           readOnly
         />
