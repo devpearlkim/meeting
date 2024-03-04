@@ -26,13 +26,13 @@ const postDetail = () => {
 
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
 
-  const deleteLike = (postId) => {
+  const deleteLike = () => {
     // apiDeleteLike호출
     deleteLike(postId)
     setIsLiked(false)
   }
 
-  const addLike = (postId) => {
+  const addLike = () => {
     // apiAddLike호출
     addLike(postId)
     setIsLiked(true)
@@ -60,13 +60,7 @@ const postDetail = () => {
               />
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
-              <button
-                onClick={
-                  isLiked
-                    ? deleteLike(data.data.meetingId)
-                    : addLike(data.data.meetingId)
-                }
-              >
+              <button onClick={isLiked ? deleteLike : addLike}>
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
               <div>
