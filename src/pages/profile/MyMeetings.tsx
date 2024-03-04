@@ -5,7 +5,6 @@ import Sidebar from '../../features/myPage/Sidebar'
 const MyMeetings = () => {
   const { pathname } = useLocation()
   const { userId } = useParams()
-  console.log(pathname, userId)
 
   return (
     <div className="flex">
