@@ -6,9 +6,23 @@ import CountInput from './CountInput'
 import CategoryInput from './CategoryInput'
 import ImageUpload from './ImageUpload'
 import { addPost } from '../../services/apiPost'
+import { useNavigate } from 'react-router-dom'
 
-const PostForm = () => {
-  const methods = useForm()
+const PostForm = ({ postData }) => {
+  console.log('postData', postData)
+  const defaultFormValues = postData
+    ? {
+        title: postData.title || '',
+        description: postData.description || '',
+        meeting_date: postData.meeting_date || '',
+      }
+    : {}
+
+  const methods = useForm({
+    defaultValues: defaultFormValues,
+  })
+
+  const navigate = useNavigate()
 
   const onSubmit = (data) => {
     if (!data.title) {
@@ -40,6 +54,7 @@ const PostForm = () => {
       return
     }
     addPost(data)
+    navigate('/list')
   }
 
   return (

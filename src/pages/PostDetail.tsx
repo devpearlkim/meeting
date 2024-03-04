@@ -17,7 +17,9 @@ const postDetail = () => {
   const showButton = userInfo?.userId === data?.data?.host.userId
 
   const handleEditClick = () => {
-    // 수정 기능 실행
+    navigate('/write', {
+      state: { postData: data.data },
+    })
   }
 
   const handleDeleteClick = () => {
@@ -27,13 +29,11 @@ const postDetail = () => {
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
 
   const deleteLikeAPI = () => {
-    // apiDeleteLike호출
     deleteLike(postId)
     setIsLiked(false)
   }
 
   const addLikeAPI = () => {
-    // apiAddLike호출
     addLike(postId)
     setIsLiked(true)
   }
