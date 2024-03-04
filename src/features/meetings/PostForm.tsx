@@ -97,7 +97,7 @@ const PostForm = ({ postData }) => {
           >
             모임날짜
           </label>
-          <PostDatePicker />
+          <PostDatePicker default_meeting_date={postData?.meeting_date} />
         </div>
         <div className="mb-4">
           <label

@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import { useFormContext } from 'react-hook-form'
 import LocationInput from './LocationInput'
 
-export default function DatePickerDialog() {
+export default function DatePickerDialog({ default_meeting_date }) {
   const [selected, setSelected] = useState<Date>()
   const [inputValue, setInputValue] = useState<string>('')
   const [isPopperOpen, setIsPopperOpen] = useState(false)
@@ -17,6 +17,13 @@ export default function DatePickerDialog() {
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
     null,
   )
+
+  useEffect(() => {
+    if (default_meeting_date) {
+      const parsedDate = parse(default_meeting_date, 'yyyy-MM-dd', new Date())
+      setSelected(parsedDate)
+    }
+  }, [default_meeting_date])
 
   const popper = usePopper(popperRef.current, popperElement, {
     placement: 'bottom-start',
