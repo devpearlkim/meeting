@@ -30,7 +30,7 @@ const postDetail = () => {
 
   console.log(data)
   console.log(data?.data?.host?.userId)
-  console.log(sessionStorage.getItem('userInfo')?.userId)
+  console.log(JSON.parse(sessionStorage.getItem('userInfo'))?.userId)
 
   if (isLoading) {
     return <div>Loading...</div>
