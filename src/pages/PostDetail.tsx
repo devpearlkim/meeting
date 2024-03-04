@@ -7,6 +7,9 @@ const postDetail = () => {
   const navigate = useNavigate()
   const { postId } = useParams()
   const [showOptions, setShowOptions] = useState(false)
+  const [isLogin, setIsLogin] = useState(
+    sessionStorage.getItem('token') ? true : false,
+  )
 
   const { isLoading, error, data } = useQuery<any>({
     queryKey: ['postDetail', postId],
@@ -29,11 +32,13 @@ const postDetail = () => {
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
 
   const deleteLikeAPI = () => {
+    !isLogin && navigate('/login')
     deleteLike(postId)
     setIsLiked(false)
   }
 
   const addLikeAPI = () => {
+    !isLogin && navigate('/login')
     addLike(postId)
     setIsLiked(true)
   }

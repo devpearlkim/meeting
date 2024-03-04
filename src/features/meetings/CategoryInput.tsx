@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { getCategories } from '../../services/apiPost'
@@ -15,10 +15,6 @@ const CategoryInput = ({ mode, default_categories }) => {
   )
 
   useEffect(() => {
-    console.log('selectedCategories changed:', selectedCategories)
-  }, [selectedCategories])
-
-  useEffect(() => {
     console.log('location.search에 따른 setCategory세팅')
     setSelectedCategories(currentCategories[0]?.split('%') ?? [])
   }, [location.search])
@@ -29,7 +25,6 @@ const CategoryInput = ({ mode, default_categories }) => {
         category.categoryId.toString(),
       )
       setSelectedCategories([...defaultCategoryIds])
-      console.log('default_categories 따른 setCategory세팅')
     }
   }, [default_categories])
 
