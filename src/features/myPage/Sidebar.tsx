@@ -10,6 +10,7 @@ const Sidebar = ({ path, userId }) => {
 
   console.log('loginedId', loginedId)
   console.log('userId', userId)
+  console.log(isMyProfile)
   let sidebarItems = isMyProfile
     ? [
         {
