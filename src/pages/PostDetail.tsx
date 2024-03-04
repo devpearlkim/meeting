@@ -4,7 +4,15 @@ import { getPostDetail, addLike, deleteLike } from '../services/apiPost.js'
 import { useState } from 'react'
 
 const postDetail = () => {
+  const navigate = useNavigate()
+  const { postId } = useParams()
   const [showOptions, setShowOptions] = useState(false)
+
+  const { isLoading, error, data } = useQuery<any>({
+    queryKey: ['postDetail', postId],
+    queryFn: getPostDetail,
+  })
+
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const showButton = userInfo?.userId === data?.data?.host.userId
 
@@ -15,14 +23,6 @@ const postDetail = () => {
   const handleDeleteClick = () => {
     // 삭제 기능 실행
   }
-
-  const navigate = useNavigate()
-  const { postId } = useParams()
-
-  const { isLoading, error, data } = useQuery<any>({
-    queryKey: ['postDetail', postId],
-    queryFn: getPostDetail,
-  })
 
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
 
