@@ -29,6 +29,8 @@ const postDetail = () => {
   }
 
   console.log(data)
+  console.log(postDetail.host.userId)
+  console.log(sessionStorage.getItem('userInfo')?.userId)
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -51,6 +53,8 @@ const postDetail = () => {
               <button onClick={isLiked ? deleteLike : addLike}>
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
+              {sessionStorage.getItem('userInfo')?.userId ===
+                postDetail.host.userId && <button>...</button>}
               <h2 className="text-4xl font-bold">{data.data.title}</h2>
               <Link
                 to={`/list?location=${encodeURIComponent(data.data.location)}`}
