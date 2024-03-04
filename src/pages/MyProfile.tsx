@@ -5,6 +5,8 @@ import { Outlet, useLocation, useParams } from 'react-router-dom'
 const MyProfile = () => {
   const { pathname } = useLocation()
   const { userId } = useParams()
+  console.log('userId')
+  console.log(userId)
 
   return (
     <div className="flex">
