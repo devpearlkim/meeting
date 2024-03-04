@@ -21,7 +21,7 @@ const CategoryInput = ({ mode, default_categories }) => {
       )
       setSelectedCategories(defaultCategoryIds)
     }
-    console.log(selectedCategories)
+    console.log('selectedCategories', selectedCategories)
   }, [default_categories])
 
   useEffect(() => {
