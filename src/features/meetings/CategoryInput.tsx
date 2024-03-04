@@ -15,16 +15,15 @@ const CategoryInput = ({ mode, default_categories }) => {
   )
 
   useEffect(() => {
-    console.log(default_categories)
     if (default_categories) {
       const defaultCategoryIds = default_categories.map((category) =>
         category.categoryId.toString(),
       )
-      console.log(defaultCategoryIds)
-      setSelectedCategories(...defaultCategoryIds)
+      setSelectedCategories(defaultCategoryIds)
     }
-    console.log('selectedCategories', selectedCategories)
   }, [default_categories])
+
+  console.log('selectedCategories', selectedCategories)
 
   useEffect(() => {
     setSelectedCategories(currentCategories[0]?.split('%') ?? [])
