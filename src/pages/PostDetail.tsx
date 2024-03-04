@@ -53,7 +53,7 @@ const postDetail = () => {
               <button onClick={isLiked ? deleteLike : addLike}>
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
-              {sessionStorage.getItem('userInfo')?.userId ===
+              {JSON.parse(sessionStorage.getItem('userInfo'))?.userId ===
                 data.data.host.userId && <button>...</button>}
               <h2 className="text-4xl font-bold">{data.data.title}</h2>
               <Link
