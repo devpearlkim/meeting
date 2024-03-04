@@ -4,6 +4,18 @@ import { getPostDetail } from '../services/apiPost.js'
 import { useState } from 'react'
 
 const postDetail = () => {
+  const [showOptions, setShowOptions] = useState(false)
+  const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
+  const showButton = userInfo?.userId === data?.data.host.userId
+
+  const handleEditClick = () => {
+    // 수정 기능 실행
+  }
+
+  const handleDeleteClick = () => {
+    // 삭제 기능 실행
+  }
+
   const navigate = useNavigate()
   const { postId } = useParams()
 
@@ -28,10 +40,6 @@ const postDetail = () => {
     navigate(`/list?category=${categoryId}`)
   }
 
-  console.log(data)
-  console.log(data?.data?.host?.userId)
-  console.log(JSON.parse(sessionStorage.getItem('userInfo'))?.userId)
-
   if (isLoading) {
     return <div>Loading...</div>
   }
@@ -53,8 +61,17 @@ const postDetail = () => {
               <button onClick={isLiked ? deleteLike : addLike}>
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
-              {JSON.parse(sessionStorage.getItem('userInfo'))?.userId ===
-                data.data.host.userId && <button>...</button>}
+              <div>
+                {showButton && showOptions && (
+                  <div>
+                    <button onClick={handleEditClick}>수정</button>
+                    <button onClick={handleDeleteClick}>삭제</button>
+                  </div>
+                )}
+                {showButton && !showOptions && (
+                  <button onClick={() => setShowOptions(true)}>...</button>
+                )}
+              </div>
               <h2 className="text-4xl font-bold">{data.data.title}</h2>
               <Link
                 to={`/list?location=${encodeURIComponent(data.data.location)}`}
