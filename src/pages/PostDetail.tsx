@@ -6,7 +6,7 @@ import { useState } from 'react'
 const postDetail = () => {
   const [showOptions, setShowOptions] = useState(false)
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
-  const showButton = userInfo?.userId === data?.data.host.userId
+  const showButton = userInfo?.userId === data?.data?.host.userId
 
   const handleEditClick = () => {
     // 수정 기능 실행
@@ -26,15 +26,15 @@ const postDetail = () => {
 
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
 
-  const deleteLike = (meetingId) => {
+  const deleteLike = (postId) => {
     // apiDeleteLike호출
-    deleteLike(meetingId)
+    deleteLike(postId)
     setIsLiked(false)
   }
 
-  const addLike = (meetingId) => {
+  const addLike = (postId) => {
     // apiAddLike호출
-    addLike(meetingId)
+    addLike(postId)
     setIsLiked(true)
   }
 
