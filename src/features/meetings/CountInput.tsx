@@ -4,9 +4,12 @@ import { useFormContext } from 'react-hook-form'
 const CountInput = ({ default_count }) => {
   const { setValue } = useFormContext()
   const [count, setCount] = useState(2)
-  if (default_count) {
-    setCount(default_count)
-  }
+
+  useEffect(() => {
+    if (default_count) {
+      setCount(default_count)
+    }
+  }, [default_count])
 
   const handleDecrement = () => {
     const newCount = count - 1
