@@ -19,8 +19,8 @@ const CategoryInput = ({ mode, default_categories }) => {
       const defaultCategoryIds = default_categories.map((category) =>
         category.categoryId.toString(),
       )
-      console.log([...defaultCategoryIds])
       setSelectedCategories([...defaultCategoryIds])
+      console.log('default_categories 따른 setCategory세팅')
     }
   }, [default_categories])
 
@@ -29,6 +29,7 @@ const CategoryInput = ({ mode, default_categories }) => {
   }, [selectedCategories])
 
   useEffect(() => {
+    console.log('location.search에 따른 setCategory세팅')
     setSelectedCategories(currentCategories[0]?.split('%') ?? [])
   }, [location.search])
 
