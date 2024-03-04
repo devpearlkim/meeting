@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import Profile from '../../features/myPage/Profile'
-import Tab from '../../features/myPage/Tab'
+import Tab from '../../features/myPage/Sidebar'
 
 const MyMeetings = () => {
   const { pathname } = useLocation()
