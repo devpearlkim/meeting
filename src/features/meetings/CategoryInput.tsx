@@ -15,6 +15,7 @@ const CategoryInput = ({ mode, default_categories }) => {
   )
 
   useEffect(() => {
+    console.log('default_categories', default_categories)
     if (default_categories) {
       setSelectedCategories(default_categories)
     }
