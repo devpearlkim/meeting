@@ -125,7 +125,6 @@ const List = () => {
         setShowModal={setShowModal}
         reportedPostId={reportedPostId}
         setReportedPostId={setReportedPostId}
-        // handleReport={handleReport}
       />
     </>
   )

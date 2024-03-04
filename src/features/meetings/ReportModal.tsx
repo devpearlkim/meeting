@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PiSirenLight } from 'react-icons/pi'
 
 const ReportModal = ({
@@ -18,6 +18,10 @@ const ReportModal = ({
     setReportedPostId(null)
     setReportReason('')
   }
+
+  useEffect(() => {
+    console.log('reportedPostId changed:', reportedPostId)
+  }, [reportedPostId])
 
   const handleReportReasonChange = (reason) => {
     if (reportReason === reason) {
