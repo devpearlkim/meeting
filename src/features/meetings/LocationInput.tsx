@@ -7,13 +7,11 @@ function LocationInput({ style }) {
   const { setValue } = useFormContext()
   const [location, setLocation] = useState(null)
   const searchParams = new URLSearchParams(useLocation().search)
-  const initialLocation = searchParams.get('location')
+  const initialLocation = searchParams.get('location') ?? ''
 
   useEffect(() => {
-    if (initialLocation) {
-      setLocation(initialLocation)
-      setValue('location', initialLocation)
-    }
+    setLocation(initialLocation)
+    setValue('location', initialLocation)
   }, [initialLocation, setValue])
 
   const handlePlaceSelected = (place) => {
