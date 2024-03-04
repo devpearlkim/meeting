@@ -19,7 +19,7 @@ const CategoryInput = ({ mode, default_categories }) => {
       const defaultCategoryIds = default_categories.map((category) =>
         category.categoryId.toString(),
       )
-      setSelectedCategories(defaultCategoryIds)
+      setSelectedCategories([...defaultCategoryIds])
     }
   }, [default_categories])
 
