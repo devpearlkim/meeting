@@ -20,12 +20,21 @@ function LocationInput({ style }) {
     setValue('location', formattedAddress)
   }
 
+  const handleInputChange = (e) => {
+    const value = e.target.value
+    if (value === '') {
+      setLocation(null)
+      setValue('location', '')
+    }
+  }
+
   return (
     <div className="">
       <Autocomplete
         apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
         defaultValue={initialLocation ?? ''}
         onPlaceSelected={handlePlaceSelected}
+        onChange={handleInputChange}
         options={{
           types: ['(regions)'],
         }}
