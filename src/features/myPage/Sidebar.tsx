@@ -27,7 +27,7 @@ const Sidebar = ({ path, userId }) => {
 
   return (
     <div className="">
-      <ul className="flex justify-around border border-slate-200">
+      <ul className="flex justify-stretch border border-slate-200">
         {sidebarItems.map((item, idx) => (
           <li
             key={idx}
