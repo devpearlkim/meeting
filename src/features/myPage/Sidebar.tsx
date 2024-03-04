@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Sidebar = ({ path, userId }) => {
   const listStyle = 'p-3 text-slate-700 font-semibold hover:text-blue-300'
   const [isMyProfile, setIsMyProfile] = useState(
-    JSON.parse(sessionStorage.getItem('userInfo')).userId === userId
+    JSON.parse(sessionStorage.getItem('userInfo'))?.userId === userId
       ? true
       : false,
   )
