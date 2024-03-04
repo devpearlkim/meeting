@@ -34,7 +34,7 @@ const MeetingSearchFrom = () => {
           : `?category=${currentCategory}`
     }
     navigate(`/list${queryParams}${categoryQuery}`, { state: formData })
-    resetField('search')
+    // resetField('search')
     resetField('location')
   }
 
