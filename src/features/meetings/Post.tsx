@@ -6,9 +6,10 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const [isLiked, setIsLiked] = useState(post.isLiked)
 
   const handleReportClick = () => {
-    setReportedPostId(post.id)
+    setReportedPostId(post.meetingId)
     console.log('postId는')
-    console.log(post.id)
+    console.log(post)
+    console.log(post.meetingId)
 
     setShowModal(true)
   }
