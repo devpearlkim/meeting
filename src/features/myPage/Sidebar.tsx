@@ -5,7 +5,7 @@ const Sidebar = ({ path, userId }) => {
   const listStyle = 'p-3 text-slate-700 font-semibold hover:text-blue-300'
   const loginedId = JSON.parse(sessionStorage.getItem('userInfo'))?.userId
   const [isMyProfile, setIsMyProfile] = useState(
-    loginedId === userId ? true : false,
+    loginedId == userId ? true : false,
   )
 
   console.log('loginedId', loginedId)
