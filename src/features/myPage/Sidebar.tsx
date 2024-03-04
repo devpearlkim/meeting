@@ -3,23 +3,22 @@ import { Link } from 'react-router-dom'
 
 const Sidebar = ({ path, userId }) => {
   const listStyle = 'p-3 text-slate-700 font-semibold hover:text-blue-300'
+  const loginedId = JSON.parse(sessionStorage.getItem('userInfo'))?.userId
   const [isMyProfile, setIsMyProfile] = useState(
-    JSON.parse(sessionStorage.getItem('userInfo'))?.userId === userId
-      ? true
-      : false,
+    loginedId === userId ? true : false,
   )
   let sidebarItems = isMyProfile
     ? [
         {
-          path: `/profile/${JSON.parse(sessionStorage.getItem('userInfo')).userId}`,
+          path: `/profile/${loginedId}`,
           text: '모임정보',
         },
         {
-          path: `/applies/${JSON.parse(sessionStorage.getItem('userInfo')).userId}`,
+          path: `/applies/${loginedId}`,
           text: '신청내역',
         },
         {
-          path: `/bookmark/${JSON.parse(sessionStorage.getItem('userInfo')).userId}`,
+          path: `/bookmark/${loginedId}`,
           text: '북마크',
         },
       ]
@@ -27,7 +26,7 @@ const Sidebar = ({ path, userId }) => {
 
   return (
     <div className="">
-      <ul className="flex justify-stretch border border-slate-200">
+      <ul className="flex justify-around border border-slate-200">
         {sidebarItems.map((item, idx) => (
           <li
             key={idx}
