@@ -23,7 +23,9 @@ const CategoryInput = ({ mode, default_categories }) => {
     }
   }, [default_categories])
 
-  console.log('selectedCategories', selectedCategories)
+  useEffect(() => {
+    console.log('selectedCategories changed:', selectedCategories)
+  }, [selectedCategories])
 
   useEffect(() => {
     setSelectedCategories(currentCategories[0]?.split('%') ?? [])
