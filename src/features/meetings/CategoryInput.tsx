@@ -15,6 +15,15 @@ const CategoryInput = ({ mode, default_categories }) => {
   )
 
   useEffect(() => {
+    console.log('selectedCategories changed:', selectedCategories)
+  }, [selectedCategories])
+
+  useEffect(() => {
+    console.log('location.search에 따른 setCategory세팅')
+    setSelectedCategories(currentCategories[0]?.split('%') ?? [])
+  }, [location.search])
+
+  useEffect(() => {
     if (default_categories) {
       const defaultCategoryIds = default_categories.map((category) =>
         category.categoryId.toString(),
@@ -23,15 +32,6 @@ const CategoryInput = ({ mode, default_categories }) => {
       console.log('default_categories 따른 setCategory세팅')
     }
   }, [default_categories])
-
-  useEffect(() => {
-    console.log('selectedCategories changed:', selectedCategories)
-  }, [selectedCategories])
-
-  useEffect(() => {
-    console.log('location.search에 따른 setCategory세팅')
-    setSelectedCategories(currentCategories[0]?.split('%') ?? [])
-  }, [location.search])
 
   const { setValue } = useFormContext()
 
