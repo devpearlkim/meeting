@@ -88,6 +88,30 @@ export async function addPost(formData) {
   }
 }
 
+export async function editPost(formData, meetingId) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+  const categories = formData.categories.map((category) => parseInt(category))
+  const token = sessionStorage.getItem('token')
+
+  try {
+    const response = await axios.patch(
+      `${backendURI}/${meetingId}/meetings`,
+      {
+        ...formData,
+        categories,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    return response.data
+  } catch (error) {
+    throw new Error('글 추가하는 중 오류발생')
+  }
+}
+
 export async function getCategories() {
   const backendURI = import.meta.env.VITE_BACKEND_URI
 

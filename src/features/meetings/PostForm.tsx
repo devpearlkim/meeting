@@ -5,11 +5,10 @@ import LocationInput from './LocationInput'
 import CountInput from './CountInput'
 import CategoryInput from './CategoryInput'
 import ImageUpload from './ImageUpload'
-import { addPost } from '../../services/apiPost'
+import { addPost, editPost } from '../../services/apiPost'
 import { useNavigate } from 'react-router-dom'
 
 const PostForm = ({ postData }) => {
-  console.log('postData', postData)
   const defaultFormValues = postData
     ? {
         title: postData.title || '',
@@ -52,7 +51,7 @@ const PostForm = ({ postData }) => {
       toast.error('카테고리를 입력해주세요')
       return
     }
-    addPost(data)
+    postData ? editPost(data, postData.meetingId) : addPost(data)
     navigate('/list')
   }
 
