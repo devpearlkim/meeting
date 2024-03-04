@@ -25,6 +25,9 @@ export default function DatePickerDialog({ default_meeting_date }) {
     }
   }, [default_meeting_date])
 
+  console.log('default_meeting_date', default_meeting_date)
+  console.log('selected', selected)
+
   const popper = usePopper(popperRef.current, popperElement, {
     placement: 'bottom-start',
   })
