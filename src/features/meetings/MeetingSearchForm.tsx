@@ -38,9 +38,9 @@ const MeetingSearchFrom = () => {
     resetField('location')
   }
 
-  useEffect(() => {
-    handleSubmit(onSubmit)()
-  }, [])
+  // useEffect(() => {
+  //   handleSubmit(onSubmit)()
+  // }, [])
 
   return (
     <div className="flex w-full flex-col gap-2">
