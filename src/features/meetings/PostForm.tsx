@@ -14,7 +14,7 @@ const PostForm = ({ postData }) => {
     ? {
         title: postData.title || '',
         description: postData.description || '',
-        // meeting_date: postData.meeting_date || '',
+        meeting_date: postData.meeting_date || '',
       }
     : {}
 
