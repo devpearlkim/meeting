@@ -99,3 +99,25 @@ export async function getCategories() {
     throw new Error('카테고리 목록 가져오는 중 오류발생')
   }
 }
+export async function addLike(postId) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.post(`${backendURI}/meetings/${postId}/like`)
+
+    return response.data
+  } catch (error) {
+    throw new Error('좋아요 추가 중 오류발생')
+  }
+}
+export async function deleteLike(postId) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.delete(`${backendURI}/meetings/${postId}/like`)
+
+    return response.data
+  } catch (error) {
+    throw new Error('좋아요 취소 중 오류발생')
+  }
+}

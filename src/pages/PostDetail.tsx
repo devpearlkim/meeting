@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { getPostDetail } from '../services/apiPost.js'
+import { getPostDetail, addLike, deleteLike } from '../services/apiPost.js'
 import { useState } from 'react'
 
 const postDetail = () => {
@@ -26,13 +26,15 @@ const postDetail = () => {
 
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
 
-  const deleteLike = () => {
+  const deleteLike = (meetingId) => {
     // apiDeleteLike호출
+    deleteLike(meetingId)
     setIsLiked(false)
   }
 
-  const addLike = () => {
+  const addLike = (meetingId) => {
     // apiAddLike호출
+    addLike(meetingId)
     setIsLiked(true)
   }
 
@@ -58,7 +60,13 @@ const postDetail = () => {
               />
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
-              <button onClick={isLiked ? deleteLike : addLike}>
+              <button
+                onClick={
+                  isLiked
+                    ? deleteLike(data.data.meetingId)
+                    : addLike(data.data.meetingId)
+                }
+              >
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
               <div>
