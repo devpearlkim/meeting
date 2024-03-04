@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { PiSirenLight } from 'react-icons/pi'
 import { useEffect, useState } from 'react'
-import { addLike, deleteLike } from '../services/apiPost.js'
+import { addLike, deleteLike } from '../../services/apiPost'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const navigate = useNavigate()
