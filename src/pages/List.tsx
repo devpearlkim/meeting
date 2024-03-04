@@ -97,6 +97,7 @@ const List = () => {
                   <Post
                     post={post}
                     setShowModal={setShowModal}
+                    reportedPostId={reportedPostId}
                     setReportedPostId={setReportedPostId}
                   />
                 ))}

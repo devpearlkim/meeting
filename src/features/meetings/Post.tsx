@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import { PiSirenLight } from 'react-icons/pi'
 import { useState } from 'react'
 
-const Post = ({ post, setShowModal, setReportedPostId }) => {
+const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const [isLiked, setIsLiked] = useState(post.isLiked)
 
   const handleReportClick = () => {
     setReportedPostId(post.id)
+    console.log('post안에서의 reportedPostId', reportedPostId)
     setShowModal(true)
   }
   const deleteLike = () => {
