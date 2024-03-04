@@ -54,7 +54,7 @@ const postDetail = () => {
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
               {sessionStorage.getItem('userInfo')?.userId ===
-                postDetail.host.userId && <button>...</button>}
+                data.data.host.userId && <button>...</button>}
               <h2 className="text-4xl font-bold">{data.data.title}</h2>
               <Link
                 to={`/list?location=${encodeURIComponent(data.data.location)}`}
