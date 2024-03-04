@@ -21,7 +21,7 @@ const CategoryInput = ({ mode, default_categories }) => {
         category.categoryId.toString(),
       )
       console.log(defaultCategoryIds)
-      setSelectedCategories(defaultCategoryIds)
+      setSelectedCategories(...defaultCategoryIds)
     }
     console.log('selectedCategories', selectedCategories)
   }, [default_categories])
