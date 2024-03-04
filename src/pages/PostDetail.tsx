@@ -29,7 +29,7 @@ const postDetail = () => {
   }
 
   console.log(data)
-  console.log(data?.data.host.userId)
+  console.log(data?.data?.host?.userId)
   console.log(sessionStorage.getItem('userInfo')?.userId)
 
   if (isLoading) {
