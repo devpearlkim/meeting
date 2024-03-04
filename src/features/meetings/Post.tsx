@@ -1,29 +1,29 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { PiSirenLight } from 'react-icons/pi'
 import { useEffect, useState } from 'react'
+import { addLike, deleteLike } from '../services/apiPost.js'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
+  const navigate = useNavigate()
   const [isLiked, setIsLiked] = useState(post.isLiked)
+  const [isLogin, setIsLogin] = useState(
+    sessionStorage.getItem('token') ? true : false,
+  )
 
   const handleReportClick = () => {
     setReportedPostId(post.meetingId)
-    console.log('postId는')
-    console.log(post)
-    console.log(post.meetingId)
-
     setShowModal(true)
   }
 
-  useEffect(() => {
-    console.log('post안에서의 reportedPostId', reportedPostId)
-  }, [reportedPostId])
-
-  const deleteLike = () => {
-    // apiDeleteLike호출
+  const deleteLikeAPI = () => {
+    !isLogin && navigate('/login')
+    deleteLike(post.meetingId)
     setIsLiked(false)
   }
-  const addLike = () => {
-    // apiAddLike호출
+
+  const addLikeAPI = () => {
+    !isLogin && navigate('/login')
+    addLike(post.meetingId)
     setIsLiked(true)
   }
 
@@ -72,7 +72,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
           </div>
         </Link>
         <div className="mt-auto flex items-center justify-between gap-4 border-t border-slate-300 px-2 pb-2 pt-4">
-          <button onClick={isLiked ? deleteLike : addLike}>
+          <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
             {isLiked ? '꽉찬하트' : '빈하트'}
           </button>
           <button onClick={handleReportClick}>

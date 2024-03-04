@@ -58,18 +58,12 @@ const List = () => {
     !isFetching && hasNextPage && fetchNextPage()
   }, 3000)
 
-  console.log(hasNextPage)
-
   useEffect(() => {
     if (inView && hasNextPage && !isFetching) {
       throttledFetchNextPage()
     }
   }, [inView, hasNextPage, isFetching, throttledFetchNextPage])
 
-  // const [showTextarea, setShowTextarea] = useState(false)
-
-  console.log('data', data)
-  console.log('reportedPostId 리스트에서조회', reportedPostId)
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">

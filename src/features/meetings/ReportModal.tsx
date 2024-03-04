@@ -12,16 +12,10 @@ const ReportModal = ({
 
   const handleReport = () => {
     let reason = reportReason
-    console.log('신고사유', reason)
-    console.log('신고번호', reportedPostId)
     setShowModal(false)
     setReportedPostId(null)
     setReportReason('')
   }
-
-  useEffect(() => {
-    console.log('reportedPostId changed:', reportedPostId)
-  }, [reportedPostId])
 
   const handleReportReasonChange = (reason) => {
     if (reportReason === reason) {
@@ -119,14 +113,14 @@ const ReportModal = ({
                   disabled={!reportReason.length}
                   className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                 >
-                  Delete
+                  신고
                 </button>
                 <button
                   onClick={() => setShowModal(false)}
                   type="button"
                   className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
                 >
-                  Cancel
+                  취소
                 </button>
               </div>
             </div>
