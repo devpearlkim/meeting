@@ -15,6 +15,12 @@ const CategoryInput = ({ mode, default_categories }) => {
   )
 
   useEffect(() => {
+    if (default_categories) {
+      setSelectedCategories(default_categories)
+    }
+  }, [default_categories])
+
+  useEffect(() => {
     setSelectedCategories(currentCategories[0]?.split('%') ?? [])
   }, [location.search])
 
