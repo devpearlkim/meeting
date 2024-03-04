@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { getCategories } from '../../services/apiPost'
 
-const CategoryInput = ({ mode }) => {
+const CategoryInput = ({ mode, default_categories }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const currentCategories = new URLSearchParams(location.search).getAll(

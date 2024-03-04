@@ -14,9 +14,6 @@ const PostForm = ({ postData }) => {
     ? {
         title: postData.title || '',
         description: postData.description || '',
-        location: postData.location || '',
-        categories: postData.categories || [],
-        count: postData.member_limits || 2,
       }
     : {}
 
@@ -108,7 +105,7 @@ const PostForm = ({ postData }) => {
           >
             위치
           </label>
-          <LocationInput style="post" />
+          <LocationInput style="post" default_location={postData?.location} />
         </div>
         <div className="mb-4">
           <label
@@ -117,7 +114,7 @@ const PostForm = ({ postData }) => {
           >
             모집인원
           </label>
-          <CountInput />
+          <CountInput default_count={postData?.member_limit} />
           {/* 상위에서 동적으로 쓸때 */}
         </div>
         <div>
@@ -127,7 +124,10 @@ const PostForm = ({ postData }) => {
           >
             카테고리
           </label>
-          <CategoryInput mode={'post'} />
+          <CategoryInput
+            mode={'post'}
+            default_categories={postData?.categories}
+          />
         </div>
         <div>
           <label

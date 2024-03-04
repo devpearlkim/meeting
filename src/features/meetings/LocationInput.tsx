@@ -3,11 +3,12 @@ import { useFormContext } from 'react-hook-form'
 import Autocomplete from 'react-google-autocomplete'
 import { useLocation } from 'react-router-dom'
 
-function LocationInput({ style }) {
+function LocationInput({ style, default_location }) {
   const { setValue } = useFormContext()
   const [location, setLocation] = useState(null)
   const searchParams = new URLSearchParams(useLocation().search)
-  const initialLocation = searchParams.get('location') ?? ''
+  let initialLocation = searchParams.get('location') ?? ''
+  if (default_location) initialLocation = default_location
 
   useEffect(() => {
     setLocation(initialLocation)
