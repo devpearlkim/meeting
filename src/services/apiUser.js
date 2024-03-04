@@ -15,6 +15,7 @@ export async function getProfile() {
       username: response.data.data.username,
       nickname: response.data.data.nickname,
       email: response.data.data.email,
+      userId: response.data.data.userId,
     }
 
     sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
