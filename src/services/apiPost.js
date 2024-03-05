@@ -157,7 +157,9 @@ export async function addLike(postId) {
 }
 export async function deleteLike(postId) {
   console.log('좋아요 삭제로직')
+
   const token = sessionStorage.getItem('token')
+  console.log('token', token)
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
