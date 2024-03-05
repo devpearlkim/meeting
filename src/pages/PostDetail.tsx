@@ -82,7 +82,6 @@ const postDetail = () => {
     <div className="mx-auto flex max-w-screen-lg flex-col overflow-hidden bg-yellow-300 py-4">
       {data?.data && (
         <>
-          {/* 디테일페이지 헤더부분 */}
           <div className="flex gap-4 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <img
