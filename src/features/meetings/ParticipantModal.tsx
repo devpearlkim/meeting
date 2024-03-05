@@ -10,10 +10,8 @@ const ParticipantModal = ({
   const maxLength = 1000
 
   const handleSubmit = () => {
-    let reason = participantReason
     setShowParticipantModal(false)
     setParticipantReason('')
-    console.log('신청이유', reason)
     console.log('신청이유', participantReason)
     console.log('미팅번호', meetingId)
   }
@@ -61,7 +59,7 @@ const ParticipantModal = ({
                       <div className="flex w-80 flex-col">
                         <div className="ml-2">
                           <textarea
-                            className="h-[40rem] resize-none outline-blue-500"
+                            className="h-[20rem] resize-none outline-blue-500"
                             placeholder="간단한 자기소개를 입력해주세요"
                             onChange={(event) => {
                               if (event.target.value.length <= maxLength) {
