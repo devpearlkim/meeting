@@ -148,6 +148,7 @@ export async function addLike(postId) {
         Authorization: `Bearer ${token}`,
       },
     })
+    console.log(token)
 
     return response.data
   } catch (error) {
