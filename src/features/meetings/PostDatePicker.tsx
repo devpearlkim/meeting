@@ -69,10 +69,10 @@ export default function DatePickerDialog({ default_meeting_date }) {
     const date = parse(e.currentTarget.value, 'y-MM-dd', new Date())
     let nextDate = new Date()
     nextDate.setDate(nextDate.getDate() + 1)
-    if (isBefore(date, nextDate)) {
-      toast.error('오늘 이후의 날짜를 선택하세요')
-      return
-    }
+    // if (isBefore(date, nextDate)) {
+    //   toast.error('오늘 이후의 날짜를 선택하세요')
+    //   return
+    // }
     if (isValid(date)) {
       setSelected(date)
     } else {
