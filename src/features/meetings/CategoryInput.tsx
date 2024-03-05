@@ -25,7 +25,8 @@ const CategoryInput = ({ mode, default_categories }) => {
         category.categoryId.toString(),
       )
       setSelectedCategories([...defaultCategoryIds])
-      setValue('categories', selectedCategories)
+      // setValue('categories', selectedCategories) 얘는안됨
+      setValue('categories', [...defaultCategoryIds])
     }
   }, [default_categories])
 
