@@ -124,10 +124,15 @@ export async function getCategories() {
   }
 }
 export async function addLike(postId) {
+  const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.post(`${backendURI}/meetings/${postId}/like`)
+    const response = await axios.post(`${backendURI}/meetings/${postId}/like`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
 
     return response.data
   } catch (error) {
@@ -135,10 +140,18 @@ export async function addLike(postId) {
   }
 }
 export async function deleteLike(postId) {
+  const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.delete(`${backendURI}/meetings/${postId}/like`)
+    const response = await axios.delete(
+      `${backendURI}/meetings/${postId}/like`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
 
     return response.data
   } catch (error) {
