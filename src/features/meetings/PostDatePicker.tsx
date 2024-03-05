@@ -67,6 +67,12 @@ export default function DatePickerDialog({ default_meeting_date }) {
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setInputValue(e.currentTarget.value)
     const date = parse(e.currentTarget.value, 'y-MM-dd', new Date())
+    let nextDate = new Date()
+    nextDate.setDate(nextDate.getDate() + 1)
+    if (isBefore(date, nextDate)) {
+      toast.error('오늘 이후의 날짜를 선택하세요')
+      return
+    }
     if (isValid(date)) {
       setSelected(date)
     } else {
@@ -83,10 +89,6 @@ export default function DatePickerDialog({ default_meeting_date }) {
   }
 
   const handleDaySelect: SelectSingleEventHandler = (date) => {
-    if (isBefore(date, new Date())) {
-      toast.error('오늘 이후의 날짜를 선택하세요')
-      return
-    }
     setSelected(date)
     // setValue('meeting_date', format(date, 'yyyy-MM-dd'))
     if (date) {
