@@ -144,11 +144,15 @@ export async function addLike(postId) {
   console.log('좋아요 추가로직')
   console.log('token', token)
   try {
-    const response = await axios.post(`${backendURI}/meetings/${postId}/like`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await axios.post(
+      `${backendURI}/meetings/${postId}/like`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
+    )
 
     return response.data
   } catch (error) {
