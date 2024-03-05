@@ -175,10 +175,10 @@ export async function deleteLike(postId) {
   }
 }
 
-export async function addParticipant({ participant }) {
+export async function addParticipant({ meetingId, description }) {
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
-  const { meetingId, description } = participant
+
   try {
     const response = await axios.post(
       `${backendURI}/participants`,

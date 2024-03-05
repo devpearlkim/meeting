@@ -1,9 +1,8 @@
 import axios from 'axios'
 
-export async function reportMeeting({ meeting }) {
+export async function reportMeeting({ meetingId, content }) {
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
-  const { meetingId, content } = meeting
   try {
     const response = await axios.post(
       `${backendURI}/reports/meetings`,
