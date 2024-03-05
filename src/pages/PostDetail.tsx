@@ -68,7 +68,7 @@ const postDetail = () => {
     const participants = data?.data.participants
 
     if (
-      loggedInUserId !== hostUserId ||
+      loggedInUserId === hostUserId ||
       participants.some((participant) => participant?.userId === loggedInUserId)
     ) {
       console.log('participants')
