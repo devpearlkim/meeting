@@ -75,7 +75,7 @@ const postDetail = () => {
     console.log('신청자 목록')
     console.log(meetingParticipants)
     getMeetingParicipants.data.some((participant) =>
-      console.log(participant.participantid),
+      console.log(participant.userid),
     )
     console.log('로그인id', loggedInUserId)
 
@@ -89,7 +89,7 @@ const postDetail = () => {
     if (
       Array.isArray(getMeetingParicipants.data) &&
       getMeetingParicipants.data.some(
-        (participant) => participant?.participantid === loggedInUserId,
+        (participant) => participant?.userid === loggedInUserId,
       )
     ) {
       toast.error('이미 신청한 모임입니다')
