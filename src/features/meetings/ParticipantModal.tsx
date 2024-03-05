@@ -7,6 +7,7 @@ const ParticipantModal = ({
   meetingId,
 }) => {
   const [participantReason, setParticipantReason] = useState('')
+  const maxLength = 1000
 
   const handleSubmit = () => {
     let reason = participantReason
@@ -56,16 +57,25 @@ const ParticipantModal = ({
                       간단한 소개글을 입력해주세요
                     </h3>
                     <div className="mt-2">
-                      {/* <p className="text-sm text-gray-500"></p> */}
+                      {/* <p className="text-sm text-gray-500">1000자 미만으로 입력해주세요</p> */}
                       <div className="flex w-80 flex-col">
                         <div className="ml-2">
                           <textarea
-                            className="w-80 resize-none outline-blue-500"
-                            placeholder="신고 사유를 입력해주세요"
-                            onChange={(event) =>
-                              handleparticipantReasonChange(event.target.value)
-                            }
+                            className="h-[40rem] resize-none outline-blue-500"
+                            placeholder="간단한 자기소개를 입력해주세요"
+                            onChange={(event) => {
+                              if (event.target.value.length <= maxLength) {
+                                handleparticipantReasonChange(
+                                  event.target.value,
+                                )
+                              }
+                            }}
+                            maxLength={maxLength}
                           />
+                          <span className="text-sm text-gray-500">
+                            {maxLength - participantReason.length} characters /
+                            {maxLength}
+                          </span>
                         </div>
                       </div>
                     </div>

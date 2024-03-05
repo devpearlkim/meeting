@@ -124,11 +124,13 @@ export async function getCategories() {
   }
 }
 
-export async function getMeetingParicipants() {
+export async function getMeetingParicipants(meetingId) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.get(`${backendURI}/meetings/41/participants`)
+    const response = await axios.get(
+      `${backendURI}/meetings/${meetingId}/participants`,
+    )
 
     return response.data
   } catch (error) {

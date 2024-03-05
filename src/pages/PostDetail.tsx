@@ -1,6 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { getPostDetail, addLike, deleteLike } from '../services/apiPost.js'
+import {
+  getPostDetail,
+  addLike,
+  deleteLike,
+  getMeetingParicipants,
+} from '../services/apiPost.js'
 import { useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
 import toast from 'react-hot-toast'
