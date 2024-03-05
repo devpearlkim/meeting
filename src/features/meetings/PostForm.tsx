@@ -51,7 +51,11 @@ const PostForm = ({ postData }) => {
       toast.error('카테고리를 입력해주세요')
       return
     }
-    postData ? editPost(data, postData.meetingId) : addPost(data)
+    if (postData) {
+      editPost(data, postData.meetingId)
+    } else {
+      addPost(data)
+    }
     navigate('/list')
   }
 
