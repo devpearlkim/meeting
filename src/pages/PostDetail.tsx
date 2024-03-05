@@ -74,6 +74,10 @@ const postDetail = () => {
     const meetingParticipants = await getMeetingParicipants(data.data.meetingId)
     console.log('신청자 목록')
     console.log(meetingParticipants)
+    getMeetingParicipants.data.some((participant) =>
+      console.log(participant.participantid),
+    )
+    console.log('로그인id', loggedInUserId)
 
     if (
       loggedInUserId === hostUserId ||
