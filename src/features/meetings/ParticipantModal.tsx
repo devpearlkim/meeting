@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PiSirenLight } from 'react-icons/pi'
-import { addParticipant } from '../../services/apiPost'
+import { addParticipant } from '../../services/apiParticipant'
 
 const ParticipantModal = ({
   showParticipantModal,

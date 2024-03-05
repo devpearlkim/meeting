@@ -1,11 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import {
-  getPostDetail,
-  addLike,
-  deleteLike,
-  getMeetingParicipants,
-} from '../services/apiPost.js'
+import { getPostDetail, addLike, deleteLike } from '../services/apiPost'
+import { getMeetingParicipants } from '../services/apiParticipant'
 import { useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
 import toast from 'react-hot-toast'
@@ -87,11 +83,11 @@ const postDetail = () => {
       return
     }
 
-    console.log('participants.data', getMeetingParicipants?.data)
-    console.log(Array.isArray(getMeetingParicipants?.data))
+    console.log('participants.data', meetingParticipants?.data)
+    console.log(Array.isArray(meetingParticipants?.data))
     if (
-      Array.isArray(getMeetingParicipants?.data) &&
-      getMeetingParicipants?.data.some(
+      Array.isArray(meetingParticipants?.data) &&
+      meetingParticipants?.data.some(
         (participant) => participant?.userid === loggedInUserId,
       )
     ) {
