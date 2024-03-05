@@ -51,9 +51,9 @@ const postDetail = () => {
     navigate(`/list?category=${categoryId}`)
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
   const [showParticipantModal, setShowParticipantModal] = useState(false)
 
