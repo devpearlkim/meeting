@@ -18,7 +18,7 @@ const LoginForm = () => {
       await login(formData)
       toast.success('로그인에 성공했습니다.')
       await getProfile()
-      navigate('/list')
+      navigate(-1)
     } catch (error) {
       toast.error('이메일/비밀번호가 올바르지 않습니다')
     }
