@@ -3,7 +3,7 @@ import PostForm from '../features/meetings/PostForm'
 
 const WritePost = () => {
   const location = useLocation()
-  const postData = location.state.postData
+  const postData = location?.state?.postData
 
   return (
     <>
