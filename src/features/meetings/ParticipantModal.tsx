@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PiSirenLight } from 'react-icons/pi'
+import { addParticipant } from '../../services/apiPost'
 
 const ParticipantModal = ({
   showParticipantModal,
@@ -14,6 +15,7 @@ const ParticipantModal = ({
     setParticipantReason('')
     console.log('신청이유', participantReason)
     console.log('미팅번호', meetingId)
+    addParticipant({ meetingId, description: participantReason })
   }
 
   const handleparticipantReasonChange = (reason) => {
@@ -55,7 +57,9 @@ const ParticipantModal = ({
                       간단한 소개글을 입력해주세요
                     </h3>
                     <div className="mt-2">
-                      {/* <p className="text-sm text-gray-500">1000자 미만으로 입력해주세요</p> */}
+                      <p className="text-sm text-gray-500">
+                        1000자 미만으로 입력해주세요
+                      </p>
                       <div className="flex w-80 flex-col">
                         <div className="ml-2">
                           <textarea

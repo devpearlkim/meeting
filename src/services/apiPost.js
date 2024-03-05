@@ -1,12 +1,9 @@
 import axios from 'axios'
 
 export async function getPost({ queryKey, pageParam }) {
-  console.log('data fetching')
-  console.log(queryKey)
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const perPage = import.meta.env.VITE_PER_PAGE
   const { search, minValue, maxValue, location, from, to } = queryKey[1]
-  console.log(from)
   let categoryArr = []
   if (queryKey[2].length) {
     categoryArr = queryKey[2]?.split('%').map((cat) => parseInt(cat))
@@ -17,7 +14,7 @@ export async function getPost({ queryKey, pageParam }) {
     sort,
     cursorId: pageParam,
   }
-  console.log('params는: ', params)
+
   if (minValue !== undefined) {
     params.member_min = minValue
   }
@@ -141,8 +138,6 @@ export async function getMeetingParicipants(meetingId) {
 export async function addLike(postId) {
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
-  console.log('좋아요 추가로직')
-  console.log('token', token)
   try {
     const response = await axios.post(
       `${backendURI}/meetings/${postId}/like`,
@@ -159,11 +154,9 @@ export async function addLike(postId) {
     throw new Error('좋아요 추가 중 오류발생')
   }
 }
-export async function deleteLike(postId) {
-  console.log('좋아요 삭제로직')
 
+export async function deleteLike(postId) {
   const token = sessionStorage.getItem('token')
-  console.log('token', token)
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
@@ -179,5 +172,29 @@ export async function deleteLike(postId) {
     return response.data
   } catch (error) {
     throw new Error('좋아요 취소 중 오류발생')
+  }
+}
+
+export async function addParticipant({ participant }) {
+  const token = sessionStorage.getItem('token')
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+  const { meetingId, description } = participant
+  try {
+    const response = await axios.post(
+      `${backendURI}/participants`,
+      {
+        meetingId,
+        description,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+
+    return response.data
+  } catch (error) {
+    throw new Error('모임 신고 중 오류발생')
   }
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PiSirenLight } from 'react-icons/pi'
+import { reportMeeting } from '../../services/apiReport'
 
 const ReportModal = ({
   showModal,
@@ -11,6 +12,8 @@ const ReportModal = ({
   const [showTextarea, setShowTextarea] = useState(false)
 
   const handleReport = () => {
+    reportMeeting({ meetingId: reportedPostId, content: reportReason })
+
     let reason = reportReason
     setShowModal(false)
     setReportedPostId(null)

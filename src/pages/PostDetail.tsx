@@ -71,22 +71,24 @@ const postDetail = () => {
     const loggedInUserId = userInfo?.userId
     const hostUserId = data?.data.host.userId
     const participants = data?.data.participants
+    console.log('신청자 목록')
+    console.log(getMeetingParicipants(data.data.meetingId))
 
     if (
       loggedInUserId === hostUserId ||
       participants.some((participant) => participant?.userId === loggedInUserId)
     ) {
-      console.log('participants')
-      console.log(participants)
-      console.log(
-        participants.some(
-          (participant) => participant?.userId === loggedInUserId,
-        ),
-      )
       toast.error('이미 참여중인 모임입니다')
       return
     }
-
+    if (
+      getMeetingParicipants(data.data.meetingId).some(
+        (participant) => participant?.userId === loggedInUserId,
+      )
+    ) {
+      toast.error('이미 신청한 모임입니다')
+      return
+    }
     setShowParticipantModal(true)
   }
 
