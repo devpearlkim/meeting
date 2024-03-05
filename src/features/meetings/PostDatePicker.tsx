@@ -27,7 +27,9 @@ export default function DatePickerDialog({ default_meeting_date }) {
   }, [default_meeting_date])
 
   useEffect(() => {
-    setValue('meeting_date', format(selected, 'yyyy-MM-dd'))
+    if (isValid(selected)) {
+      setValue('meeting_date', format(selected, 'yyyy-MM-dd'))
+    }
   }, [selected])
 
   console.log('default_meeting_date', default_meeting_date)
