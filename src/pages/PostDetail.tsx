@@ -62,7 +62,7 @@ const postDetail = () => {
 
   const [showParticipantModal, setShowParticipantModal] = useState(false)
 
-  const handleParticipantClick = () => {
+  const handleParticipantClick = async () => {
     if (!isLogin) {
       navigate('/login')
       return
@@ -71,8 +71,9 @@ const postDetail = () => {
     const loggedInUserId = userInfo?.userId
     const hostUserId = data?.data.host.userId
     const participants = data?.data.participants
+    const meetingParticipants = await getMeetingParicipants(data.data.meetingId)
     console.log('신청자 목록')
-    console.log(getMeetingParicipants(data.data.meetingId))
+    console.log(meetingParticipants)
 
     if (
       loggedInUserId === hostUserId ||
@@ -82,8 +83,8 @@ const postDetail = () => {
       return
     }
     if (
-      Array.isArray(getMeetingParicipants(data.data.meetingId)?.data) &&
-      getMeetingParicipants(data.data.meetingId).data.some(
+      Array.isArray(getMeetingParicipants.data) &&
+      getMeetingParicipants.data.some(
         (participant) => participant?.participantid === loggedInUserId,
       )
     ) {
