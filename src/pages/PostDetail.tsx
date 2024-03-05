@@ -6,6 +6,8 @@ import ParticipantModal from '../features/meetings/ParticipantModal.js'
 import toast from 'react-hot-toast'
 
 const postDetail = () => {
+  console.log('상세페이지')
+  console.log('상세데이터', data)
   const navigate = useNavigate()
   const { postId } = useParams()
   const [showOptions, setShowOptions] = useState(false)
