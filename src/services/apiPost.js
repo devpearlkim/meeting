@@ -141,14 +141,14 @@ export async function getMeetingParicipants(meetingId) {
 export async function addLike(postId) {
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
-
+  console.log('좋아요 추가로직')
+  console.log('token', token)
   try {
     const response = await axios.post(`${backendURI}/meetings/${postId}/like`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(token)
 
     return response.data
   } catch (error) {
@@ -156,6 +156,7 @@ export async function addLike(postId) {
   }
 }
 export async function deleteLike(postId) {
+  console.log('좋아요 삭제로직')
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
