@@ -22,8 +22,13 @@ export default function DatePickerDialog({ default_meeting_date }) {
     if (default_meeting_date) {
       const parsedDate = parse(default_meeting_date, 'yyyy-MM-dd', new Date())
       setSelected(parsedDate)
+      // setValue('meeting_date', format(selected, 'yyyy-MM-dd'))
     }
   }, [default_meeting_date])
+
+  useEffect(() => {
+    setValue('meeting_date', format(selected, 'yyyy-MM-dd'))
+  }, [selected])
 
   console.log('default_meeting_date', default_meeting_date)
   console.log('selected', selected)
@@ -83,7 +88,7 @@ export default function DatePickerDialog({ default_meeting_date }) {
       return
     }
     setSelected(date)
-    setValue('meeting_date', format(date, 'yyyy-MM-dd'))
+    // setValue('meeting_date', format(date, 'yyyy-MM-dd'))
     if (date) {
       setInputValue(format(date, 'y-MM-dd'))
       closePopper()
