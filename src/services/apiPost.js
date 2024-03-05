@@ -123,6 +123,19 @@ export async function getCategories() {
     throw new Error('카테고리 목록 가져오는 중 오류발생')
   }
 }
+
+export async function getMeetingParicipants() {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.get(`${backendURI}/meetings/41/participants`)
+
+    return response.data
+  } catch (error) {
+    throw new Error('미팅의 참가자목록 가져오는 중 오류발생')
+  }
+}
+
 export async function addLike(postId) {
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI

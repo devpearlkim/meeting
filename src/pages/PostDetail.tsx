@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getPostDetail, addLike, deleteLike } from '../services/apiPost.js'
 import { useState } from 'react'
+import ParticipantModal from '../features/meetings/ParticipantModal.js'
+import toast from 'react-hot-toast'
 
 const postDetail = () => {
   const navigate = useNavigate()
@@ -51,6 +53,31 @@ const postDetail = () => {
     return <div>Loading...</div>
   }
 
+  const [showParticipantModal, setShowParticipantModal] = useState(false)
+
+  const handleParticipantClick = () => {
+    if (!isLogin) {
+      navigate('/login')
+      return
+    }
+
+    const loggedInUserId = userInfo?.userId
+    const hostUserId = data?.data.host.userId
+    const participants = data?.data.participants
+
+    if (
+      loggedInUserId !== hostUserId ||
+      !participants.some(
+        (participant) => participant?.userId === loggedInUserId,
+      )
+    ) {
+      toast.error('이미 참여중인 모임입니다')
+      return
+    }
+
+    setShowParticipantModal(true)
+  }
+
   return (
     <div className="mx-auto flex max-w-screen-lg flex-col overflow-hidden bg-yellow-300 py-4">
       {data?.data && (
@@ -68,6 +95,16 @@ const postDetail = () => {
               <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
                 {isLiked ? '꽉찬하트' : '빈하트'}
               </button>
+
+              <button onClick={handleParticipantClick}>참가신청</button>
+
+              {showParticipantModal && (
+                <ParticipantModal
+                  showParticipantModal={showParticipantModal}
+                  setShowParticipantModal={setShowParticipantModal}
+                  meetingId={data?.data.meetingId}
+                />
+              )}
               <div>
                 {showButton && showOptions && (
                   <div>
