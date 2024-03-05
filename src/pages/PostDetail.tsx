@@ -82,9 +82,9 @@ const postDetail = () => {
       return
     }
     if (
-      Array.isArray(getMeetingParicipants(data.data.meetingId)) &&
-      getMeetingParicipants(data.data.meetingId).some(
-        (participant) => participant?.userId === loggedInUserId,
+      Array.isArray(getMeetingParicipants(data.data.meetingId)?.data) &&
+      getMeetingParicipants(data.data.meetingId).data.some(
+        (participant) => participant?.participantid === loggedInUserId,
       )
     ) {
       toast.error('이미 신청한 모임입니다')
