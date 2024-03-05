@@ -82,6 +82,7 @@ const postDetail = () => {
       return
     }
     if (
+      Array.isArray(getMeetingParicipants(data.data.meetingId)) &&
       getMeetingParicipants(data.data.meetingId).some(
         (participant) => participant?.userId === loggedInUserId,
       )
