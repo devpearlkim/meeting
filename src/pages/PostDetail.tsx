@@ -71,6 +71,13 @@ const postDetail = () => {
       loggedInUserId !== hostUserId ||
       participants.some((participant) => participant?.userId === loggedInUserId)
     ) {
+      console.log('participants')
+      console.log(participants)
+      console.log(
+        participants.some(
+          (participant) => participant?.userId === loggedInUserId,
+        ),
+      )
       toast.error('이미 참여중인 모임입니다')
       return
     }
