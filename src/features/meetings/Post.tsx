@@ -38,15 +38,15 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
           />
           <div className="flex flex-1 flex-col p-3">
             <div className="flex justify-between">
-              <Link to={`/profile/${post?.host.userId}`}>
+              <Link to={`/profile/${post?.host?.userId}`}>
                 <div className="flex gap-2">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={post?.host.profileImage}
+                    src={post?.host?.profileImage}
                     alt="프로필이미지"
                   />
                   <span className="block text-sm font-semibold text-slate-400">
-                    {post?.host.username}
+                    {post?.host?.username}
                   </span>
                 </div>
               </Link>
