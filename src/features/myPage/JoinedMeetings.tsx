@@ -41,15 +41,16 @@ const JoinedMeetings = () => {
                 key={pageIndex}
                 className="flex flex-wrap justify-between gap-2"
               >
-                {pageData?.map((post) => (
-                  <Post
-                    key={post.id}
-                    post={post}
-                    setShowModal={setShowModal}
-                    reportedPostId={reportedPostId}
-                    setReportedPostId={setReportedPostId}
-                  />
-                ))}
+                {Array.isArray(pageData) &&
+                  pageData?.map((post) => (
+                    <Post
+                      key={post.id}
+                      post={post}
+                      setShowModal={setShowModal}
+                      reportedPostId={reportedPostId}
+                      setReportedPostId={setReportedPostId}
+                    />
+                  ))}
               </div>
             ))}
             {isFetching && hasNextPage && (
