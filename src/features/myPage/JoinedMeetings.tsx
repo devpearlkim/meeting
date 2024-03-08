@@ -1,6 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
-import MeetingSearchForm from '../../features/meetings/MeetingSearchForm'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getJoinedMeetings } from '../../services/apiPost'
 import Post from '../../features/meetings/Post'
@@ -8,7 +6,6 @@ import SkeletonPost from '../meetings/SkeletonPost'
 import ReportModal from '../../features/meetings/ReportModal'
 
 const JoinedMeetings = () => {
-  const location = useLocation()
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(1)

@@ -192,7 +192,7 @@ export async function getJoinedMeetings({ queryKey }) {
     )
 
     console.log('참여모임', response.data)
-    return response.data
+    return response.data.data
   } catch (error) {
     throw new Error('참여중인 모임 가져오는 중 오류발생')
   }
