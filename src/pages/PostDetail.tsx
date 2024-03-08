@@ -19,7 +19,6 @@ const postDetail = () => {
     queryKey: ['postDetail', postId],
     queryFn: getPostDetail,
   })
-  console.log('상세데이터', data)
 
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const showButton = userInfo?.userId === data?.data?.host.userId
@@ -77,7 +76,7 @@ const postDetail = () => {
 
     if (
       loggedInUserId === hostUserId ||
-      participants.some((participant) => participant?.userId === loggedInUserId)
+      participants.some((participant) => participant?.userid === loggedInUserId)
     ) {
       toast.error('이미 참여중인 모임입니다')
       return
@@ -88,7 +87,9 @@ const postDetail = () => {
     if (
       Array.isArray(meetingParticipants?.data) &&
       meetingParticipants?.data.some(
-        (participant) => participant?.userid === loggedInUserId,
+        (participant) =>
+          participant.status === 'pending' &&
+          participant.userid === loggedInUserId,
       )
     ) {
       toast.error('이미 신청한 모임입니다')
