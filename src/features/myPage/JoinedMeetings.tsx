@@ -21,9 +21,6 @@ const JoinedMeetings = () => {
   const { data, fetchNextPage, hasNextPage, isFetching } = useQuery({
     queryKey: ['posts'],
     queryFn: getJoinedMeetings,
-    getNextPageParam: (lastPage) => lastPage?.data?.length,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
   })
 
   const handleLoadMore = () => {
@@ -36,10 +33,7 @@ const JoinedMeetings = () => {
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
-            <div
-              key={pageIndex}
-              className="flex flex-wrap justify-between gap-2"
-            >
+            <div className="flex flex-wrap justify-between gap-2">
               {Array.isArray(data) &&
                 data?.map((post) => (
                   <Post
