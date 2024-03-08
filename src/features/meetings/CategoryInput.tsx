@@ -52,8 +52,11 @@ const CategoryInput = ({ mode, default_categories }) => {
     if (mode === 'signup') {
       const newCategories = updatedCategories
       setSelectedCategories(updatedCategories)
-      console.log(newCategories)
-      setValue('interestCategory', newCategories)
+      console.log(newCategories.map((item) => parseInt(item)))
+      setValue(
+        'interestCategory',
+        newCategories.map((item) => parseInt(item)),
+      )
       return
     }
 
@@ -83,7 +86,7 @@ const CategoryInput = ({ mode, default_categories }) => {
 
   return (
     <div
-      className={`flex gap-2 ${mode === 'post' ? 'flex-wrap' : 'overflow-x-auto'}`}
+      className={`flex gap-2 ${mode === 'post' || mode === 'signup' ? 'flex-wrap' : 'overflow-x-auto'}`}
     >
       {!isLoading &&
         Array.isArray(categories) &&
