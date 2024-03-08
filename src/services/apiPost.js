@@ -186,6 +186,25 @@ export async function getJoinedMeetings() {
       },
     })
 
+    console.log('참여모임', response.data)
+    return response.data
+  } catch (error) {
+    throw new Error('참여중인 모임 가져오는 중 오류발생')
+  }
+}
+
+export async function getCreatedMeetings() {
+  const token = sessionStorage.getItem('token')
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.get(`${backendURI}/users/meetings-creator`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    console.log('개설모임', response.data)
     return response.data
   } catch (error) {
     throw new Error('참여중인 모임 가져오는 중 오류발생')
