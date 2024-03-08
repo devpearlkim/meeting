@@ -29,7 +29,7 @@ const JoinedMeetings = () => {
           <div className="mx-auto max-w-screen-lg py-4">
             <div className="flex flex-wrap justify-between gap-2">
               {Array.isArray(data) &&
-                data?.map((post) => (
+                data.map((post) => (
                   <Post
                     key={post.id}
                     post={post}
@@ -40,14 +40,14 @@ const JoinedMeetings = () => {
                 ))}
             </div>
 
-            {isFetching && hasNextPage && (
+            {isFetching && Array.isArray(data) && data.length >= 4 && (
               <div className="flex flex-wrap justify-between gap-2">
-                {[...Array(15)].map((_, i) => (
+                {[...Array(4)].map((_, i) => (
                   <SkeletonPost key={i} />
                 ))}
               </div>
             )}
-            {hasNextPage && (
+            {Array.isArray(data) && data.length >= 4 && (
               <div className="mt-4 flex justify-center">
                 <button
                   onClick={handleLoadMore}
