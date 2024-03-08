@@ -52,6 +52,7 @@ const CategoryInput = ({ mode, default_categories }) => {
     if (mode === 'signup') {
       const newCategories = updatedCategories
       setSelectedCategories(updatedCategories)
+      console.log(newCategories)
       setValue('interestCategory', newCategories)
       return
     }
