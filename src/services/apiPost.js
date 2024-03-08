@@ -175,9 +175,10 @@ export async function deleteLike(postId) {
   }
 }
 
-export async function getJoinedMeetings(queryKey) {
+export async function getJoinedMeetings({ queryKey }) {
   const page = queryKey[1]
-  console.log(queryKey)
+
+  console.log('queryKey', queryKey)
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
@@ -198,7 +199,7 @@ export async function getJoinedMeetings(queryKey) {
   }
 }
 
-export async function getCreatedMeetings(queryKey) {
+export async function getCreatedMeetings({ queryKey }) {
   const page = queryKey[1]
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
