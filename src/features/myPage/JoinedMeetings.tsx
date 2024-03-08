@@ -11,7 +11,7 @@ const JoinedMeetings = () => {
   const location = useLocation()
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(1)
 
   const { data, isFetching } = useQuery({
     queryKey: ['posts', page],
