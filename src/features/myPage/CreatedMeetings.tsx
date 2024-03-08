@@ -17,6 +17,8 @@ const CreatedMeetings = () => {
   })
 
   useEffect(() => {
+    console.log('list', list)
+    console.log('data', data)
     Array.isArray(data) && setList((prevList) => [...prevList, ...data])
   }, [data])
 
