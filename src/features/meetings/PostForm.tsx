@@ -7,8 +7,18 @@ import CategoryInput from './CategoryInput'
 import ImageUpload from './ImageUpload'
 import { addPost, editPost } from '../../services/apiPost'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const PostForm = ({ postData }) => {
+  const [isLogin, setIsLogin] = useState(
+    sessionStorage.getItem('token') ? true : false,
+  )
+
+  const navigate = useNavigate()
+  if (!isLogin) {
+    navigate('/login')
+  }
+
   const defaultFormValues = postData
     ? {
         title: postData.title || '',
@@ -19,8 +29,6 @@ const PostForm = ({ postData }) => {
   const methods = useForm({
     defaultValues: defaultFormValues,
   })
-
-  const navigate = useNavigate()
 
   const onSubmit = (data) => {
     if (!data.title) {
