@@ -30,16 +30,15 @@ const JoinedMeetings = () => {
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
             <div className="flex flex-wrap justify-between gap-2">
-              {Array.isArray(data) &&
-                data.map((post) => (
-                  <Post
-                    key={post.id}
-                    post={post}
-                    setShowModal={setShowModal}
-                    reportedPostId={reportedPostId}
-                    setReportedPostId={setReportedPostId}
-                  />
-                ))}
+              {list.map((post) => (
+                <Post
+                  key={post.id}
+                  post={post}
+                  setShowModal={setShowModal}
+                  reportedPostId={reportedPostId}
+                  setReportedPostId={setReportedPostId}
+                />
+              ))}
             </div>
 
             {isFetching && Array.isArray(data) && data.length >= 1 && (
