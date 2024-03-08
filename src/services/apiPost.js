@@ -4,6 +4,7 @@ export async function getPost({ queryKey, pageParam }) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const perPage = import.meta.env.VITE_PER_PAGE
   const { search, minValue, maxValue, location, from, to } = queryKey[1]
+  const token = sessionStorage.getItem('token')
   let categoryArr = []
   if (queryKey[2].length) {
     categoryArr = queryKey[2]?.split('%').map((cat) => parseInt(cat))
@@ -39,9 +40,17 @@ export async function getPost({ queryKey, pageParam }) {
 
   console.log('params는: ', params)
   try {
-    const response = await axios.get(`${backendURI}/meetings`, {
-      params,
-    })
+    const response = await axios.get(
+      `${backendURI}/meetings`,
+      {
+        params,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
     console.log('response : ', response.data)
     return response.data
   } catch (error) {
@@ -52,9 +61,14 @@ export async function getPost({ queryKey, pageParam }) {
 export async function getPostDetail({ queryKey }) {
   const postId = queryKey[1]
   const backendURI = import.meta.env.VITE_BACKEND_URI
+  const token = sessionStorage.getItem('token')
 
   try {
-    const response = await axios.get(`${backendURI}/meetings/${postId}`)
+    const response = await axios.get(`${backendURI}/meetings/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return response.data
   } catch (error) {
     throw new Error('글 상세정보 불러오는 중 오류발생')

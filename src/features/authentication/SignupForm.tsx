@@ -541,7 +541,7 @@ const SignupForm = () => {
         <div>
           <label
             htmlFor="category"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-1 block text-sm font-semibold"
           >
             카테고리
           </label>
