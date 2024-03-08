@@ -8,23 +8,17 @@ import SkeletonPost from '../meetings/SkeletonPost'
 import ReportModal from '../../features/meetings/ReportModal'
 
 const JoinedMeetings = () => {
-  const [searchFormValues, setSearchFormValues] = useState({})
   const location = useLocation()
-  const queryParams = new URLSearchParams(location.search)
-  const category = queryParams.get('category') ?? []
-  const search = queryParams.get('search') || ''
-  const locationParam = queryParams.get('location') || ''
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(0)
 
-  const { data, fetchNextPage, hasNextPage, isFetching } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ['posts', page],
     queryFn: getJoinedMeetings,
   })
 
   const handleLoadMore = () => {
-    fetchNextPage()
     setPage((prevPage) => prevPage + 1)
   }
 
