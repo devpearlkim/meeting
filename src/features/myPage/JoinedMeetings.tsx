@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getJoinedMeetings } from '../../services/apiPost'
 import Post from '../../features/meetings/Post'
@@ -9,11 +9,16 @@ const JoinedMeetings = () => {
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(1)
+  const [list, setList] = useState([])
 
   const { data, isFetching } = useQuery({
     queryKey: ['posts', page],
     queryFn: getJoinedMeetings,
   })
+
+  useEffect(() => {
+    Array.isArray(data) && setList((prevList) => [...prevList, ...data])
+  }, [data])
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1)
