@@ -175,7 +175,7 @@ export async function deleteLike(postId) {
   }
 }
 
-export async function getJoinedMeetings({ queryKey }) {
+export async function getJoinedMeetings(queryKey) {
   const page = queryKey[1]
   console.log(queryKey)
   const token = sessionStorage.getItem('token')
@@ -198,14 +198,14 @@ export async function getJoinedMeetings({ queryKey }) {
   }
 }
 
-export async function getCreatedMeetings({ queryKey }) {
+export async function getCreatedMeetings(queryKey) {
   const page = queryKey[1]
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
     const response = await axios.get(
-      `${backendURI}/users/meetings-creator?page=${page}&perPage=4`,
+      `${backendURI}/users/meetings-creator?page=${page}&perPage=1`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
