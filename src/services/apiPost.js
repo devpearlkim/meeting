@@ -174,3 +174,20 @@ export async function deleteLike(postId) {
     throw new Error('좋아요 취소 중 오류발생')
   }
 }
+
+export async function getJoinedMeetings() {
+  const token = sessionStorage.getItem('token')
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.get(`${backendURI}/users/meetings`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    return response.data
+  } catch (error) {
+    throw new Error('참여중인 모임 가져오는 중 오류발생')
+  }
+}

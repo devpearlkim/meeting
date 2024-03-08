@@ -1,13 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
 import MeetingSearchForm from '../features/meetings/MeetingSearchForm'
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useInView } from 'react-intersection-observer'
 import { getPost } from '../services/apiPost.js'
 import { throttle } from 'lodash'
 import Post from '../features/meetings/Post.js'
-import SkeletonPost from '../features/meetings/SkeletonPost .js'
-// import { PiSirenLight } from 'react-icons/pi'
+import SkeletonPost from '../features/meetings/SkeletonPost.js'
 import ReportModal from '../features/meetings/ReportModal.js'
 
 const List = () => {
