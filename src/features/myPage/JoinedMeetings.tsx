@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import MeetingSearchForm from '../../features/meetings/MeetingSearchForm'
 import { useEffect, useState } from 'react'
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getJoinedMeetings } from '../../services/apiPost'
 import Post from '../../features/meetings/Post'
 import SkeletonPost from '../meetings/SkeletonPost'
@@ -18,7 +18,7 @@ const JoinedMeetings = () => {
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(0)
 
-  const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, isFetching } = useQuery({
     queryKey: ['posts'],
     queryFn: getJoinedMeetings,
     getNextPageParam: (lastPage) => lastPage?.data?.length,
@@ -36,23 +36,22 @@ const JoinedMeetings = () => {
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
-            {data?.pages.map((pageData, pageIndex) => (
-              <div
-                key={pageIndex}
-                className="flex flex-wrap justify-between gap-2"
-              >
-                {Array.isArray(pageData) &&
-                  pageData?.map((post) => (
-                    <Post
-                      key={post.id}
-                      post={post}
-                      setShowModal={setShowModal}
-                      reportedPostId={reportedPostId}
-                      setReportedPostId={setReportedPostId}
-                    />
-                  ))}
-              </div>
-            ))}
+            <div
+              key={pageIndex}
+              className="flex flex-wrap justify-between gap-2"
+            >
+              {Array.isArray(data) &&
+                data?.map((post) => (
+                  <Post
+                    key={post.id}
+                    post={post}
+                    setShowModal={setShowModal}
+                    reportedPostId={reportedPostId}
+                    setReportedPostId={setReportedPostId}
+                  />
+                ))}
+            </div>
+
             {isFetching && hasNextPage && (
               <div className="flex flex-wrap justify-between gap-2">
                 {[...Array(15)].map((_, i) => (
