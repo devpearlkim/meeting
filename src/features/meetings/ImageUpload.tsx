@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const ImageUpload = () => {
+const ImageUpload = ({ type }) => {
   const { setValue } = useFormContext()
   const [file, setFile] = useState(null)
 
   const handleFileInputChange = (e) => {
     const selectedFile = e.target.files[0]
     setFile(selectedFile)
-    setValue('image', selectedFile.name)
+
+    type === 'profile'
+      ? setValue('profileImage', selectedFile.name)
+      : setValue('image', selectedFile.name)
+
     e.target.value = null
   }
 

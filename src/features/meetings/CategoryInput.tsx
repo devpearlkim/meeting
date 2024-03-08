@@ -49,6 +49,13 @@ const CategoryInput = ({ mode, default_categories }) => {
       return
     }
 
+    if (mode === 'signup') {
+      const newCategories = updatedCategories
+      setSelectedCategories(updatedCategories)
+      setValue('interestCategory', newCategories)
+      return
+    }
+
     const newSearch = updatedCategories
       .map((category) => encodeURIComponent(category))
       .join('%')
