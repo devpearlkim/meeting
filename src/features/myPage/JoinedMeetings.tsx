@@ -19,7 +19,7 @@ const JoinedMeetings = () => {
   const [page, setPage] = useState(0)
 
   const { data, fetchNextPage, hasNextPage, isFetching } = useQuery({
-    queryKey: ['posts'],
+    queryKey: ['posts', page],
     queryFn: getJoinedMeetings,
   })
 

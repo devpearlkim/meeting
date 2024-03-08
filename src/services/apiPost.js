@@ -175,16 +175,21 @@ export async function deleteLike(postId) {
   }
 }
 
-export async function getJoinedMeetings() {
+export async function getJoinedMeetings({ queryKey }) {
+  const page = queryKey[1]
+  console.log(queryKey)
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.get(`${backendURI}/users/meetings`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await axios.get(
+      `${backendURI}/users/meetings?page=${page}&perPage=4`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
+    )
 
     console.log('참여모임', response.data)
     return response.data
@@ -193,16 +198,20 @@ export async function getJoinedMeetings() {
   }
 }
 
-export async function getCreatedMeetings() {
+export async function getCreatedMeetings({ queryKey }) {
+  const page = queryKey[1]
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.get(`${backendURI}/users/meetings-creator`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await axios.get(
+      `${backendURI}/users/meetings-creator?page=${page}&perPage=4`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
+    )
 
     console.log('개설모임', response.data)
     return response.data
