@@ -8,14 +8,19 @@ export async function signup(formData) {
       ...formData,
     })
 
+    if (response.status !== 200) {
+      throw new Error('회원가입 과정에서 오류발생')
+    }
+
     return response.data
   } catch (error) {
-    throw new Error('회원정보 수정 과정에서 오류발생' + error.message)
+    throw new Error('회원가입 과정에서 오류발생' + error.message)
   }
 }
 
 export async function editProfile(formData) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
+  const token = sessionStorage.getItem('token')
 
   try {
     const response = await axios.patch(
@@ -31,12 +36,12 @@ export async function editProfile(formData) {
     )
 
     if (response.status !== 200) {
-      throw new Error('회원가입 과정에서 오류발생')
+      throw new Error('회원정보 수정 과정에서 오류발생')
     }
 
     return response.data
   } catch (error) {
-    throw new Error('회원가입 과정에서 오류발생' + error.message)
+    throw new Error('회원정보 수정 과정에서 오류발생' + error.message)
   }
 }
 
