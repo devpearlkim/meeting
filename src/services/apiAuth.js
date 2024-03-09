@@ -127,7 +127,7 @@ export async function logout() {
     const response = await axios.delete(
       `${backendURI}/auth/logout`,
       {
-        jwt: token,
+        jwt: 'token',
       },
       {
         headers: {
