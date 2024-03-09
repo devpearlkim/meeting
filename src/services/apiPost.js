@@ -191,6 +191,27 @@ export async function deleteLike(postId) {
   }
 }
 
+export async function getLikedMeetings({ queryKey }) {
+  const page = queryKey[1]
+  const token = sessionStorage.getItem('token')
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.get(
+      `${backendURI}/users/likes?page=${page}&perPage=8`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+
+    return response.data.data
+  } catch (error) {
+    throw new Error('좋아요한 모임 가져오는 중 오류발생')
+  }
+}
+
 export async function getJoinedMeetings({ queryKey }) {
   const page = queryKey[1]
 

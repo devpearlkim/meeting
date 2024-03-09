@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getJoinedMeetings } from '../../services/apiPost'
+import { getLikedMeetings } from '../../services/apiPost'
 import Post from '../../features/meetings/Post'
 import SkeletonPost from '../meetings/SkeletonPost'
 import ReportModal from '../../features/meetings/ReportModal'
 
-const JoinedMeetings = () => {
+const LikedMeetings = () => {
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(1)
@@ -15,7 +15,7 @@ const JoinedMeetings = () => {
 
   const { data, isFetching } = useQuery({
     queryKey: ['posts', page],
-    queryFn: getJoinedMeetings,
+    queryFn: getLikedMeetings,
   })
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const JoinedMeetings = () => {
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
-        <div>참여중인 모임목록</div>
+        <span>좋아요한 모임목록</span>
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
             <div className="flex flex-wrap justify-between gap-2">
@@ -76,4 +76,4 @@ const JoinedMeetings = () => {
   )
 }
 
-export default JoinedMeetings
+export default LikedMeetings

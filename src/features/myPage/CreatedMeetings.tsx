@@ -31,6 +31,7 @@ const CreatedMeetings = () => {
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+        <span>개설한 모임목록</span>
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
             <div className="flex flex-wrap justify-between gap-2">
