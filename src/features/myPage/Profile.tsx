@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getUserProfile } from '../../services/apiUser'
 
 const Profile = () => {
+  const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const { userId } = useParams()
 
   const { data } = useQuery({
@@ -33,12 +34,14 @@ const Profile = () => {
           </button>
         ))}
       </div>
-      <button
-        className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500"
-        onClick={editProfile}
-      >
-        프로필 수정
-      </button>
+      {userInfo?.userId == userId && (
+        <button
+          className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500"
+          onClick={editProfile}
+        >
+          프로필 수정
+        </button>
+      )}
     </div>
   )
 }
