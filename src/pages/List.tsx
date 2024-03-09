@@ -6,7 +6,8 @@ import { useInView } from 'react-intersection-observer'
 import { getPost } from '../services/apiPost.js'
 import { throttle } from 'lodash'
 import Post from '../features/meetings/Post.js'
-import SkeletonPost from '../features/meetings/SkeletonPost.js'
+import SkeletonPost from '../features/meetings/SkeletonPost .js'
+// import { PiSirenLight } from 'react-icons/pi'
 import ReportModal from '../features/meetings/ReportModal.js'
 
 const List = () => {
