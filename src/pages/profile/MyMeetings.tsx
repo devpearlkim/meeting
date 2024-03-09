@@ -13,8 +13,7 @@ const MyMeetings = () => {
       <Profile />
       <div className="mx-10 flex w-full flex-col">
         <Sidebar path={pathname} userId={userId} />
-        <div className="flex w-4/5">
-          <div>모임정보페이지</div>
+        <div className="flex w-4/5 flex-col gap-4">
           <JoinedMeetings />
           <CreatedMeetings />
         </div>

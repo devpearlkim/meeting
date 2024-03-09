@@ -26,4 +26,15 @@ export async function getProfile() {
   }
 }
 
-export default function getInfo() {}
+export async function getUserProfile({ queryKey }) {
+  const userId = queryKey[1]
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.get(`${backendURI}/users/profile-others`)
+
+    return response.data.data
+  } catch (error) {
+    throw new Error('다른 사용자 프로필 조회 중 오류발생')
+  }
+}

@@ -1,6 +1,14 @@
+import { useQuery } from '@tanstack/react-query'
+import { useParams } from 'react-router-dom'
+import { getUserProfile } from '../../services/apiUser'
+
 const Profile = () => {
-  const userInfo = sessionStorage.getItem('userInfo')
-  console.log(JSON.stringify(userInfo))
+  const { userId } = useParams()
+
+  const { data, isFetching } = useQuery({
+    queryKey: ['profile', userId],
+    queryFn: getUserProfile,
+  })
 
   return (
     <div className="bg-pink">
