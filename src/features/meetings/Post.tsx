@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { PiSirenLight } from 'react-icons/pi'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { addLike, deleteLike } from '../../services/apiPost'
 import { useQueryClient } from '@tanstack/react-query'
 
@@ -10,6 +10,10 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const [isLogin, setIsLogin] = useState(
     sessionStorage.getItem('token') ? true : false,
   )
+
+  useEffect(() => {
+    setIsLiked(post.isLiked)
+  }, [post])
 
   const handleReportClick = () => {
     setReportedPostId(post.meetingId)
