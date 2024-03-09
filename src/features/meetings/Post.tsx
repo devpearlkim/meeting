@@ -28,7 +28,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
     await deleteLike(post.meetingId)
     queryClient.invalidateQueries({
       queryKey: ['posts'],
-      refetchType: 'visible',
+      refetchType: 'all',
     })
   }
 
@@ -38,7 +38,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
     await addLike(post.meetingId)
     queryClient.invalidateQueries({
       queryKey: ['posts'],
-      refetchType: 'visible',
+      refetchType: 'all',
     })
   }
 
