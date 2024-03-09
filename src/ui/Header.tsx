@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
-  const userId = userInfo.userId
+  const userId = userInfo?.userId
 
   const handleLogout = () => {
     console.log('로그아웃 버튼 클릭')
