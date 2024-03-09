@@ -53,13 +53,11 @@ const EditProfileForm = () => {
     console.log('개인정보 수정버튼 클릭')
     console.log('formData', formData)
 
-    editProfile(formData)
-    // try {
-    // const resonse = await editProfile(formData)
-    // navigate(`/profile/${userId}`)
-    // } catch (err) {
-    // console.error('개인정보 수정중 에러 발생->에러바운더리')
-    // }
+    try {
+      const resonse = await editProfile(formData)
+    } catch (err) {
+      console.error('개인정보 수정중 에러 발생->에러바운더리')
+    }
   }
 
   const checkDuplicate = async (nickname) => {
