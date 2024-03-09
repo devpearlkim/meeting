@@ -5,9 +5,9 @@ const Header = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const userId = userInfo?.userId
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     console.log('로그아웃 버튼 클릭')
-    logout()
+    await logout()
   }
 
   return (
