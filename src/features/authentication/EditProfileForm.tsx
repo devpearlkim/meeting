@@ -13,10 +13,14 @@ import { useQuery } from '@tanstack/react-query'
 import { getProfile } from '../../services/apiUser'
 
 const EditProfileForm = () => {
-  const { data } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ['myInfo'],
     queryFn: getProfile,
   })
+
+  if (isFetching) {
+    return <div>로딩중</div>
+  }
 
   console.log('수정전 유저정보', data)
 
