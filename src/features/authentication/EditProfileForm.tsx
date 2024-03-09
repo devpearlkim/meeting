@@ -32,7 +32,7 @@ const EditProfileForm = () => {
       password: '',
       passwordConfirm: '',
       gender: data?.gender,
-      interestCategory: data?.categories.map((cat) => cat.categoryId),
+      // interestCategory: data?.categories.map((cat) => cat.categoryId),
     },
   })
 
@@ -279,7 +279,10 @@ const EditProfileForm = () => {
           >
             카테고리
           </label>
-          <CategoryInput mode={'signup'} />
+          <CategoryInput
+            mode={'signup'}
+            default_categories={data?.categories}
+          />
         </div>
 
         <button
