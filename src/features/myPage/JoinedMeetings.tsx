@@ -14,7 +14,7 @@ const JoinedMeetings = () => {
   useEffect(() => () => setList([]), [])
 
   const { data, isFetching } = useQuery({
-    queryKey: ['posts', page],
+    queryKey: ['meeting_joined', page],
     queryFn: getJoinedMeetings,
   })
 
