@@ -20,8 +20,10 @@ const EditProfileForm = () => {
 
   console.log('수정전 유저정보', data)
 
+  let formItems
+
   useEffect(() => {
-    const formItems = useForm({
+    formItems = useForm({
       mode: 'onBlur',
       defaultValues: {
         nickname: data?.nickname,
@@ -31,19 +33,18 @@ const EditProfileForm = () => {
         gender: data?.gender,
       },
     })
+
+    const {
+      register,
+      setError,
+      formState: { errors },
+      getValues,
+      handleSubmit,
+      trigger,
+      setValue,
+      clearErrors,
+    } = formItems
   }, [data])
-
-  const {
-    register,
-    setError,
-    formState: { errors },
-    getValues,
-    handleSubmit,
-    trigger,
-    setValue,
-    clearErrors,
-  } = formItems
-
   const onSubmit = async (data) => {
     const { passwordConfirm, verificationCode, ...formData } = data
     console.log('개인정보 수정버튼 클릭')
