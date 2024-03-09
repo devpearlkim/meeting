@@ -60,7 +60,7 @@ const PostForm = ({ postData }) => {
       return
     }
     postData ? editPost(data, postData.meetingId) : addPost(data)
-    navigate('/')
+    // navigate('/')
   }
 
   return (
