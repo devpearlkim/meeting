@@ -18,6 +18,8 @@ const EditProfileForm = () => {
     queryFn: getProfile,
   })
 
+  console.log('수정전 유저정보', data)
+
   const formItems = useForm({
     mode: 'onBlur',
     defaultValues: {
