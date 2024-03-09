@@ -25,7 +25,7 @@ const Profile = () => {
           src={data?.profileImage}
           alt="프로필이미지"
         />
-        <span className="block font-semibold">{data?.nickname}</span>
+        <span className="block pl-4 font-semibold">{data?.nickname}</span>
       </div>
       <div className="flex gap-1">
         {data?.categories.map((category) => (
