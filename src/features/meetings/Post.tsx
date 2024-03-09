@@ -18,13 +18,13 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
 
   const [addLikeMutation] = useMutation(addLike, {
     onSuccess: () => {
-      QueryCache.invalidateQueries(['posts', searchFormValues, category, sort])
+      QueryCache.invalidateQueries(['posts'])
     },
   })
 
   const [deleteLikeMutation] = useMutation(deleteLike, {
     onSuccess: () => {
-      queryCache.invalidateQueries(['posts', searchFormValues, category, sort])
+      queryCache.invalidateQueries(['posts'])
     },
   })
 
