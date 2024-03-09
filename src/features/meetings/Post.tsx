@@ -24,16 +24,22 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
 
   const deleteLikeAPI = async () => {
     !isLogin && navigate('/login')
-    await deleteLike(post.meetingId)
     setIsLiked(false)
-    queryClient.invalidateQueries({ queryKey: ['posts'] })
+    await deleteLike(post.meetingId)
+    queryClient.invalidateQueries({
+      queryKey: ['posts'],
+      refetchType: 'visible',
+    })
   }
 
   const addLikeAPI = async () => {
     !isLogin && navigate('/login')
-    await addLike(post.meetingId)
     setIsLiked(true)
-    queryClient.invalidateQueries({ queryKey: ['posts'] })
+    await addLike(post.meetingId)
+    queryClient.invalidateQueries({
+      queryKey: ['posts'],
+      refetchType: 'visible',
+    })
   }
 
   return (
