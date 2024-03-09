@@ -19,20 +19,27 @@ const EditProfileForm = () => {
   })
 
   console.log('수정전 유저정보', data)
-
-  let formItems
+  const formItems = useForm({
+    mode: 'onBlur',
+    defaultValues: {
+      nickname: data?.nickname,
+      username: data?.username,
+      password: '',
+      passwordConfirm: '',
+      gender: data?.gender,
+    },
+  })
 
   useEffect(() => {
-    formItems = useForm({
-      mode: 'onBlur',
-      defaultValues: {
-        nickname: data?.nickname,
-        username: data?.username,
+    if (data) {
+      formItems.reset({
+        nickname: data.nickname,
+        username: data.username,
         password: '',
         passwordConfirm: '',
-        gender: data?.gender,
-      },
-    })
+        gender: data.gender,
+      })
+    }
   }, [data])
 
   const {
