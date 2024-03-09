@@ -51,7 +51,7 @@ const JoinedMeetings = () => {
                 ))}
               </div>
             )}
-            {Array.isArray(data) && data.length >= 4 && (
+            {Array.isArray(data) && data.length === 4 && (
               <div className="mt-4 flex justify-center">
                 <button
                   onClick={handleLoadMore}

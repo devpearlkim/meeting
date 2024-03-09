@@ -248,7 +248,7 @@ export async function getCreatedMeetings({ queryKey }) {
         },
       },
     )
-    console.log(response.data.data)
+    console.log('개설모임', response.data.data)
 
     return response.data.data
   } catch (error) {
