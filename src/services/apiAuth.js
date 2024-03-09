@@ -39,7 +39,7 @@ export async function editProfile(formData) {
       throw new Error('회원정보 수정 과정에서 오류발생')
     }
 
-    return response.data
+    return response.data.data
   } catch (error) {
     throw new Error('회원정보 수정 과정에서 오류발생' + error.message)
   }
