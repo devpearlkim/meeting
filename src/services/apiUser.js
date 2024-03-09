@@ -20,7 +20,7 @@ export async function getProfile() {
 
     sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
 
-    return null
+    return response.data.data
   } catch (error) {
     throw new Error('유저 정보 조회 중 오류 발생')
   }

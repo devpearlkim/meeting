@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getUserProfile } from '../../services/apiUser'
 
 const Profile = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const { userId } = useParams()
+  const navigate = useNavigate()
 
   const { data } = useQuery({
     queryKey: ['profile', userId],
@@ -15,6 +16,7 @@ const Profile = () => {
 
   const editProfile = () => {
     console.log('프로필 수정 버튼 클릭')
+    navigate(`/editProfile`)
   }
 
   return (

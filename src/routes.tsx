@@ -10,6 +10,7 @@ import WritePost from './pages/WritePost'
 import MyMeetings from './pages/profile/MyMeetings'
 import MyApplies from './pages/profile/MyApplies'
 import BookMark from './pages/profile/BookMark'
+import EditProfile from './pages/profile/EditProfile'
 
 export const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
         <Route path="/profile/:userId" element={<MyMeetings />} />
         <Route path="/applies/:userId" element={<MyApplies />} />
         <Route path="/bookmark/:userId" element={<BookMark />} />
+        <Route path="/editProfile" element={<EditProfile />} />
         {/* </Route> */}
       </Route>
     </Routes>
