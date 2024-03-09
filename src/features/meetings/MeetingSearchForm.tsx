@@ -33,7 +33,7 @@ const MeetingSearchFrom = () => {
           ? `&category=${currentCategory}`
           : `?category=${currentCategory}`
     }
-    navigate(`/list${queryParams}${categoryQuery}`, { state: formData })
+    navigate(`/${queryParams}${categoryQuery}`, { state: formData })
     // resetField('search')
     resetField('location')
   }

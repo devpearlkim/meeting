@@ -15,7 +15,7 @@ const MyMeetings = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    userInfo?.userId != userId && navigate(`/list`)
+    userInfo?.userId != userId && navigate(`/`)
   }, [userId])
 
   return (

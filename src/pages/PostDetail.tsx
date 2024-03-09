@@ -54,7 +54,7 @@ const postDetail = () => {
   }
 
   const handleCategoryClick = (categoryId) => {
-    navigate(`/list?category=${categoryId}`)
+    navigate(`/?category=${categoryId}`)
   }
 
   // if (isLoading) {
@@ -142,9 +142,7 @@ const postDetail = () => {
                 )}
               </div>
               <h2 className="text-4xl font-bold">{data.data.title}</h2>
-              <Link
-                to={`/list?location=${encodeURIComponent(data.data.location)}`}
-              >
+              <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>
                 <span>{data.data.location}</span>
               </Link>
               <Link to={`/profile/${data.data.host.userId}`}>
