@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import {
-  signup,
-  checkNickname,
-  sendCode,
-  checkCode,
-} from '../../services/apiAuth.js'
+import { checkNickname } from '../../services/apiAuth.js'
 import { useNavigate } from 'react-router-dom'
 import ImageUpload from '../meetings/ImageUpload.js'
 import CategoryInput from '../meetings/CategoryInput.js'
 import { useQuery } from '@tanstack/react-query'
 import { getProfile } from '../../services/apiUser'
+import { editProfile } from '../../services/apiAuth'
 
 const EditProfileForm = () => {
   const { data, isFetching } = useQuery({
@@ -18,7 +14,6 @@ const EditProfileForm = () => {
     queryFn: getProfile,
   })
 
-  console.log('수정전 유저정보', data)
   const formItems = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -54,9 +49,11 @@ const EditProfileForm = () => {
   } = formItems
 
   const onSubmit = async (data) => {
-    const { passwordConfirm, verificationCode, ...formData } = data
+    const { passwordConfirm, ...formData } = data
     console.log('개인정보 수정버튼 클릭')
-    console.log('formData', data)
+    console.log('formData', formData)
+
+    editProfile(formData)
     // try {
     // const resonse = await editProfile(formData)
     // navigate(`/profile/${userId}`)
