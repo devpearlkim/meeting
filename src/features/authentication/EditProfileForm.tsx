@@ -33,18 +33,18 @@ const EditProfileForm = () => {
         gender: data?.gender,
       },
     })
-
-    const {
-      register,
-      setError,
-      formState: { errors },
-      getValues,
-      handleSubmit,
-      trigger,
-      setValue,
-      clearErrors,
-    } = formItems
   }, [data])
+
+  const {
+    register,
+    setError,
+    formState: { errors },
+    getValues,
+    handleSubmit,
+    trigger,
+    setValue,
+    clearErrors,
+  } = formItems
 
   const onSubmit = async (data) => {
     const { passwordConfirm, verificationCode, ...formData } = data
