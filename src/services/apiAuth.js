@@ -124,9 +124,17 @@ export async function logout() {
   const token = sessionStorage.getItem('token')
 
   try {
-    const response = await axios.delete(`${backendURI}/auth/logout`, {
-      jwt: token,
-    })
+    const response = await axios.delete(
+      `${backendURI}/auth/logout`,
+      {
+        jwt: token,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
 
     return response.data
   } catch (error) {
