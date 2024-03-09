@@ -5,14 +5,14 @@ import { addLike, deleteLike } from '../../services/apiPost'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const navigate = useNavigate()
-  const [isLiked, setIsLiked] = useState(post.isLiked)
+  const [isLiked, setIsLiked] = useState()
   const [isLogin, setIsLogin] = useState(
     sessionStorage.getItem('token') ? true : false,
   )
 
   useEffect(() => {
     setIsLiked(post.isLiked)
-  }, [post.isLiked])
+  }, [post])
 
   const handleReportClick = () => {
     setReportedPostId(post.meetingId)
