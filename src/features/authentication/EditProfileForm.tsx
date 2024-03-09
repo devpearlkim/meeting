@@ -66,6 +66,9 @@ const EditProfileForm = () => {
   }
 
   const checkDuplicate = async (nickname) => {
+    if (data?.nickname === nickname) {
+      return true
+    }
     const response = await checkNickname({ nickname })
     const isUsable = response.data
     return isUsable
