@@ -42,8 +42,8 @@ const postDetail = () => {
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
 
   useEffect(() => {
-    setIsLiked(data.data.isLiked)
-  }, [data.data.isLiked])
+    setIsLiked(data?.data.isLiked)
+  }, [data?.data.isLiked])
 
   const deleteLikeAPI = () => {
     !isLogin && navigate('/login')
