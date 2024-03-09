@@ -18,7 +18,7 @@ export async function editProfile(formData) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.post(`${backendURI}/users/profile`, {
+    const response = await axios.patch(`${backendURI}/users/profile`, {
       ...formData,
     })
 
