@@ -34,15 +34,16 @@ const LikedMeetings = () => {
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
             <div className="flex flex-wrap justify-between gap-2">
-              {list?.map((post) => (
-                <Post
-                  key={post.id}
-                  post={post}
-                  setShowModal={setShowModal}
-                  reportedPostId={reportedPostId}
-                  setReportedPostId={setReportedPostId}
-                />
-              ))}
+              {list.length &&
+                list.map((post) => (
+                  <Post
+                    key={post.id}
+                    post={post}
+                    setShowModal={setShowModal}
+                    reportedPostId={reportedPostId}
+                    setReportedPostId={setReportedPostId}
+                  />
+                ))}
             </div>
 
             {isFetching && Array.isArray(data) && data.length === 1 && (
