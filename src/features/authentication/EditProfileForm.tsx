@@ -300,7 +300,7 @@ const EditProfileForm = () => {
               type="submit"
               className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
             >
-              회원가입하기
+              수정완료
             </button>
           </form>
         </FormProvider>
