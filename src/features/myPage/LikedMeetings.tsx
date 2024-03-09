@@ -33,7 +33,7 @@ const LikedMeetings = () => {
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
             <div className="flex flex-wrap justify-between gap-2">
-              {list.map((post) => (
+              {list?.map((post) => (
                 <Post
                   key={post.id}
                   post={post}
