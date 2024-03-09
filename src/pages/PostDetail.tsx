@@ -7,7 +7,7 @@ import {
   deletePost,
 } from '../services/apiPost'
 import { getMeetingParicipants } from '../services/apiParticipant'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
 import toast from 'react-hot-toast'
 
@@ -40,6 +40,10 @@ const postDetail = () => {
   }
 
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
+
+  useEffect(() => {
+    setIsLiked(data.data.isLiked)
+  }, [data.data.isLiked])
 
   const deleteLikeAPI = () => {
     !isLogin && navigate('/login')

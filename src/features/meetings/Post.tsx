@@ -10,6 +10,10 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
     sessionStorage.getItem('token') ? true : false,
   )
 
+  useEffect(() => {
+    setIsLiked(post.isLiked)
+  }, [post.isLiked])
+
   const handleReportClick = () => {
     setReportedPostId(post.meetingId)
     setShowModal(true)
