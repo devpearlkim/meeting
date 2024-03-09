@@ -6,6 +6,9 @@ import SkeletonPost from '../meetings/SkeletonPost'
 import ReportModal from '../../features/meetings/ReportModal'
 
 const LikedMeetings = () => {
+  // 서버에서 isLike값을 줌->프론트에서 상태관리 하지 않아 로그인한 유저들 것만 조회가능
+  // 일단 본인만 조회 -> 추후 공개설정시 useParams로 userId가져와서 좋아요목록 조회 가능할 경우 보여주기
+
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(1)

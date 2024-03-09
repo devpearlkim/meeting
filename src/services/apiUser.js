@@ -31,7 +31,9 @@ export async function getUserProfile({ queryKey }) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.get(`${backendURI}/users/profile-others`)
+    const response = await axios.get(
+      `${backendURI}/users/${userId}/profile-others`,
+    )
 
     return response.data.data
   } catch (error) {

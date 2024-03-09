@@ -248,10 +248,30 @@ export async function getCreatedMeetings({ queryKey }) {
         },
       },
     )
-    console.log('개설모임', response.data.data)
 
     return response.data.data
   } catch (error) {
-    throw new Error('참여중인 모임 가져오는 중 오류발생')
+    throw new Error('개설중인 모임 가져오는 중 오류발생')
+  }
+}
+
+export async function getCreatedMeetingIds({ queryKey }) {
+  const page = queryKey[1]
+  const token = sessionStorage.getItem('token')
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.get(
+      `${backendURI}/users/meetings-creator?page=${page}&perPage=4`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+
+    return response.data.data.map((meeting) => meeting.meetingId)
+  } catch (error) {
+    throw new Error('개설 모임 id배열 가져오는 중 오류발생')
   }
 }

@@ -2,6 +2,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Profile from '../../features/myPage/Profile'
 import Sidebar from '../../features/myPage/Sidebar'
 import { useEffect } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 const MyApplies = () => {
   const { pathname } = useLocation()

@@ -6,6 +6,8 @@ import SkeletonPost from '../meetings/SkeletonPost'
 import ReportModal from '../../features/meetings/ReportModal'
 
 const JoinedMeetings = () => {
+  // 추후 useParams로 userId가져와서 해당 유저 정보 조회
+
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(1)
