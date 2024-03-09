@@ -54,7 +54,7 @@ const CategoryInput = ({ mode, default_categories }) => {
       setSelectedCategories(updatedCategories)
       console.log(newCategories.map((item) => parseInt(item)))
       setValue(
-        'interestCategory',
+        'categoryIds',
         newCategories.map((item) => parseInt(item)),
       )
       return
