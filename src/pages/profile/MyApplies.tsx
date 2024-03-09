@@ -1,10 +1,16 @@
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Profile from '../../features/myPage/Profile'
 import Sidebar from '../../features/myPage/Sidebar'
 
 const MyApplies = () => {
   const { pathname } = useLocation()
   const { userId } = useParams()
+  const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
+  const navigate = useNavigate()
+  if (userInfo?.userId != userId) {
+    navigate(`/profile/${userId}`)
+    return
+  }
 
   return (
     <div className="flex">
