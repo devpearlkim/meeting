@@ -9,11 +9,11 @@ const Header = () => {
   }
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-around">
       <Link to={'/'}>
         <div>로고</div>
       </Link>
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-10">
         {userId ? (
           <Link to={`/profile/${userId}`}>
             <span>마이페이지아이콘</span>
