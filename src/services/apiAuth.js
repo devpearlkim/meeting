@@ -18,9 +18,17 @@ export async function editProfile(formData) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.patch(`${backendURI}/users/profile`, {
-      ...formData,
-    })
+    const response = await axios.patch(
+      `${backendURI}/users/profile`,
+      {
+        ...formData,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
 
     if (response.status !== 200) {
       throw new Error('회원가입 과정에서 오류발생')
