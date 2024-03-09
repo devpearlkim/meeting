@@ -1,6 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { getPostDetail, addLike, deleteLike } from '../services/apiPost'
+import {
+  getPostDetail,
+  addLike,
+  deleteLike,
+  deletePost,
+} from '../services/apiPost'
 import { getMeetingParicipants } from '../services/apiParticipant'
 import { useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
@@ -31,6 +36,7 @@ const postDetail = () => {
 
   const handleDeleteClick = () => {
     // 삭제 기능 실행
+    deletePost(postId)
   }
 
   const [isLiked, setIsLiked] = useState(data?.data.isLiked)
