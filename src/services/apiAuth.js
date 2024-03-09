@@ -118,3 +118,18 @@ export async function login({ email, password }) {
     throw new Error('로그인에 실패했습니다')
   }
 }
+
+export async function logout() {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+  const token = sessionStorage.getItem('token')
+
+  try {
+    const response = await axios.post(`${backendURI}/auth/logout`, {
+      jwt: token,
+    })
+
+    return response.data
+  } catch (error) {
+    throw new Error('로그아웃에 실패했습니다')
+  }
+}
