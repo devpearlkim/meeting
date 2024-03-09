@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { PiSirenLight } from 'react-icons/pi'
 import { useEffect, useState } from 'react'
 import { addLike, deleteLike } from '../../services/apiPost'
-import { queryCache } from '@tanstack/react-query'
+import { QueryCache, useQueryClient } from '@tanstack/react-query'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const navigate = useNavigate()
@@ -16,18 +16,20 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
     setShowModal(true)
   }
 
+  const queryClient = useQueryClient()
+
   const deleteLikeAPI = () => {
     !isLogin && navigate('/login')
     deleteLike(post.meetingId)
     setIsLiked(false)
-    queryCache.invalidateQueries((key) => key.startsWith('posts'))
+    queryClient.invalidateQueries({ queryKey: ['posts'] })
   }
 
   const addLikeAPI = () => {
     !isLogin && navigate('/login')
     addLike(post.meetingId)
     setIsLiked(true)
-    queryCache.invalidateQueries((key) => key.startsWith('posts'))
+    queryClient.invalidateQueries({ queryKey: ['posts'] })
   }
 
   return (
