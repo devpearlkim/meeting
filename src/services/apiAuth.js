@@ -124,7 +124,7 @@ export async function logout() {
   const token = sessionStorage.getItem('token')
 
   try {
-    const response = await axios.post(`${backendURI}/auth/logout`, {
+    const response = await axios.delete(`${backendURI}/auth/logout`, {
       jwt: token,
     })
 
