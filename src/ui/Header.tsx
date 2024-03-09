@@ -23,7 +23,7 @@ const Header = () => {
             <button>로그인버튼</button>
           </Link>
         )}
-        {userId && <button onClick={handleLogout}>로그인버튼</button>}
+        {userId && <button onClick={handleLogout}>로그아웃버튼</button>}
       </div>
     </div>
   )
