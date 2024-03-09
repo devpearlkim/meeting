@@ -32,10 +32,11 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
     // })
   }
 
-  const data = useQuery({
+  const { data } = useQuery({
     queryKey: ['like', post.meetingId],
     queryFn: getPostDetail,
   })
+
   useEffect(() => {
     setIsLiked(data?.data.isLiked)
   }, [data])
