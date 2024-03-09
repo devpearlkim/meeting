@@ -55,7 +55,7 @@ const EditProfileForm = () => {
 
     try {
       const resonse = await editProfile(formData)
-      <console className="l"></console>og('프로필수정 결과',resonse)
+      console.log('프로필수정 결과', resonse)
     } catch (err) {
       console.error('개인정보 수정중 에러 발생->에러바운더리')
     }
