@@ -18,10 +18,9 @@ const EditProfileForm = () => {
     queryFn: getProfile,
   })
 
-  if (isFetching) {
-    return <div>로딩중</div>
+  if (!data) {
+    return null
   }
-
   console.log('수정전 유저정보', data)
 
   const formItems = useForm({
