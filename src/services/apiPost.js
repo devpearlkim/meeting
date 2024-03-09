@@ -106,7 +106,7 @@ export async function editPost(formData, meetingId) {
 
   try {
     const response = await axios.patch(
-      `${backendURI}/${meetingId}/meetings`,
+      `${backendURI}/meetings/${meetingId}`,
       {
         ...formData,
         categories,
@@ -119,7 +119,23 @@ export async function editPost(formData, meetingId) {
     )
     return response.data
   } catch (error) {
-    throw new Error('글 추가하는 중 오류발생')
+    throw new Error('글 수정하는 중 오류발생')
+  }
+}
+
+export async function deletePost(meetingId) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+  const token = sessionStorage.getItem('token')
+
+  try {
+    const response = await axios.delete(`${backendURI}/meetings/${meetingId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    return response.data
+  } catch (error) {
+    throw new Error('글 삭제하는 중 오류발생')
   }
 }
 
