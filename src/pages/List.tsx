@@ -1,14 +1,14 @@
 import { Link, useLocation } from 'react-router-dom'
 import MeetingSearchForm from '../features/meetings/MeetingSearchForm'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useInView } from 'react-intersection-observer'
-import { getPost } from '../services/apiPost.js'
+import { getPost } from '../services/apiPost'
 import { throttle } from 'lodash'
-import Post from '../features/meetings/Post.js'
-import SkeletonPost from '../features/meetings/SkeletonPost .js'
+import Post from '../features/meetings/Post'
+import SkeletonPost from '../features/meetings/SkeletonPost'
 // import { PiSirenLight } from 'react-icons/pi'
-import ReportModal from '../features/meetings/ReportModal.js'
+import ReportModal from '../features/meetings/ReportModal'
 
 const List = () => {
   const [searchFormValues, setSearchFormValues] = useState({})
