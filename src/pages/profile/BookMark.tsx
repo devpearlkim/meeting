@@ -2,16 +2,17 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Profile from '../../features/myPage/Profile'
 import Sidebar from '../../features/myPage/Sidebar'
 import LikedMeetings from '../../features/myPage/LikedMeetings'
+import { useEffect } from 'react'
 
 const BookMark = () => {
   const { pathname } = useLocation()
   const { userId } = useParams()
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const navigate = useNavigate()
-  if (userInfo?.userId != userId) {
-    navigate(`/profile/${userId}`)
-    return
-  }
+
+  useEffect(() => {
+    userInfo?.userId != userId && navigate(`/profile/${userId}`)
+  }, [userId])
 
   return (
     <div className="flex">
