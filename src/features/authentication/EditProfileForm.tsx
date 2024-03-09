@@ -28,9 +28,20 @@ const EditProfileForm = () => {
       password: '',
       passwordConfirm: '',
       gender: data?.gender,
-      // interestCategory: data?.categories.map((cat) => cat.categoryId),
     },
   })
+
+  useEffect(() => {
+    if (data) {
+      formItems.reset({
+        nickname: data.nickname,
+        username: data.username,
+        password: '',
+        passwordConfirm: '',
+        gender: data.gender,
+      })
+    }
+  }, [data])
 
   const {
     register,
