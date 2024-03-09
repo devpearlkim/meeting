@@ -34,26 +34,25 @@ const LikedMeetings = () => {
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
             <div className="flex flex-wrap justify-between gap-2">
-              {list.length &&
-                list.map((post) => (
-                  <Post
-                    key={post.id}
-                    post={post}
-                    setShowModal={setShowModal}
-                    reportedPostId={reportedPostId}
-                    setReportedPostId={setReportedPostId}
-                  />
-                ))}
+              {list.map((post) => (
+                <Post
+                  key={post.id}
+                  post={post}
+                  setShowModal={setShowModal}
+                  reportedPostId={reportedPostId}
+                  setReportedPostId={setReportedPostId}
+                />
+              ))}
             </div>
 
-            {isFetching && Array.isArray(data) && data.length === 1 && (
+            {isFetching && Array.isArray(data) && data.length === 8 && (
               <div className="flex flex-wrap justify-between gap-2">
-                {[...Array(4)].map((_, i) => (
+                {[...Array(8)].map((_, i) => (
                   <SkeletonPost key={i} />
                 ))}
               </div>
             )}
-            {Array.isArray(data) && data.length >= 1 && (
+            {Array.isArray(data) && data.length >= 8 && (
               <div className="mt-4 flex justify-center">
                 <button
                   onClick={handleLoadMore}

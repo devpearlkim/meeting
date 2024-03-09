@@ -214,8 +214,6 @@ export async function getLikedMeetings({ queryKey }) {
 
 export async function getJoinedMeetings({ queryKey }) {
   const page = queryKey[1]
-
-  console.log('queryKey', queryKey)
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
@@ -228,8 +226,8 @@ export async function getJoinedMeetings({ queryKey }) {
         },
       },
     )
+    console.log(response.data.data)
 
-    console.log('참여모임', response.data)
     return response.data.data
   } catch (error) {
     throw new Error('참여중인 모임 가져오는 중 오류발생')
@@ -243,15 +241,15 @@ export async function getCreatedMeetings({ queryKey }) {
 
   try {
     const response = await axios.get(
-      `${backendURI}/users/meetings-creator?page=${page}&perPage=1`,
+      `${backendURI}/users/meetings-creator?page=${page}&perPage=4`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       },
     )
+    console.log(response.data.data)
 
-    console.log('개설모임', response.data)
     return response.data.data
   } catch (error) {
     throw new Error('참여중인 모임 가져오는 중 오류발생')
