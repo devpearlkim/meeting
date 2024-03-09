@@ -280,10 +280,6 @@ const EditProfileForm = () => {
               </label>
               <ImageUpload type={'profile'} />
             </div>
-            <input
-              {...register('provider', { value: 'local' })}
-              type="hidden"
-            />
             <div>
               <label
                 htmlFor="category"

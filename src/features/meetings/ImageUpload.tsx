@@ -9,9 +9,12 @@ const ImageUpload = ({ type }) => {
     const selectedFile = e.target.files[0]
     setFile(selectedFile)
 
-    type === 'profile'
-      ? setValue('profileImage', selectedFile.name)
-      : setValue('image', selectedFile.name)
+    if (type === 'profile') {
+      const fileName = selectedFile.name
+      setValue('profileImage', fileName)
+    } else {
+      setValue('image', selectedFile.name)
+    }
 
     e.target.value = null
   }
