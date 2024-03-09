@@ -12,10 +12,7 @@ const Profile = () => {
     queryFn: getUserProfile,
   })
 
-  console.log('프로필정보', data)
-
   const editProfile = () => {
-    console.log('프로필 수정 버튼 클릭')
     navigate(`/editProfile`)
   }
 
@@ -29,7 +26,7 @@ const Profile = () => {
         />
         <span className="block pl-4 font-semibold">{data?.nickname}</span>
       </div>
-      <div className="flex gap-1">
+      <div className="flex flex-wrap gap-1">
         {data?.categories.map((category) => (
           <button className="inline-block rounded-full bg-blue-500 px-3 py-1 text-xs text-white">
             {category.name}

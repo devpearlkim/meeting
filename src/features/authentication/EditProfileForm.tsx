@@ -7,6 +7,7 @@ import CategoryInput from '../meetings/CategoryInput.js'
 import { useQuery } from '@tanstack/react-query'
 import { getProfile } from '../../services/apiUser'
 import { editProfile } from '../../services/apiAuth'
+import toast from 'react-hot-toast'
 
 const EditProfileForm = () => {
   const { data, isFetching } = useQuery({
@@ -50,13 +51,14 @@ const EditProfileForm = () => {
 
   const onSubmit = async (data) => {
     const { passwordConfirm, ...formData } = data
-    console.log('개인정보 수정버튼 클릭')
-    console.log('formData', formData)
+    const navigate = useNavigate()
 
     try {
-      const resonse = await editProfile(formData)
-      console.log('프로필수정 결과', resonse)
+      await editProfile(formData)
+      toast.success('개인정보 수정 완료')
+      navigate(`/profile/${data.userId}`)
     } catch (err) {
+      toast.error('개인정보 수정 실패')
       console.error('개인정보 수정중 에러 발생->에러바운더리')
     }
   }
