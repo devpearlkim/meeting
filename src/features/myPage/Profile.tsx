@@ -5,10 +5,10 @@ import { getUserProfile } from '../../services/apiUser'
 const Profile = () => {
   const { userId } = useParams()
 
-  const { data, isFetching } = useQuery({
-    queryKey: ['profile', userId],
-    queryFn: getUserProfile,
-  })
+  // const { data, isFetching } = useQuery({
+  //   queryKey: ['profile', userId],
+  //   queryFn: getUserProfile,
+  // })
 
   return (
     <div className="bg-pink">
