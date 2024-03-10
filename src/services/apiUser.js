@@ -41,16 +41,20 @@ export async function getUserProfile({ queryKey }) {
   }
 }
 
-export async function getAppliedMeetings() {
+export async function getAppliedMeetings({ queryKey }) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const token = sessionStorage.getItem('token')
+  const page = queryKey[1]
 
   try {
-    const response = await axios.get(`${backendURI}/users/participants`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await axios.get(
+      `${backendURI}/users/participants?page=${page}&perPage=5`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
+    )
 
     return response.data.data
   } catch (error) {

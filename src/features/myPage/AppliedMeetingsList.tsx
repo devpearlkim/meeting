@@ -1,11 +1,21 @@
 import { useQuery } from '@tanstack/react-query'
-import { AppliedMeetings } from '../../services/apiUser'
+import { getAppliedMeetings } from '../../services/apiUser'
+import { useState } from 'react'
 
 const AppliedMeetingsList = () => {
+  const [page, setPage] = useState(1)
   const { data } = useQuery({
-    queryKey: ['appliedMeetings'],
-    queryFn: AppliedMeetings,
+    queryKey: ['appliedMeetings', page],
+    queryFn: getAppliedMeetings,
   })
+
+  const handlePrevPage = () => {
+    setPage((prevPage) => Math.max(prevPage - 1, 1))
+  }
+
+  const handleNextPage = () => {
+    setPage((prevPage) => prevPage + 1)
+  }
 
   return (
     <>
@@ -72,11 +82,18 @@ const AppliedMeetingsList = () => {
                   </table>
                   <div className="xs:flex-row xs:justify-between flex flex-col items-center border-t bg-white px-5 py-5">
                     <div className="xs:mt-0 mt-2 inline-flex">
-                      <button className="rounded-l bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500">
+                      <button
+                        onClick={handlePrevPage}
+                        disabled={page === 1}
+                        className="rounded-l bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500"
+                      >
                         Prev
                       </button>
-                      &nbsp; &nbsp;
-                      <button className="rounded-r bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500">
+                      <button
+                        onClick={handleNextPage}
+                        disabled={data?.length < 5}
+                        className="rounded-r bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500"
+                      >
                         Next
                       </button>
                     </div>
