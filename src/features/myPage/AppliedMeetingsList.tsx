@@ -22,7 +22,7 @@ const AppliedMeetingsList = () => {
       {!data ? (
         <div>모임 신청 내역이 없습니다</div>
       ) : (
-        data.map((apply) => (
+      
           <div>
             <span>신청내역</span>
             <div className="w-full rounded-md bg-white p-8">
@@ -46,34 +46,34 @@ const AppliedMeetingsList = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {products.map((product, index) => (
-                        <tr key={index}>
+                      {data.map((apply) => (
+                        <tr key={apply.participantId}>
                           <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <div className="ml-3">
                               <p className="whitespace-no-wrap text-gray-900">
-                                {data.meeting.title}
+                                {apply.meeting.title}
                               </p>
                             </div>
                           </td>
                           <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <p className="whitespace-no-wrap text-gray-900">
-                              {data.created_at}
+                              {apply.created_at}
                             </p>
                           </td>
                           <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <p className="whitespace-no-wrap text-gray-900">
-                              {data.meeting.meeting_date}
+                              {apply.meeting.meeting_date}
                             </p>
                           </td>
                           <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <span
-                              className={`relative inline-block px-3 py-1 font-semibold text-${product.status === 'Activo' ? 'green' : product.status === 'Suspended' ? 'orange' : 'red'}-900 leading-tight`}
+                              className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'pending' ? 'green' : apply.status === 'rejected' ? 'orange' : 'red'}-900 leading-tight`}
                             >
                               <span
                                 aria-hidden
                                 className="absolute inset-0 rounded-full bg-green-200 opacity-50"
                               ></span>
-                              <span className="relative">{data.status}</span>
+                              <span className="relative">{apply.status}</span>
                             </span>
                           </td>
                         </tr>
