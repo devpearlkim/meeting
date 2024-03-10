@@ -57,7 +57,7 @@ const ReceivedApplicationsList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {participantQueries.map((apply) => (
+                    {participantQueries?.map((apply) => (
                       <tr key={apply.participantId}>
                         <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
                           {/* <Link to={`/detail/${apply.meeting.meetingId}`}> */}
@@ -88,38 +88,23 @@ const ReceivedApplicationsList = () => {
                           </p>
                         </td>
                         <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <span
-                            className={`relative inline-block px-3 py-1 font-semibold  leading-tight`}
+                          <button
+                            onClick={() =>
+                              acceptMeetingApplication(apply.participantId)
+                            }
+                            className="inline-block rounded-md bg-green-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-green-600"
                           >
-                            <span
-                              aria-hidden
-                              className="absolute inset-0 rounded-full bg-green-200 opacity-50"
-                            ></span>
-                            <button
-                              onClick={() =>
-                                acceptMeetingApplication(apply.participantId)
-                              }
-                              className="relative"
-                            >
-                              수락
-                            </button>
-                          </span>
-                          <span
-                            className={`relative inline-block px-3 py-1 font-semibold  leading-tight`}
+                            수락
+                          </button>
+
+                          <button
+                            onClick={() =>
+                              rejectMeetingApplication(apply.participantId)
+                            }
+                            className="inline-block rounded-md bg-red-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-red-600"
                           >
-                            <span
-                              aria-hidden
-                              className="inserounded-full absolute bg-red-300 opacity-50"
-                            ></span>
-                            <button
-                              onClick={() =>
-                                rejectMeetingApplication(apply.participantId)
-                              }
-                              className="relative"
-                            >
-                              거절
-                            </button>
-                          </span>
+                            거절
+                          </button>
                         </td>
                       </tr>
                     ))}
