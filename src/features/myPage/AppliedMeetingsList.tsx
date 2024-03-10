@@ -85,11 +85,8 @@ const AppliedMeetingsList = () => {
                           >
                             <span
                               aria-hidden
-                              className={`absolute inset-0 rounded-full bg-${apply.status === 'canceled' ? 'slate-300' : apply.status === 'pending' ? 'green-200' : 'red-300'} opacity-50`}
+                              className={`absolute inset-0 rounded-full ${apply.status === 'canceled' ? 'bg-slate-300' : apply.status === 'pending' ? 'bg-green-200' : 'bg-red-300'} opacity-50`}
                             ></span>
-                            {console.log(apply.status)}
-                            {console.log(apply.status === 'canceled')}
-                            {console.log(apply.status === 'pending')}
                             <span className="relative">{apply.status}</span>
                           </span>
                           <button
