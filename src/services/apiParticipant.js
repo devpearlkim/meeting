@@ -24,7 +24,7 @@ export async function getMeetingsParicipants({ queryKey }) {
         const response = await axios.get(
           `${backendURI}/meetings/${meetingId}/participants`,
         )
-        return response.data
+        return response.data.data
       }),
     )
 
