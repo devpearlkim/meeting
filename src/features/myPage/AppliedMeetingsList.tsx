@@ -81,7 +81,7 @@ const AppliedMeetingsList = () => {
                         </td>
                         <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                           <span
-                            className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'pend' ? 'green' : apply.status === 'canceled' ? 'orange' : 'red'}-900 leading-tight`}
+                            className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'pending' ? 'green' : apply.status === 'canceled' ? 'orange' : 'red'}-900 leading-tight`}
                           >
                             <span
                               aria-hidden
