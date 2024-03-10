@@ -98,9 +98,7 @@ const AppliedMeetingsList = () => {
                                 }
                                 className="pl-4"
                               >
-                                <div>
-                                  <FaTimes />
-                                </div>
+                                X
                               </button>
                             ))}
                         </td>
