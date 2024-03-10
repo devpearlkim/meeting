@@ -217,21 +217,24 @@ const postDetail = () => {
               <div className="mr-20 overflow-hidden rounded-lg bg-white shadow-lg">
                 <ul className="divide-y divide-gray-200">
                   {members.map((member, index) => (
-                    <li
-                      key={index}
-                      className="user-card flex items-center justify-between p-3"
-                    >
-                      <div className="flex items-center">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src={member.profileImage}
-                          alt={member.nickname}
-                        />
-                        <span className="ml-3 font-medium">
-                          {member.nickname}
-                        </span>
-                      </div>
-                    </li>
+                    // <Link to={`/profile/${member.userid}`}>
+                    <Link to={'/profile/28'}>
+                      <li
+                        key={index}
+                        className="user-card flex items-center justify-between p-3"
+                      >
+                        <div className="flex items-center">
+                          <img
+                            className="h-10 w-10 rounded-full"
+                            src={member.profileImage}
+                            alt={member.nickname}
+                          />
+                          <span className="ml-3 font-medium">
+                            {member.nickname}
+                          </span>
+                        </div>
+                      </li>
+                    </Link>
                   ))}
                 </ul>
               </div>
