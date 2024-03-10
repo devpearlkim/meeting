@@ -6,11 +6,6 @@ import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 
 const AppliedMeetingsList = () => {
-  const { data } = useQuery({
-    queryKey: ['appliedMeetings', page],
-    queryFn: getAppliedMeetings,
-  })
-
   const queryClient = useQueryClient()
 
   const handleDelete = async (participantId) => {
