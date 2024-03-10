@@ -3,6 +3,7 @@ import { getAppliedMeetings } from '../../services/apiUser'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaTimes } from 'react-icons/fa'
 
 const AppliedMeetingsList = () => {
   const [page, setPage] = useState(1)
@@ -89,11 +90,17 @@ const AppliedMeetingsList = () => {
                             ></span>
                             <span className="relative">{apply.status}</span>
                           </span>
-                          <button
-                            onClick={() => handleDelete(apply.participantId)}
-                          >
-                            삭제
-                          </button>
+                          {apply.status === 'pending' ||
+                            (apply.status === 'rejected' && (
+                              <button
+                                onClick={() =>
+                                  handleDelete(apply.participantId)
+                                }
+                                className="pl-4"
+                              >
+                                <FaTimes />
+                              </button>
+                            ))}
                         </td>
                       </tr>
                     ))}
