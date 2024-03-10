@@ -24,6 +24,7 @@ const ReceivedApplicationsList = () => {
     await changeParticipantStatus(participantId, 'rejected')
   }
 
+  console.log('ids', meetingIds)
   console.log('신청받은내역', participantQueries)
 
   return (
