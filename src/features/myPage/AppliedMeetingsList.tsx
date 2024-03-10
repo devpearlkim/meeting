@@ -19,8 +19,8 @@ const AppliedMeetingsList = () => {
     setPage((prevPage) => prevPage + 1)
   }
 
-  const handleDelete = (participantId) => {
-    changeParticipantStatus(participantId, 'canceled')
+  const handleDelete = async (participantId) => {
+    await changeParticipantStatus(participantId, 'canceled')
   }
 
   return (
