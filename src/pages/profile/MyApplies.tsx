@@ -22,7 +22,7 @@ const MyApplies = () => {
       <div className="mx-10 flex w-full flex-col">
         <Sidebar path={pathname} userId={userId} />
         <div className="flex w-4/5">
-          <AppliedMeetingsList />
+          {/* <AppliedMeetingsList /> */}
           <ReceivedApplicationsList />
         </div>
       </div>
