@@ -1,13 +1,9 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getCreatedMeetingIds } from '../../services/apiPost'
-import { getMeetingsParicipants } from '../../services/apiParticipant'
-import { useState } from 'react'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { Link } from 'react-router-dom'
 
 const ReceivedApplicationsList = () => {
-  const [page, setPage] = useState(1)
-
   const { data: meetingIds } = useQuery({
     queryKey: ['createdMeetingIds'],
     queryFn: getCreatedMeetingIds,

@@ -6,6 +6,20 @@ import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 
 const AppliedMeetingsList = () => {
+  const [page, setPage] = useState(1)
+  const { data } = useQuery({
+    queryKey: ['appliedMeetings', page],
+    queryFn: getAppliedMeetings,
+  })
+
+  const handlePrevPage = () => {
+    setPage((prevPage) => Math.max(prevPage - 1, 1))
+  }
+
+  const handleNextPage = () => {
+    setPage((prevPage) => prevPage + 1)
+  }
+
   const queryClient = useQueryClient()
 
   const handleDelete = async (participantId) => {
