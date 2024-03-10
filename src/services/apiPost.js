@@ -198,7 +198,7 @@ export async function getLikedMeetings({ queryKey }) {
 
   try {
     const response = await axios.get(
-      `${backendURI}/users/likes?page=${page}&perPage=8`,
+      `${backendURI}/users/likes?page=${page}&perPage=6`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -219,7 +219,7 @@ export async function getJoinedMeetings({ queryKey }) {
 
   try {
     const response = await axios.get(
-      `${backendURI}/users/meetings?page=${page}&perPage=4`,
+      `${backendURI}/users/meetings?page=${page}&perPage=6`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -241,7 +241,7 @@ export async function getCreatedMeetings({ queryKey }) {
 
   try {
     const response = await axios.get(
-      `${backendURI}/users/meetings-creator?page=${page}&perPage=4`,
+      `${backendURI}/users/meetings-creator?page=${page}&perPage=6`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -256,19 +256,15 @@ export async function getCreatedMeetings({ queryKey }) {
 }
 
 export async function getCreatedMeetingIds({ queryKey }) {
-  const page = queryKey[1]
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
   try {
-    const response = await axios.get(
-      `${backendURI}/users/meetings-creator?page=${page}&perPage=4`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    const response = await axios.get(`${backendURI}/users/meetings-creator`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    )
+    })
 
     return response.data.data.map((meeting) => meeting.meetingId)
   } catch (error) {

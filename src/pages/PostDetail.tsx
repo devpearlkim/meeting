@@ -108,6 +108,34 @@ const postDetail = () => {
     setShowParticipantModal(true)
   }
 
+  const members = [
+    {
+      nickname: 'Christy',
+      profileImage:
+        'https://unsplash.com/photos/oh0DITWoHi4/download?force=true&w=640',
+    },
+    {
+      nickname: 'David',
+      profileImage:
+        'https://unsplash.com/photos/7Zb7kUyQg1E/download?force=true&w=640',
+    },
+    {
+      nickname: 'Nancy',
+      profileImage:
+        'https://unsplash.com/photos/F_-0BxGuVvo/download?force=true&w=640',
+    },
+    {
+      nickname: 'Stella',
+      profileImage:
+        'https://unsplash.com/photos/3TLl_97HNJo/download?force=true&w=640',
+    },
+    {
+      name: 'Mary',
+      profileImage:
+        'https://unsplash.com/photos/1AhGNGKuhR0/download?force=true&w=640',
+    },
+  ]
+
   return (
     <div className="mx-auto flex max-w-screen-lg flex-col overflow-hidden bg-yellow-300 py-4">
       {data?.data && (
@@ -186,7 +214,31 @@ const postDetail = () => {
               <div>{data.data.description}</div>
             </div>
             <div className="md:w-1/2">
-              <div>모임참여멤버들</div>
+              <div className="bg-gray-100">
+                <div className="mx-auto my-10 max-w-sm">
+                  <div className="overflow-hidden rounded-lg bg-white shadow-lg">
+                    <ul className="divide-y divide-gray-200">
+                      {members.map((member, index) => (
+                        <li
+                          key={index}
+                          className="user-card flex items-center justify-between p-3"
+                        >
+                          <div className="flex items-center">
+                            <img
+                              className="h-10 w-10 rounded-full"
+                              src={member.profileImage}
+                              alt={member.nickname}
+                            />
+                            <span className="ml-3 font-medium">
+                              {member.nickname}
+                            </span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </>

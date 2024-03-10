@@ -46,14 +46,14 @@ const JoinedMeetings = () => {
               ))}
             </div>
 
-            {isFetching && Array.isArray(data) && data.length === 4 && (
+            {isFetching && Array.isArray(data) && data.length === 6 && (
               <div className="flex flex-wrap justify-between gap-2">
-                {[...Array(4)].map((_, i) => (
+                {[...Array(6)].map((_, i) => (
                   <SkeletonPost key={i} />
                 ))}
               </div>
             )}
-            {Array.isArray(data) && data.length === 4 && (
+            {Array.isArray(data) && data.length === 6 && (
               <div className="mt-4 flex justify-center">
                 <button
                   onClick={handleLoadMore}
