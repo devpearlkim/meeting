@@ -59,57 +59,58 @@ const ReceivedApplicationsList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {participantQueries?.map((apply) => (
-                      <tr key={apply.participantId}>
-                        <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
-                          {/* <Link to={`/detail/${apply.meeting.meetingId}`}> */}
-                          <div className="ml-3">
+                    {Array.isArray(participantQueries) &&
+                      participantQueries?.map((apply) => (
+                        <tr key={apply.participantId}>
+                          <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
+                            {/* <Link to={`/detail/${apply.meeting.meetingId}`}> */}
+                            <div className="ml-3">
+                              <p className="whitespace-no-wrap text-gray-900">
+                                {/* {apply.meeting.title} */}
+                                모임이름
+                              </p>
+                            </div>
+                            {/* </Link> */}
+                          </td>
+
+                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <p className="whitespace-no-wrap text-gray-900">
-                              {/* {apply.meeting.title} */}
-                              모임이름
+                              {apply.nickname}
                             </p>
-                          </div>
-                          {/* </Link> */}
-                        </td>
+                          </td>
+                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap text-gray-900">
+                              {/* {apply.created_at} */}
+                              신청일
+                            </p>
+                          </td>
+                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap text-gray-900">
+                              {/* {apply.meeting.meeting_date} */}
+                              모임날짜
+                            </p>
+                          </td>
+                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                            <button
+                              onClick={() =>
+                                acceptMeetingApplication(apply.participantId)
+                              }
+                              className="inline-block rounded-md bg-green-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-green-600"
+                            >
+                              수락
+                            </button>
 
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <p className="whitespace-no-wrap text-gray-900">
-                            {apply.nickname}
-                          </p>
-                        </td>
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <p className="whitespace-no-wrap text-gray-900">
-                            {/* {apply.created_at} */}
-                            신청일
-                          </p>
-                        </td>
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <p className="whitespace-no-wrap text-gray-900">
-                            {/* {apply.meeting.meeting_date} */}
-                            모임날짜
-                          </p>
-                        </td>
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <button
-                            onClick={() =>
-                              acceptMeetingApplication(apply.participantId)
-                            }
-                            className="inline-block rounded-md bg-green-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-green-600"
-                          >
-                            수락
-                          </button>
-
-                          <button
-                            onClick={() =>
-                              rejectMeetingApplication(apply.participantId)
-                            }
-                            className="inline-block rounded-md bg-red-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-red-600"
-                          >
-                            거절
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                            <button
+                              onClick={() =>
+                                rejectMeetingApplication(apply.participantId)
+                              }
+                              className="inline-block rounded-md bg-red-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-red-600"
+                            >
+                              거절
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
