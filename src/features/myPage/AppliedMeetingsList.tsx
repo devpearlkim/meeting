@@ -81,21 +81,20 @@ const AppliedMeetingsList = () => {
                         </td>
                         <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                           <span
-                            className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'canceled' ? 'orange' : apply.status === 'pending' ? 'green' : 'red'}-900 leading-tight`}
+                            className={`relative inline-block px-3 py-1 font-semibold  leading-tight`}
                           >
                             <span
                               aria-hidden
-                              className="absolute inset-0 rounded-full bg-green-200 opacity-50"
+                              className={`absolute inset-0 rounded-full bg-${apply.status === 'canceled' ? 'slate-300' : apply.status === 'pending' ? 'green-200' : 'red-300'} opacity-50`}
                             ></span>
-                            {console.log(apply.status)}
                             <span className="relative">{apply.status}</span>
                           </span>
+                          <button
+                            onClick={() => handleDelete(apply.participantId)}
+                          >
+                            삭제
+                          </button>
                         </td>
-                        <button
-                          onClick={() => handleDelete(apply.participantId)}
-                        >
-                          삭제
-                        </button>
                       </tr>
                     ))}
                   </tbody>
