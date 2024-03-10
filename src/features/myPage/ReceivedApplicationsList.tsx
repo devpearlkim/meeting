@@ -66,6 +66,9 @@ const ReceivedApplicationsList = () => {
                     소개글
                   </th> */}
                   <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                    모임날짜
+                  </th>
+                  <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                     수락/거절
                   </th>
                 </tr>
