@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { getAppliedMeetings } from '../../services/apiUser'
+import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -18,7 +19,9 @@ const AppliedMeetingsList = () => {
     setPage((prevPage) => prevPage + 1)
   }
 
-  const handleDelete = () => {}
+  const handleDelete = (participantId) => {
+    changeParticipantStatus(participantId, 'canceled')
+  }
 
   return (
     <>
@@ -81,7 +84,9 @@ const AppliedMeetingsList = () => {
                             <span className="relative">{apply.status}</span>
                           </span>
                         </td>
-                        <button onClick={handleDelete}>삭제</button>
+                        <button onClick={handleDelete(apply.participantId)}>
+                          삭제
+                        </button>
                       </tr>
                     ))}
                   </tbody>

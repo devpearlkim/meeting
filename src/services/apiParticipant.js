@@ -37,3 +37,19 @@ export async function addParticipant({ meetingId, description }) {
     throw new Error('미팅의 참가자목록 추가하는 중 오류발생')
   }
 }
+
+export async function changeParticipantStatus(participantId, status) {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+
+  try {
+    const response = await axios.put(
+      `${backendURI}/participants/${participantId}`,
+      {
+        status,
+      },
+    )
+    return response.data
+  } catch (error) {
+    throw new Error('참가상태 변경 중 오류발생')
+  }
+}
