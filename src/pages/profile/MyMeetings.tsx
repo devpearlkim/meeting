@@ -20,7 +20,7 @@ const MyMeetings = () => {
       <div className="mx-10 flex w-full flex-col">
         <Sidebar path={pathname} userId={userId} />
         <div className="flex w-4/5 flex-col gap-4">
-          {userInfo?.userId != userId ? (
+          {userInfo?.userId == userId ? (
             <>
               <CreatedMeetings />
               <JoinedMeetings />
