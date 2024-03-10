@@ -36,7 +36,7 @@ const LikedMeetings = () => {
         <span>좋아요한 모임목록</span>
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
-            <div className="flex flex-wrap justify-between gap-8">
+            <div className="flex flex-wrap gap-8">
               {list.map((post) => (
                 <Post
                   key={post.id}

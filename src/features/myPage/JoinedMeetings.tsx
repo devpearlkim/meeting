@@ -34,10 +34,10 @@ const JoinedMeetings = () => {
         <div>참여중인 모임목록</div>
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg py-4">
-            <div className="flex flex-wrap justify-between gap-8">
+            <div className="flex flex-wrap gap-8">
               {list.map((post) => (
                 <Post
-                  key={post.id}
+                  key={post.meetingId}
                   post={post}
                   setShowModal={setShowModal}
                   reportedPostId={reportedPostId}

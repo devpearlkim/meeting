@@ -1,5 +1,5 @@
 const Footer = () => {
-  return <div>푸터입니다.</div>
+  return <div></div>
 }
 
 export default Footer

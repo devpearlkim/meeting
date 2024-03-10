@@ -221,7 +221,7 @@ const postDetail = () => {
                     <Link to={'/profile/28'}>
                       <li
                         key={index}
-                        className="user-card flex items-center justify-between p-3"
+                        className="user-card flex items-center justify-between p-3 hover:bg-slate-300"
                       >
                         <div className="flex items-center">
                           <img
