@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getCreatedMeetingIds } from '../../services/apiPost'
 import { getMeetingParicipants } from '../../services/apiParticipant'
 import { useState } from 'react'
+import { changeParticipantStatus } from '../../services/apiParticipant'
 import { Link } from 'react-router-dom'
 
 const ReceivedApplicationsList = () => {
@@ -18,6 +19,14 @@ const ReceivedApplicationsList = () => {
       queryFn: () => getMeetingParicipants(meetingId),
     })
   })
+
+  const acceptMeetingApplication = async (participantId) => {
+    await changeParticipantStatus(participantId, 'attended')
+  }
+
+  const rejectMeetingApplication = async (participantId) => {
+    await changeParticipantStatus(participantId, 'rejected')
+  }
 
   console.log('신청받은내역', participantQueries)
 
@@ -90,7 +99,14 @@ const ReceivedApplicationsList = () => {
                               aria-hidden
                               className="absolute inset-0 rounded-full bg-green-200 opacity-50"
                             ></span>
-                            <button className="relative">수락</button>
+                            <button
+                              onClick={() =>
+                                acceptMeetingApplication(apply.participantId)
+                              }
+                              className="relative"
+                            >
+                              수락
+                            </button>
                           </span>
                           <span
                             className={`relative inline-block px-3 py-1 font-semibold  leading-tight`}
@@ -99,31 +115,20 @@ const ReceivedApplicationsList = () => {
                               aria-hidden
                               className="absolute inset-0 rounded-full bg-red-300 opacity-50"
                             ></span>
-                            <button className="relative">거절</button>
+                            <button
+                              onClick={() =>
+                                rejectMeetingApplication(apply.participantId)
+                              }
+                              className="relative"
+                            >
+                              거절
+                            </button>
                           </span>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                <div className="xs:flex-row xs:justify-between flex flex-col items-center border-t bg-white px-5 py-5">
-                  <div className="xs:mt-0 mt-2 inline-flex">
-                    <button
-                      onClick={handlePrevPage}
-                      disabled={page === 1}
-                      className="rounded-l bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
-                    >
-                      Prev
-                    </button>
-                    <button
-                      onClick={handleNextPage}
-                      disabled={data?.length < 6}
-                      className="rounded-r bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
-                    >
-                      Next
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
