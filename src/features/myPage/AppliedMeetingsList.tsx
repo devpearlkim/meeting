@@ -87,6 +87,7 @@ const AppliedMeetingsList = () => {
                               aria-hidden
                               className="absolute inset-0 rounded-full bg-green-200 opacity-50"
                             ></span>
+                            {console.log(apply.status)}
                             <span className="relative">{apply.status}</span>
                           </span>
                         </td>
