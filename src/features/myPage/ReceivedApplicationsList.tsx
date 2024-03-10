@@ -104,7 +104,7 @@ const ReceivedApplicationsList = () => {
                     <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                       <button
                         onClick={() =>
-                          acceptMeetingApplication(apply.participantId)
+                          acceptMeetingApplication(apply.participantid)
                         }
                         className="inline-block rounded-md bg-green-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-green-600"
                       >
@@ -113,7 +113,7 @@ const ReceivedApplicationsList = () => {
 
                       <button
                         onClick={() =>
-                          rejectMeetingApplication(apply.participantId)
+                          rejectMeetingApplication(apply.participantid)
                         }
                         className="inline-block rounded-md bg-red-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-red-600"
                       >
