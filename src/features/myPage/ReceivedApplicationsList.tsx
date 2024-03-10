@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getCreatedMeetingIds } from '../../services/apiPost'
 import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { changeParticipantStatus } from '../../services/apiParticipant'
@@ -26,19 +26,20 @@ const ReceivedApplicationsList = () => {
     )
   }, [receivedApplications])
 
-  // const participantQueries = meetingIds?.map((meetingId) => {
-  //   return useQuery({
-  //     queryKey: ['meetingParticipants', meetingId],
-  //     queryFn: () => getMeetingParicipants(meetingId),
-  //   })
-  // })
+  const queryClient = useQueryClient()
 
   const acceptMeetingApplication = async (participantId) => {
     await changeParticipantStatus(participantId, 'attended')
+    queryClient.invalidateQueries({
+      queryKey: ['receivedApplications'],
+    })
   }
 
   const rejectMeetingApplication = async (participantId) => {
     await changeParticipantStatus(participantId, 'rejected')
+    queryClient.invalidateQueries({
+      queryKey: ['receivedApplications'],
+    })
   }
 
   console.log('ids', meetingIds)
