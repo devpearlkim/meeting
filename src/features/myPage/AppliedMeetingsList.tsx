@@ -90,7 +90,7 @@ const AppliedMeetingsList = () => {
                     </button>
                     <button
                       onClick={handleNextPage}
-                      disabled={data?.length < 5}
+                      disabled={data?.length < 2}
                       className="rounded-r bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500"
                     >
                       Next
