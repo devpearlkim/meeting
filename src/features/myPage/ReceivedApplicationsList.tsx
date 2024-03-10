@@ -22,7 +22,7 @@ const ReceivedApplicationsList = () => {
   console.log('신청받은내역', participantQueries)
   // console.log()
 
-  return <div>신청받은내역</div>
+  return <div>신청받은내역 ...</div>
 }
 
 export default ReceivedApplicationsList
