@@ -71,7 +71,7 @@ const ReceivedApplicationsList = () => {
                 </tr>
               </thead>
               <tbody>
-                {pendingList.map((apply) => (
+                {pendingList?.map((apply) => (
                   <tr key={apply.participantId}>
                     <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
                       {/* <Link to={`/detail/${apply.meeting.meetingId}`}> */}
