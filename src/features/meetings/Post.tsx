@@ -53,7 +53,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
 
   return (
     <div>
-      <div className="mx-4 my-3 flex w-[320px] flex-col overflow-hidden rounded-lg bg-white shadow">
+      <div className="my-3 flex w-[320px] flex-col overflow-hidden rounded-lg bg-white shadow">
         <Link to={`/detail/${post.meetingId}`} key={post.meetingId}>
           <img
             src={post?.image}
