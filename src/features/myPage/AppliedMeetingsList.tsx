@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getAppliedMeetings } from '../../services/apiUser'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useState } from 'react'
@@ -19,8 +19,14 @@ const AppliedMeetingsList = () => {
     setPage((prevPage) => prevPage + 1)
   }
 
+  const queryClient = useQueryClient()
+
   const handleDelete = async (participantId) => {
     await changeParticipantStatus(participantId, 'canceled')
+    queryClient.invalidateQueries({
+      queryKey: ['appliedMeetings'],
+      refetchType: 'all',
+    })
   }
 
   return (
