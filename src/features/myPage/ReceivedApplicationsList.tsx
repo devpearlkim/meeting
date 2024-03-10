@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getCreatedMeetingIds } from '../../services/apiPost'
-import { getMeetingParicipants } from '../../services/apiParticipant'
+import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { useState } from 'react'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { Link } from 'react-router-dom'
@@ -61,7 +61,7 @@ const ReceivedApplicationsList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {participantQueries?.data.map((apply) => (
+                    {participantQueries.map((apply) => (
                       <tr key={apply.participantId}>
                         <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
                           {/* <Link to={`/detail/${apply.meeting.meetingId}`}> */}
@@ -113,7 +113,7 @@ const ReceivedApplicationsList = () => {
                           >
                             <span
                               aria-hidden
-                              className="absolute inset-0 rounded-full bg-red-300 opacity-50"
+                              className="inserounded-full absolute bg-red-300 opacity-50"
                             ></span>
                             <button
                               onClick={() =>
