@@ -91,16 +91,14 @@ const AppliedMeetingsList = () => {
                             <span className="relative">{apply.status}</span>
                           </span>
                           {apply.status === 'pending' ||
-                            (apply.status === 'rejected' && (
-                              <button
-                                onClick={() =>
-                                  handleDelete(apply.participantId)
-                                }
-                                className="pl-4"
-                              >
-                                X
-                              </button>
-                            ))}
+                          apply.status === 'rejected' ? (
+                            <button
+                              onClick={() => handleDelete(apply.participantId)}
+                              className="pl-4"
+                            >
+                              <FaTimes />
+                            </button>
+                          ) : null}
                         </td>
                       </tr>
                     ))}
