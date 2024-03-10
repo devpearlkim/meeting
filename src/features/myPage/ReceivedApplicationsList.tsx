@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { getCreatedMeetingIds } from '../../services/apiPost'
-import { getMeetingParicipants } from '../../services/apiParticipant'
+import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { Link } from 'react-router-dom'
 
@@ -10,12 +10,17 @@ const ReceivedApplicationsList = () => {
     queryFn: getCreatedMeetingIds,
   })
 
-  const participantQueries = meetingIds?.map((meetingId) => {
-    return useQuery({
-      queryKey: ['meetingParticipants', meetingId],
-      queryFn: () => getMeetingParicipants(meetingId),
-    })
+  const { data: receivedApplications } = useQuery({
+    queryKey: ['receivedApplications', meetingIds],
+    queryFn: getMeetingsParicipants,
   })
+
+  // const participantQueries = meetingIds?.map((meetingId) => {
+  //   return useQuery({
+  //     queryKey: ['meetingParticipants', meetingId],
+  //     queryFn: () => getMeetingParicipants(meetingId),
+  //   })
+  // })
 
   const acceptMeetingApplication = async (participantId) => {
     await changeParticipantStatus(participantId, 'attended')
@@ -26,7 +31,7 @@ const ReceivedApplicationsList = () => {
   }
 
   console.log('ids', meetingIds)
-  console.log('신청받은내역', participantQueries)
+  console.log('receivedApplications', receivedApplications)
 
   return <>...</>
 }
