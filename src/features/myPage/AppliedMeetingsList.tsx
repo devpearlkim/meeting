@@ -84,7 +84,9 @@ const AppliedMeetingsList = () => {
                             <span className="relative">{apply.status}</span>
                           </span>
                         </td>
-                        <button onClick={handleDelete(apply.participantId)}>
+                        <button
+                          onClick={() => handleDelete(apply.participantId)}
+                        >
                           삭제
                         </button>
                       </tr>
