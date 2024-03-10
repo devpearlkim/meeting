@@ -214,30 +214,26 @@ const postDetail = () => {
               <div>{data.data.description}</div>
             </div>
             <div className="md:w-1/2">
-              <div className="bg-gray-100">
-                <div className="mx-auto my-10 max-w-sm">
-                  <div className="overflow-hidden rounded-lg bg-white shadow-lg">
-                    <ul className="divide-y divide-gray-200">
-                      {members.map((member, index) => (
-                        <li
-                          key={index}
-                          className="user-card flex items-center justify-between p-3"
-                        >
-                          <div className="flex items-center">
-                            <img
-                              className="h-10 w-10 rounded-full"
-                              src={member.profileImage}
-                              alt={member.nickname}
-                            />
-                            <span className="ml-3 font-medium">
-                              {member.nickname}
-                            </span>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+              <div className="overflow-hidden rounded-lg bg-white shadow-lg">
+                <ul className="divide-y divide-gray-200">
+                  {members.map((member, index) => (
+                    <li
+                      key={index}
+                      className="user-card flex items-center justify-between p-3"
+                    >
+                      <div className="flex items-center">
+                        <img
+                          className="h-10 w-10 rounded-full"
+                          src={member.profileImage}
+                          alt={member.nickname}
+                        />
+                        <span className="ml-3 font-medium">
+                          {member.nickname}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
