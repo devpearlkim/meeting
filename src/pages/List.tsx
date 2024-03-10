@@ -87,7 +87,7 @@ const List = () => {
             </div>
 
             {data?.pages.map((page, i) => (
-              <div key={i} className="flex flex-wrap gap-8">
+              <div key={i} className="flex flex-wrap">
                 {page.data?.map((post) => (
                   <Post
                     post={post}
