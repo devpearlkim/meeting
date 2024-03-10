@@ -39,7 +39,7 @@ const CreatedMeetings = () => {
             <div className="flex flex-wrap gap-8">
               {list.map((post) => (
                 <Post
-                  key={post.id}
+                  key={post.meetingId}
                   post={post}
                   setShowModal={setShowModal}
                   reportedPostId={reportedPostId}
