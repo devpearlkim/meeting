@@ -255,7 +255,7 @@ export async function getCreatedMeetings({ queryKey }) {
   }
 }
 
-export async function getCreatedMeetingIds({ queryKey }) {
+export async function getCreatedMeetingIds() {
   const token = sessionStorage.getItem('token')
   const backendURI = import.meta.env.VITE_BACKEND_URI
 
