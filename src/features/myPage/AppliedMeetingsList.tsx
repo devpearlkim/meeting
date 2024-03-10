@@ -50,37 +50,37 @@ const AppliedMeetingsList = () => {
                   <tbody>
                     {data.map((apply) => (
                       <tr key={apply.participantId}>
-                        <Link to={`/detail/${apply.meeting.meetingId}`}>
-                          <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm hover:bg-slate-300">
+                        <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
+                          <Link to={`/detail/${apply.meeting.meetingId}`}>
                             <div className="ml-3">
                               <p className="whitespace-no-wrap text-gray-900">
                                 {apply.meeting.title}
                               </p>
                             </div>
-                          </td>
+                          </Link>
+                        </td>
 
-                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <p className="whitespace-no-wrap text-gray-900">
-                              {apply.created_at}
-                            </p>
-                          </td>
-                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <p className="whitespace-no-wrap text-gray-900">
-                              {apply.meeting.meeting_date}
-                            </p>
-                          </td>
-                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <p className="whitespace-no-wrap text-gray-900">
+                            {apply.created_at}
+                          </p>
+                        </td>
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <p className="whitespace-no-wrap text-gray-900">
+                            {apply.meeting.meeting_date}
+                          </p>
+                        </td>
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <span
+                            className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'pending' ? 'green' : apply.status === 'rejected' ? 'orange' : 'red'}-900 leading-tight`}
+                          >
                             <span
-                              className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'pending' ? 'green' : apply.status === 'rejected' ? 'orange' : 'red'}-900 leading-tight`}
-                            >
-                              <span
-                                aria-hidden
-                                className="absolute inset-0 rounded-full bg-green-200 opacity-50"
-                              ></span>
-                              <span className="relative">{apply.status}</span>
-                            </span>
-                          </td>
-                        </Link>
+                              aria-hidden
+                              className="absolute inset-0 rounded-full bg-green-200 opacity-50"
+                            ></span>
+                            <span className="relative">{apply.status}</span>
+                          </span>
+                        </td>
                         <button onClick={handleDelete}>삭제</button>
                       </tr>
                     ))}
