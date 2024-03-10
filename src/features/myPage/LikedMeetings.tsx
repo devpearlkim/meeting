@@ -35,7 +35,7 @@ const LikedMeetings = () => {
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <span>좋아요한 모임목록</span>
         <div className="min-h-28">
-          <div className="mx-auto max-w-screen-lg py-4">
+          <div className="mx-auto py-4">
             <div className="flex flex-wrap gap-8">
               {list.map((post) => (
                 <Post
