@@ -27,8 +27,9 @@ export async function getMeetingsParicipants({ queryKey }) {
         return response.data.data
       }),
     )
+    const flattenedResponses = responses.flat()
 
-    return responses
+    return flattenedResponses
   } catch (error) {
     throw new Error('내가 개설한 미팅들의 참가자목록 가져오는 중 오류발생')
   }
