@@ -48,7 +48,7 @@ export async function getAppliedMeetings({ queryKey }) {
 
   try {
     const response = await axios.get(
-      `${backendURI}/users/participants?page=${page}&perPage=2`,
+      `${backendURI}/users/participants?page=${page}&perPage=6`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

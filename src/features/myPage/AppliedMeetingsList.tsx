@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getAppliedMeetings } from '../../services/apiUser'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const AppliedMeetingsList = () => {
   const [page, setPage] = useState(1)
@@ -47,13 +48,15 @@ const AppliedMeetingsList = () => {
                   <tbody>
                     {data.map((apply) => (
                       <tr key={apply.participantId}>
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <div className="ml-3">
-                            <p className="whitespace-no-wrap text-gray-900">
-                              {apply.meeting.title}
-                            </p>
-                          </div>
-                        </td>
+                        <Link to={`/detail/${apply.meeting.meetingId}`}>
+                          <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm hover:bg-slate-300">
+                            <div className="ml-3">
+                              <p className="whitespace-no-wrap text-gray-900">
+                                {apply.meeting.title}
+                              </p>
+                            </div>
+                          </td>
+                        </Link>
                         <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                           <p className="whitespace-no-wrap text-gray-900">
                             {apply.created_at}
@@ -84,14 +87,14 @@ const AppliedMeetingsList = () => {
                     <button
                       onClick={handlePrevPage}
                       disabled={page === 1}
-                      className="rounded-l bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500"
+                      className="rounded-l bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
                     >
                       Prev
                     </button>
                     <button
                       onClick={handleNextPage}
-                      disabled={data?.length < 2}
-                      className="rounded-r bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500"
+                      disabled={data?.length < 6}
+                      className="rounded-r bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
                     >
                       Next
                     </button>
