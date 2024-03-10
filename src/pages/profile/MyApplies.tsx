@@ -3,6 +3,8 @@ import Profile from '../../features/myPage/Profile'
 import Sidebar from '../../features/myPage/Sidebar'
 import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import AppliedMeetingsList from '../../features/myPage/AppliedMeetingsList'
+import ReceivedApplicationsList from '../../features/myPage/ReceivedApplicationsList'
 
 const MyApplies = () => {
   const { pathname } = useLocation()
@@ -20,7 +22,8 @@ const MyApplies = () => {
       <div className="mx-10 flex w-full flex-col">
         <Sidebar path={pathname} userId={userId} />
         <div className="flex w-4/5">
-          <div>모임신청페이지</div>
+          <AppliedMeetingsList />
+          <ReceivedApplicationsList />
         </div>
       </div>
     </div>

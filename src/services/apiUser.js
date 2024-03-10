@@ -40,3 +40,20 @@ export async function getUserProfile({ queryKey }) {
     throw new Error('다른 사용자 프로필 조회 중 오류발생')
   }
 }
+
+export async function getAppliedMeetings() {
+  const backendURI = import.meta.env.VITE_BACKEND_URI
+  const token = sessionStorage.getItem('token')
+
+  try {
+    const response = await axios.get(`${backendURI}/users/participants`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    return response.data.data
+  } catch (error) {
+    throw new Error('내가 신청한 모임목록 가져오는 중 오류발생')
+  }
+}
