@@ -9,14 +9,14 @@ const ReceivedApplicationsList = () => {
     queryKey: ['createdMeetingIds'],
     queryFn: getCreatedMeetingIds,
   })
-
-  const participantQueries =
-    meetingIds?.map((meetingId) => {
-      return useQuery({
-        queryKey: ['meetingParticipants', meetingId],
-        queryFn: () => getMeetingParicipants(meetingId),
-      })
-    }) ?? []
+  const participantQueries = []
+  // const participantQueries =
+  //   meetingIds?.map((meetingId) => {
+  //     return useQuery({
+  //       queryKey: ['meetingParticipants', meetingId],
+  //       queryFn: () => getMeetingParicipants(meetingId),
+  //     })
+  //   })
 
   const acceptMeetingApplication = async (participantId) => {
     await changeParticipantStatus(participantId, 'attended')
