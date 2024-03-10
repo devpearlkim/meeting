@@ -18,6 +18,8 @@ const AppliedMeetingsList = () => {
     setPage((prevPage) => prevPage + 1)
   }
 
+  const handleDelete = () => {}
+
   return (
     <>
       {!data ? (
@@ -56,28 +58,30 @@ const AppliedMeetingsList = () => {
                               </p>
                             </div>
                           </td>
-                        </Link>
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <p className="whitespace-no-wrap text-gray-900">
-                            {apply.created_at}
-                          </p>
-                        </td>
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <p className="whitespace-no-wrap text-gray-900">
-                            {apply.meeting.meeting_date}
-                          </p>
-                        </td>
-                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                          <span
-                            className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'pending' ? 'green' : apply.status === 'rejected' ? 'orange' : 'red'}-900 leading-tight`}
-                          >
+
+                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap text-gray-900">
+                              {apply.created_at}
+                            </p>
+                          </td>
+                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap text-gray-900">
+                              {apply.meeting.meeting_date}
+                            </p>
+                          </td>
+                          <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <span
-                              aria-hidden
-                              className="absolute inset-0 rounded-full bg-green-200 opacity-50"
-                            ></span>
-                            <span className="relative">{apply.status}</span>
-                          </span>
-                        </td>
+                              className={`relative inline-block px-3 py-1 font-semibold text-${apply.status === 'pending' ? 'green' : apply.status === 'rejected' ? 'orange' : 'red'}-900 leading-tight`}
+                            >
+                              <span
+                                aria-hidden
+                                className="absolute inset-0 rounded-full bg-green-200 opacity-50"
+                              ></span>
+                              <span className="relative">{apply.status}</span>
+                            </span>
+                          </td>
+                        </Link>
+                        <button onClick={handleDelete}>삭제</button>
                       </tr>
                     ))}
                   </tbody>
