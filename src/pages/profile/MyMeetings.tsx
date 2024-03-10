@@ -14,18 +14,20 @@ const MyMeetings = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const navigate = useNavigate()
 
-  useEffect(() => {
-    userInfo?.userId != userId && navigate(`/`)
-  }, [userId])
-
   return (
     <div className="flex">
       <Profile />
       <div className="mx-10 flex w-full flex-col">
         <Sidebar path={pathname} userId={userId} />
         <div className="flex w-4/5 flex-col gap-4">
-          <CreatedMeetings />
-          <JoinedMeetings />
+          {userInfo?.userId != userId ? (
+            <>
+              <CreatedMeetings />
+              <JoinedMeetings />
+            </>
+          ) : (
+            <div>해당 유저는 참여 모임을 비공개 설정했습니다</div>
+          )}
         </div>
       </div>
     </div>
