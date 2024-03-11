@@ -80,7 +80,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
                 <Link to={`/?location=${encodeURIComponent(post.location)}`}>
                   <div>
                     <FaLocationDot className="inline  text-slate-400" />
-                    <span className="mx-1 block text-sm font-semibold text-slate-400">
+                    <span className="block text-sm font-semibold text-slate-400">
                       {post.location}
                     </span>
                   </div>
