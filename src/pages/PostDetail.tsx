@@ -127,35 +127,37 @@ const postDetail = () => {
               <div className="flex-col gap-2">
                 <div className="flex justify-between pr-4">
                   <h2 className="text-4xl font-bold">{data.data.title}</h2>
-                  <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
-                    {isLiked ? (
-                      <FaHeart color="red" size={30} />
-                    ) : (
-                      <FaHeart color="lightgray" size={30} />
-                    )}
-                  </button>
-                  <div>
-                    {showButton && showOptions && (
-                      <div>
-                        <button
-                          onClick={handleEditClick}
-                          className="mx-2 rounded bg-purple-300 px-2 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-                        >
-                          수정
+                  <div className="px-4">
+                    <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
+                      {isLiked ? (
+                        <FaHeart color="red" size={30} />
+                      ) : (
+                        <FaHeart color="lightgray" size={30} />
+                      )}
+                    </button>
+                    <div>
+                      {showButton && showOptions && (
+                        <div>
+                          <button
+                            onClick={handleEditClick}
+                            className="mx-2 rounded bg-purple-300 px-2 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                          >
+                            수정
+                          </button>
+                          <button
+                            onClick={handleDeleteClick}
+                            className="mx-2 rounded bg-purple-300 px-2 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                          >
+                            삭제
+                          </button>
+                        </div>
+                      )}
+                      {showButton && !showOptions && (
+                        <button onClick={() => setShowOptions(true)}>
+                          <IoIosMore size={20} />
                         </button>
-                        <button
-                          onClick={handleDeleteClick}
-                          className="mx-2 rounded bg-purple-300 px-2 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-                        >
-                          삭제
-                        </button>
-                      </div>
-                    )}
-                    {showButton && !showOptions && (
-                      <button onClick={() => setShowOptions(true)}>
-                        <IoIosMore size={20} />
-                      </button>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
                 <Link
