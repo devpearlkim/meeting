@@ -163,7 +163,7 @@ const postDetail = () => {
                 </div>
               </div>
               <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 px-4">
                   <span className="text-sm font-semibold">장소</span>
                   <div>
                     <FaLocationDot className="inline" />
@@ -213,7 +213,7 @@ const postDetail = () => {
                   </span>
                 </div>
               </div>
-              <div className="w-96">
+              <div className="">
                 <button
                   onClick={handleParticipantClick}
                   className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
