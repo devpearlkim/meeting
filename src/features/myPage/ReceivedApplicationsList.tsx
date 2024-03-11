@@ -44,9 +44,9 @@ const ReceivedApplicationsList = ({ meetingId }) => {
   console.log('receivedApplications', receivedApplications)
 
   return (
-    <div className="w-full rounded-md bg-white p-8">
+    <div className="w-full rounded-md bg-white">
       <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
-        <table className="min-w-full leading-normal">
+        <table className="min-w-full">
           <thead>
             <tr>
               <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">

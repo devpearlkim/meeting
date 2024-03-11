@@ -175,7 +175,6 @@ const postDetail = () => {
                 <div className="flex flex-col gap-1">
                   <span className="text-sm font-semibold">개최자</span>
                   <div>
-                    <MdPerson className="inline" />
                     <div className="flex gap-2">
                       <img
                         className="h-10 w-10 rounded-full"
