@@ -221,8 +221,7 @@ const postDetail = () => {
                 <ul className="divide-y divide-gray-200">
                   {/* {members.map((member, index) => ( */}
                   {data.data.participants.map((member, index) => (
-                    // <Link to={`/profile/${member.userid}`}>
-                    <Link to={'/profile/28'}>
+                    <Link to={`/profile/${member.userid}`}>
                       <li
                         key={index}
                         className="user-card flex items-center justify-between p-3 hover:bg-slate-300"
