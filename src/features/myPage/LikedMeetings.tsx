@@ -48,7 +48,7 @@ const LikedMeetings = () => {
             </div>
 
             {isFetching && Array.isArray(data) && data.length === 6 && (
-              <div className="flex flex-wrap justify-between gap-2">
+              <div className="flex flex-wrap justify-between gap-8">
                 {[...Array(6)].map((_, i) => (
                   <SkeletonPost key={i} />
                 ))}

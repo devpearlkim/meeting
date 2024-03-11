@@ -35,8 +35,8 @@ const CreatedMeetings = () => {
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <div className="min-h-28">
           <div className="mx-auto py-4">
+            <span className="text-semibold">개설한 모임목록</span>
             <div className="flex flex-wrap justify-center gap-8">
-              <span className="text-semibold">개설한 모임목록</span>
               {list.map((post) => (
                 <Post
                   key={post.meetingId}
@@ -49,7 +49,7 @@ const CreatedMeetings = () => {
             </div>
 
             {isFetching && Array.isArray(data) && data.length === 6 && (
-              <div className="flex flex-wrap justify-between gap-2">
+              <div className="flex flex-wrap justify-between gap-8">
                 {[...Array(6)].map((_, i) => (
                   <SkeletonPost key={i} />
                 ))}
