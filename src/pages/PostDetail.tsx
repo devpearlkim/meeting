@@ -125,7 +125,12 @@ const postDetail = () => {
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
               <div className="flex justify-between">
-                <button onClick={handleParticipantClick}>참가신청</button>
+                <button
+                  onClick={handleParticipantClick}
+                  className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                >
+                  참가신청
+                </button>
                 {showParticipantModal && (
                   <ParticipantModal
                     showParticipantModal={showParticipantModal}
@@ -133,20 +138,29 @@ const postDetail = () => {
                     meetingId={data?.data.meetingId}
                   />
                 )}
-                <div>
+                <div className="flex gap-2">
                   <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
                     {isLiked ? (
                       <FaHeart color="red" size={30} />
                     ) : (
-                      <FaRegHeart color="black" size={30} />
+                      <FaHeart color="gray" size={30} />
                     )}
                   </button>
-
                   <div>
                     {showButton && showOptions && (
                       <div>
-                        <button onClick={handleEditClick}>수정</button>
-                        <button onClick={handleDeleteClick}>삭제</button>
+                        <button
+                          onClick={handleEditClick}
+                          className="mx-2 w-full rounded bg-purple-300 px-1 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                        >
+                          수정
+                        </button>
+                        <button
+                          onClick={handleDeleteClick}
+                          className="mx-2 w-full rounded bg-purple-300 px-1 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                        >
+                          삭제
+                        </button>
                       </div>
                     )}
                     {showButton && !showOptions && (

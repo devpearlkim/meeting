@@ -101,7 +101,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
             {isLiked ? (
               <FaHeart color="red" size={30} />
             ) : (
-              <FaRegHeart color="black" size={30} />
+              <FaHeart color="gray" size={30} />
             )}
           </button>
           <button onClick={handleReportClick}>
