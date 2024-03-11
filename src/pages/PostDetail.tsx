@@ -124,7 +124,7 @@ const postDetail = () => {
               />
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
-              <div className="flex justify-end">
+              <div className="flex justify-end gap-4">
                 <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
                   {isLiked ? (
                     <FaHeart color="red" size={30} />
