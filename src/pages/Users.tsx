@@ -1,10 +1,16 @@
+import { useEffect } from 'react'
 import SignupForm from '../features/authentication/SignupForm'
+import { useNavigate } from 'react-router-dom'
 
 const NewUsers = () => {
+  const token = sessionStorage.getItem('token')
+  const navigate = useNavigate()
+  useEffect(() => {
+    token && navigate(-1)
+  }, [token])
+
   return (
     <>
-      <h1>회원가입</h1>
-      <div>sns 계정으로 간편 회원가입</div>
       <SignupForm />
     </>
   )
