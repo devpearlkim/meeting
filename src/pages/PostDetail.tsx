@@ -96,7 +96,6 @@ const postDetail = () => {
     //   toast.error('이미 참여중인 모임입니다')
     //   return
     // }
-
     // if (
     //   Array.isArray(meetingParticipants?.data) &&
     //   meetingParticipants?.data.some(
