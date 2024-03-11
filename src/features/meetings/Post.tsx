@@ -76,17 +76,21 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
                   </span>
                 </div>
               </Link>
-              <span className="block text-sm font-semibold text-slate-400">
-                {post.meeting_date}
-              </span>
+              <div className="flex flex-col gap-1">
+                <Link to={`/?location=${encodeURIComponent(post.location)}`}>
+                  <FaLocationDot className="inline  text-slate-400" />
+                  <span className="mx-1 block text-sm font-semibold text-slate-400">
+                    {post.location}
+                  </span>
+                </Link>
+                <span className="block text-sm font-semibold text-slate-400">
+                  {post.meeting_date}
+                </span>
+              </div>
             </div>
-            <div className="flex justify-between">
-              <h3 className="mb-2 mt-3 text-lg font-bold">{post.title}</h3>
-              <Link to={`/?location=${encodeURIComponent(post.location)}`}>
-                <FaLocationDot className="inline" />
-                <span className="mx-1">{post.location}</span>
-              </Link>
-            </div>
+
+            <h3 className="mb-2 mt-3 text-lg font-bold">{post.title}</h3>
+
             <div className="my-2">
               <div className="flex justify-between">
                 <div className="flex gap-1">

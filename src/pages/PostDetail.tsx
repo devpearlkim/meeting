@@ -236,7 +236,7 @@ const postDetail = () => {
             <ReceivedApplicationsList meetingId={data.data.meetingId} />
           )}
           {/* 디테일페이지 바디부분 */}
-          <div className="flex gap-4 sm:flex-col md:flex-row lg:flex-row">
+          <div className="my-4 flex gap-4 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <div className="flex flex-wrap gap-2">
                 {data.data?.categories.map((category) => (
