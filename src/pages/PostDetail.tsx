@@ -86,35 +86,28 @@ const postDetail = () => {
     }
 
     const participants = data?.data.participants
-    const meetingParticipants = await getMeetingParicipants(data.data.meetingId)
-    console.log('신청자 목록')
-    console.log(meetingParticipants)
-    getMeetingParicipants?.data?.some((participant) =>
-      console.log(participant.userid),
-    )
-    console.log('로그인id', loggedInUserId)
+    // 409오류로 대체
+    // const meetingParticipants = await getMeetingParicipants(data.data.meetingId)
 
-    if (
-      loggedInUserId === hostUserId ||
-      participants.some((participant) => participant?.userid === loggedInUserId)
-    ) {
-      toast.error('이미 참여중인 모임입니다')
-      return
-    }
+    // if (
+    //   loggedInUserId === hostUserId ||
+    //   participants.some((participant) => participant?.userid === loggedInUserId)
+    // ) {
+    //   toast.error('이미 참여중인 모임입니다')
+    //   return
+    // }
 
-    console.log('participants.data', meetingParticipants?.data)
-    console.log(Array.isArray(meetingParticipants?.data))
-    if (
-      Array.isArray(meetingParticipants?.data) &&
-      meetingParticipants?.data.some(
-        (participant) =>
-          participant.status === 'pending' &&
-          participant.userid === loggedInUserId,
-      )
-    ) {
-      toast.error('이미 신청한 모임입니다')
-      return
-    }
+    // if (
+    //   Array.isArray(meetingParticipants?.data) &&
+    //   meetingParticipants?.data.some(
+    //     (participant) =>
+    //       participant.status === 'pending' &&
+    //       participant.userid === loggedInUserId,
+    //   )
+    // ) {
+    //   toast.error('이미 신청한 모임입니다')
+    //   return
+    // }
     setShowParticipantModal(true)
   }
 
