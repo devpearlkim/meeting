@@ -11,8 +11,10 @@ import { useEffect, useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
 import toast from 'react-hot-toast'
 import ReceivedApplicationsList from '../features/myPage/ReceivedApplicationsList.js'
-import { FaHeart, FaRegHeart } from 'react-icons/fa'
+import { FaHeart } from 'react-icons/fa'
 import { IoIosMore } from 'react-icons/io'
+import { FaLocationDot } from 'react-icons/fa6'
+import { MdDateRange, MdPerson } from 'react-icons/md'
 
 const postDetail = () => {
   console.log('상세페이지')
@@ -160,7 +162,8 @@ const postDetail = () => {
                 </div>
               </div>
               <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>
-                <span>{data.data.location}</span>
+                <FaLocationDot />
+                <span className="mx-1">{data.data.location}</span>
               </Link>
               <Link to={`/profile/${data.data.host.userId}`}>
                 <div className="flex gap-2">
@@ -174,10 +177,19 @@ const postDetail = () => {
                   </span>
                 </div>
               </Link>
-              <div>{data.data.created_at}</div>
-              <div>{data.data.meeting_date}</div>
               <div>
-                {data.data.participants_number}/{data.data.member_limit}
+                <MdDateRange />
+                <span className="px-1">{data.data.created_at}</span>
+              </div>
+              <div>
+                <MdDateRange />
+                <span className="px-1">{data.data.meeting_date}</span>
+              </div>
+              <div>
+                <MdPerson />
+                <span className="px-1">
+                  {data.data.participants_number}/{data.data.member_limit}
+                </span>
               </div>
               <div className="w-96">
                 <button
