@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { getCreatedMeetingIds } from '../../services/apiPost'
+// import { getCreatedMeetingIds } from '../../services/apiPost'
 import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useEffect, useState } from 'react'
@@ -41,7 +41,6 @@ const ReceivedApplicationsList = ({ meetingId }) => {
     })
   }
 
-  console.log('ids', meetingIds)
   console.log('receivedApplications', receivedApplications)
 
   return (
