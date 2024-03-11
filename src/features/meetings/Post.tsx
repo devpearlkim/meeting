@@ -78,10 +78,12 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
               </Link>
               <div className="flex flex-col gap-1">
                 <Link to={`/?location=${encodeURIComponent(post.location)}`}>
-                  <FaLocationDot className="inline  text-slate-400" />
-                  <span className="mx-1 block text-sm font-semibold text-slate-400">
-                    {post.location}
-                  </span>
+                  <div>
+                    <FaLocationDot className="inline  text-slate-400" />
+                    <span className="mx-1 block text-sm font-semibold text-slate-400">
+                      {post.location}
+                    </span>
+                  </div>
                 </Link>
                 <span className="block text-sm font-semibold text-slate-400">
                   {post.meeting_date}
