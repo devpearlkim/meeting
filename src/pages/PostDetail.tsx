@@ -112,7 +112,7 @@ const postDetail = () => {
   }
 
   return (
-    <div className="mx-auto flex max-w-screen-lg flex-col overflow-hidden bg-yellow-300 py-4">
+    <div className="mx-auto flex max-w-screen-lg flex-col overflow-hidden py-4">
       {data?.data && (
         <>
           <div className="flex gap-4 sm:flex-col md:flex-row lg:flex-row">
