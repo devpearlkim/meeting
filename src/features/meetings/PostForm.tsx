@@ -150,7 +150,7 @@ const PostForm = ({ postData }) => {
             type="submit"
             className="my-4 mt-40 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
           >
-            Submit
+            작성완료
           </button>
         </div>
       </form>
