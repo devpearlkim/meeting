@@ -56,7 +56,7 @@ const CreatedMeetings = () => {
               </div>
             )}
             {Array.isArray(data) && data.length === 6 && (
-              <div className="mt-4 flex justify-center">
+              <div className="mx-auto mt-4 flex justify-center">
                 <button
                   onClick={handleLoadMore}
                   disabled={isFetching}

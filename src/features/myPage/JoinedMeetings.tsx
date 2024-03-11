@@ -33,7 +33,7 @@ const JoinedMeetings = () => {
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <div className="min-h-28">
           <div className="mx-auto flex flex-col flex-wrap justify-center py-4">
-            <span className="text-semibold">참여중인 모임목록</span>
+            <span className="font-semibold">참여중인 모임목록</span>
             <div className="flex flex-wrap gap-8">
               {list.map((post) => (
                 <Post
@@ -54,7 +54,7 @@ const JoinedMeetings = () => {
               </div>
             )}
             {Array.isArray(data) && data.length === 6 && (
-              <div className="mt-4 flex justify-center">
+              <div className="mx-auto mt-4 flex justify-center">
                 <button
                   onClick={handleLoadMore}
                   disabled={isFetching}

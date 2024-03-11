@@ -2,10 +2,16 @@ import axios from 'axios'
 
 export async function getMeetingParicipants(meetingId) {
   const backendURI = import.meta.env.VITE_BACKEND_URI
+  const token = sessionStorage.getItem('token')
 
   try {
     const response = await axios.get(
       `${backendURI}/meetings/${meetingId}/participants`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
     )
 
     return response.data
@@ -17,12 +23,18 @@ export async function getMeetingParicipants(meetingId) {
 export async function getMeetingsParicipants({ queryKey }) {
   const participantsIds = queryKey[1]
   const backendURI = import.meta.env.VITE_BACKEND_URI
+  const token = sessionStorage.getItem('token')
 
   try {
     const responses = await Promise.all(
       participantsIds.map(async (meetingId) => {
         const response = await axios.get(
           `${backendURI}/meetings/${meetingId}/participants`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
         )
         return response.data.data
       }),
