@@ -83,10 +83,8 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
             <div className="flex justify-between">
               <h3 className="mb-2 mt-3 text-lg font-bold">{post.title}</h3>
               <Link to={`/?location=${encodeURIComponent(post.location)}`}>
-                <div>
-                  <FaLocationDot className="inline" />
-                  <span className="mx-1">{post.location}</span>
-                </div>
+                <FaLocationDot className="inline" />
+                <span className="mx-1">{post.location}</span>
               </Link>
             </div>
             <div className="my-2">
