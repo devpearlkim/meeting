@@ -52,10 +52,8 @@ const ReceivedApplicationsList = ({ meetingId }) => {
               <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold text-gray-600">
                 신청자
               </th>
-              <th className="flex w-[45rem] justify-center border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold text-gray-600">
-                <p className="bg-gray-100 px-5 py-3 text-left text-xs font-semibold text-gray-600">
-                  소개글
-                </p>
+              <th className="w-[45rem] justify-center border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-center text-xs font-semibold text-gray-600">
+                소개글
               </th>
               <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold text-gray-600">
                 수락/거절

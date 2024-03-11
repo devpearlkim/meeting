@@ -36,7 +36,7 @@ const CreatedMeetings = () => {
         <span>개설한 모임목록</span>
         <div className="min-h-28">
           <div className="mx-auto py-4">
-            <div className="flex flex-wrap gap-8">
+            <div className="flex flex-wrap justify-center gap-8">
               {list.map((post) => (
                 <Post
                   key={post.meetingId}
