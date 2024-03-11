@@ -67,6 +67,8 @@ const postDetail = () => {
   // }
 
   const [showParticipantModal, setShowParticipantModal] = useState(false)
+  const loggedInUserId = userInfo?.userId
+  const hostUserId = data?.data.host.userId
 
   const handleParticipantClick = async () => {
     if (!isLogin) {
@@ -74,8 +76,6 @@ const postDetail = () => {
       return
     }
 
-    const loggedInUserId = userInfo?.userId
-    const hostUserId = data?.data.host.userId
     const participants = data?.data.participants
     const meetingParticipants = await getMeetingParicipants(data.data.meetingId)
     console.log('신청자 목록')
@@ -198,8 +198,9 @@ const postDetail = () => {
             </div>
           </div>
 
+          {/* 모임에 들어온 신청 목록 */}
+          {loggedInUserId === hostUserId && <ReceivedApplicationsList />}
           {/* 디테일페이지 바디부분 */}
-          <ReceivedApplicationsList />
           <div className="flex gap-2 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <div className="flex flex-wrap gap-2">
@@ -218,7 +219,8 @@ const postDetail = () => {
             <div className="md:w-1/2">
               <div className="mr-20 overflow-hidden rounded-lg bg-white shadow-lg">
                 <ul className="divide-y divide-gray-200">
-                  {members.map((member, index) => (
+                  {/* {members.map((member, index) => ( */}
+                  {data.data.participants.map((member, index) => (
                     // <Link to={`/profile/${member.userid}`}>
                     <Link to={'/profile/28'}>
                       <li
