@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
 import toast from 'react-hot-toast'
 import ReceivedApplicationsList from '../features/myPage/ReceivedApplicationsList.js'
+import { FaHeart, FaRegHeart } from 'react-icons/fa'
+import { IoIosMore } from 'react-icons/io'
 
 const postDetail = () => {
   console.log('상세페이지')
@@ -109,34 +111,6 @@ const postDetail = () => {
     setShowParticipantModal(true)
   }
 
-  const members = [
-    {
-      nickname: 'Christy',
-      profileImage:
-        'https://unsplash.com/photos/oh0DITWoHi4/download?force=true&w=640',
-    },
-    {
-      nickname: 'David',
-      profileImage:
-        'https://unsplash.com/photos/7Zb7kUyQg1E/download?force=true&w=640',
-    },
-    {
-      nickname: 'Nancy',
-      profileImage:
-        'https://unsplash.com/photos/F_-0BxGuVvo/download?force=true&w=640',
-    },
-    {
-      nickname: 'Stella',
-      profileImage:
-        'https://unsplash.com/photos/3TLl_97HNJo/download?force=true&w=640',
-    },
-    {
-      name: 'Mary',
-      profileImage:
-        'https://unsplash.com/photos/1AhGNGKuhR0/download?force=true&w=640',
-    },
-  ]
-
   return (
     <div className="mx-auto flex max-w-screen-lg flex-col overflow-hidden bg-yellow-300 py-4">
       {data?.data && (
@@ -150,29 +124,38 @@ const postDetail = () => {
               />
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
-              <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
-                {isLiked ? '꽉찬하트' : '빈하트'}
-              </button>
+              <div className="flex justify-between">
+                <button onClick={handleParticipantClick}>참가신청</button>
+                {showParticipantModal && (
+                  <ParticipantModal
+                    showParticipantModal={showParticipantModal}
+                    setShowParticipantModal={setShowParticipantModal}
+                    meetingId={data?.data.meetingId}
+                  />
+                )}
+                <div>
+                  <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
+                    {isLiked ? (
+                      <FaHeart color="red" size={30} />
+                    ) : (
+                      <FaRegHeart color="black" size={30} />
+                    )}
+                  </button>
 
-              <button onClick={handleParticipantClick}>참가신청</button>
-
-              {showParticipantModal && (
-                <ParticipantModal
-                  showParticipantModal={showParticipantModal}
-                  setShowParticipantModal={setShowParticipantModal}
-                  meetingId={data?.data.meetingId}
-                />
-              )}
-              <div>
-                {showButton && showOptions && (
                   <div>
-                    <button onClick={handleEditClick}>수정</button>
-                    <button onClick={handleDeleteClick}>삭제</button>
+                    {showButton && showOptions && (
+                      <div>
+                        <button onClick={handleEditClick}>수정</button>
+                        <button onClick={handleDeleteClick}>삭제</button>
+                      </div>
+                    )}
+                    {showButton && !showOptions && (
+                      <button onClick={() => setShowOptions(true)}>
+                        <IoIosMore size={20} />
+                      </button>
+                    )}
                   </div>
-                )}
-                {showButton && !showOptions && (
-                  <button onClick={() => setShowOptions(true)}>...</button>
-                )}
+                </div>
               </div>
               <h2 className="text-4xl font-bold">{data.data.title}</h2>
               <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>

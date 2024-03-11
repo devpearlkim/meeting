@@ -3,6 +3,7 @@ import { PiSirenLight } from 'react-icons/pi'
 import { useEffect, useState } from 'react'
 import { addLike, deleteLike, getPostDetail } from '../../services/apiPost'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { FaHeart, FaRegHeart } from 'react-icons/fa'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const navigate = useNavigate()
@@ -97,7 +98,11 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
         </Link>
         <div className="mt-auto flex items-center justify-between gap-4 border-t border-slate-300 px-2 pb-2 pt-4">
           <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
-            {isLiked ? '꽉찬하트' : '빈하트'}
+            {isLiked ? (
+              <FaHeart color="red" size={30} />
+            ) : (
+              <FaRegHeart color="black" size={30} />
+            )}
           </button>
           <button onClick={handleReportClick}>
             <PiSirenLight />
