@@ -22,6 +22,7 @@ export async function getMeetingParicipants(meetingId) {
 
 export async function getMeetingsParicipants({ queryKey }) {
   const participantsIds = queryKey[1]
+  console.log('participantsIds', participantsIds)
   const backendURI = import.meta.env.VITE_BACKEND_URI
   const token = sessionStorage.getItem('token')
 

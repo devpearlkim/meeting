@@ -14,6 +14,12 @@ const ReceivedApplicationsList = ({ meetingId }) => {
     queryKey: ['receivedApplications', meetingId],
     queryFn: getMeetingsParicipants,
   })
+  // const { data: receivedApplications } = useQuery({
+  //   queryKey: ['receivedApplications', meetingId],
+  //   queryFn: getMeetingsParicipants,
+  // })
+
+  console.log('미팅아이디', meetingId)
 
   const [pendingList, setPendingList] = useState([])
 
