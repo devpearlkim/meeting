@@ -15,6 +15,7 @@ import { FaHeart } from 'react-icons/fa'
 import { IoIosMore } from 'react-icons/io'
 import { FaLocationDot } from 'react-icons/fa6'
 import { MdDateRange, MdPerson } from 'react-icons/md'
+import dayjs from 'dayjs'
 
 const postDetail = () => {
   console.log('상세페이지')
@@ -162,34 +163,56 @@ const postDetail = () => {
                 </div>
               </div>
               <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>
-                <FaLocationDot />
-                <span className="mx-1">{data.data.location}</span>
-              </Link>
-              <Link to={`/profile/${data.data.host.userId}`}>
-                <div className="flex gap-2">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src={data.data.host.profileImage}
-                    alt="프로필이미지"
-                  />
-                  <span className="block text-sm font-semibold text-slate-400">
-                    {data.data.host.username}
-                  </span>
+                <div className="flex flex-col gap-1">
+                  <span className="text-sm font-semibold">장소</span>
+                  <div>
+                    <FaLocationDot className="inline" />
+                    <span className="mx-1">{data.data.location}</span>
+                  </div>
                 </div>
               </Link>
-              <div>
-                <MdDateRange />
-                <span className="px-1">{data.data.created_at}</span>
+              <Link to={`/profile/${data.data.host.userId}`}>
+                <div className="flex flex-col gap-1">
+                  <span className="text-sm font-semibold">개최자</span>
+                  <div>
+                    <MdPerson className="inline" />
+                    <div className="flex gap-2">
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={data.data.host.profileImage}
+                        alt="프로필이미지"
+                      />
+                      <span className="block text-sm font-semibold text-slate-400">
+                        {data.data.host.username}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm font-semibold">작성일</span>
+                <div>
+                  <MdDateRange className="inline" />
+                  <span className="px-1">
+                    {dayjs(data.data.created_at).format('YYYY-MM-DD')}
+                  </span>
+                </div>
               </div>
-              <div>
-                <MdDateRange />
-                <span className="px-1">{data.data.meeting_date}</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm font-semibold">모임날짜</span>
+                <div>
+                  <MdDateRange className="inline" />
+                  <span className="px-1">{data.data.meeting_date}</span>
+                </div>
               </div>
-              <div>
-                <MdPerson />
-                <span className="px-1">
-                  {data.data.participants_number}/{data.data.member_limit}
-                </span>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm font-semibold">모집인원</span>
+                <div>
+                  <MdPerson className="inline" />
+                  <span className="px-1">
+                    {data.data.participants_number}/{data.data.member_limit}
+                  </span>
+                </div>
               </div>
               <div className="w-96">
                 <button
