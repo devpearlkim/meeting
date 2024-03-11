@@ -73,50 +73,44 @@ const ReceivedApplicationsList = ({ meetingId }) => {
             </tr>
           </thead>
           <tbody>
-            {pendingList?.length === 0 ? (
-              <p className="text-center font-semibold text-gray-600">
-                신청내역이 없습니다
-              </p>
-            ) : (
-              pendingList?.map((apply) => (
-                <tr key={apply.participantid}>
-                  <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
-                    {/* <Link to={`/profile/${apply.유저의아이디부분}`}> */}
-                    <div className="ml-3">
-                      <p className="whitespace-no-wrap text-gray-900">
-                        {apply.nickname}
-                      </p>
-                    </div>
-                    {/* </Link> */}
-                  </td>
-
-                  <td className="w-72 border-b border-gray-200 bg-white px-5 py-5 text-sm">
+            {pendingList?.map((apply) => (
+              <tr key={apply.participantid}>
+                <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
+                  {/* <Link to={`/profile/${apply.유저의아이디부분}`}> */}
+                  <div className="ml-3">
                     <p className="whitespace-no-wrap text-gray-900">
-                      {apply.description}
+                      {apply.nickname}
                     </p>
-                  </td>
-                  <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                    <button
-                      onClick={() =>
-                        acceptMeetingApplication(apply.participantid)
-                      }
-                      className="mr-4 inline-block rounded-md bg-green-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-green-600"
-                    >
-                      수락
-                    </button>
+                  </div>
+                  {/* </Link> */}
+                </td>
 
-                    <button
-                      onClick={() =>
-                        rejectMeetingApplication(apply.participantid)
-                      }
-                      className="inline-block rounded-md bg-red-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-red-600"
-                    >
-                      거절
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
+                <td className="w-72 border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                  <p className="whitespace-no-wrap text-gray-900">
+                    {apply.description}
+                  </p>
+                </td>
+                <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                  <button
+                    onClick={() =>
+                      acceptMeetingApplication(apply.participantid)
+                    }
+                    className="mr-4 inline-block rounded-md bg-green-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-green-600"
+                  >
+                    수락
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      rejectMeetingApplication(apply.participantid)
+                    }
+                    className="inline-block rounded-md bg-red-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-red-600"
+                  >
+                    거절
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
