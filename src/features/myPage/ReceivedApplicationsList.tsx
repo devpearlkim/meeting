@@ -2,7 +2,6 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getCreatedMeetingIds } from '../../services/apiPost'
 import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { changeParticipantStatus } from '../../services/apiParticipant'
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 const ReceivedApplicationsList = () => {
@@ -55,19 +54,10 @@ const ReceivedApplicationsList = () => {
               <thead>
                 <tr>
                   <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                    모임
-                  </th>
-                  <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                     신청자
                   </th>
                   <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                    신청일
-                  </th>
-                  {/* <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                     소개글
-                  </th> */}
-                  <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                    모임날짜
                   </th>
                   <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                     수락/거절
@@ -81,8 +71,7 @@ const ReceivedApplicationsList = () => {
                       {/* <Link to={`/detail/${apply.meeting.meetingId}`}> */}
                       <div className="ml-3">
                         <p className="whitespace-no-wrap text-gray-900">
-                          {/* {apply.meeting.title} */}
-                          모임이름
+                          {apply.nickname}
                         </p>
                       </div>
                       {/* </Link> */}
@@ -90,19 +79,7 @@ const ReceivedApplicationsList = () => {
 
                     <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                       <p className="whitespace-no-wrap text-gray-900">
-                        {apply.nickname}
-                      </p>
-                    </td>
-                    <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p className="whitespace-no-wrap text-gray-900">
-                        {/* {apply.created_at} */}
-                        신청일
-                      </p>
-                    </td>
-                    <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p className="whitespace-no-wrap text-gray-900">
-                        {/* {apply.meeting.meeting_date} */}
-                        모임날짜
+                        {apply.description}
                       </p>
                     </td>
                     <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">

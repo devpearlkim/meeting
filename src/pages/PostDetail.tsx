@@ -10,6 +10,7 @@ import { getMeetingParicipants } from '../services/apiParticipant'
 import { useEffect, useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
 import toast from 'react-hot-toast'
+import ReceivedApplicationsList from '../features/myPage/ReceivedApplicationsList.js'
 
 const postDetail = () => {
   console.log('상세페이지')
@@ -198,6 +199,7 @@ const postDetail = () => {
           </div>
 
           {/* 디테일페이지 바디부분 */}
+          <ReceivedApplicationsList />
           <div className="flex gap-2 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <div className="flex flex-wrap gap-2">

@@ -4,7 +4,6 @@ import Sidebar from '../../features/myPage/Sidebar'
 import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import AppliedMeetingsList from '../../features/myPage/AppliedMeetingsList'
-import ReceivedApplicationsList from '../../features/myPage/ReceivedApplicationsList'
 
 const MyApplies = () => {
   const { pathname } = useLocation()
@@ -23,7 +22,6 @@ const MyApplies = () => {
         <Sidebar path={pathname} userId={userId} />
         <div className="flex">
           <AppliedMeetingsList />
-          <ReceivedApplicationsList />
         </div>
       </div>
     </div>
