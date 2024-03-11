@@ -252,7 +252,7 @@ const postDetail = () => {
               <div>{data.data.description}</div>
             </div>
             <div className="md:w-1/2">
-              <div className="mr-20 overflow-hidden rounded-lg bg-white shadow-lg">
+              <div className="mr-20 overflow-hidden rounded-lg bg-slate-200 shadow-lg">
                 <ul className="divide-y divide-gray-200">
                   {/* {members.map((member, index) => ( */}
                   {data.data.participants.map((member, index) => (

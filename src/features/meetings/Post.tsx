@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { addLike, deleteLike, getPostDetail } from '../../services/apiPost'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
+import { FaLocationDot } from 'react-icons/fa6'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const navigate = useNavigate()
@@ -79,7 +80,15 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
                 {post.meeting_date}
               </span>
             </div>
-            <h3 className="mb-2 mt-3 text-lg font-bold">{post.title}</h3>
+            <div className="flex justify-between">
+              <h3 className="mb-2 mt-3 text-lg font-bold">{post.title}</h3>
+              <Link to={`/?location=${encodeURIComponent(post.location)}`}>
+                <div>
+                  <FaLocationDot className="inline" />
+                  <span className="mx-1">{post.location}</span>
+                </div>
+              </Link>
+            </div>
             <div className="my-2">
               <div className="flex justify-between">
                 <div className="flex gap-1">
