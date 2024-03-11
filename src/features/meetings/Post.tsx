@@ -27,10 +27,10 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
     !isLogin && navigate('/login')
     setIsLiked(false)
     await deleteLike(post.meetingId)
-    // queryClient.invalidateQueries({
-    //   queryKey: ['posts'],
-    //   refetchType: 'all',
-    // })
+    queryClient.invalidateQueries({
+      queryKey: ['posts'],
+      refetchType: 'all',
+    })
   }
 
   const { data } = useQuery({

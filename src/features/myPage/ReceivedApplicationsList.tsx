@@ -38,12 +38,18 @@ const ReceivedApplicationsList = ({ meetingId }) => {
     queryClient.invalidateQueries({
       queryKey: ['receivedApplications'],
     })
+    queryClient.invalidateQueries({
+      queryKey: ['postDetail'],
+    })
   }
 
   const rejectMeetingApplication = async (participantId) => {
     await changeParticipantStatus(participantId, 'rejected')
     queryClient.invalidateQueries({
       queryKey: ['receivedApplications'],
+    })
+    queryClient.invalidateQueries({
+      queryKey: ['postDetail'],
     })
   }
 
