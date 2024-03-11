@@ -124,10 +124,65 @@ const postDetail = () => {
               />
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
-              <div className="flex justify-between">
+              <div className="flex justify-end">
+                <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
+                  {isLiked ? (
+                    <FaHeart color="red" size={30} />
+                  ) : (
+                    <FaHeart color="gray" size={30} />
+                  )}
+                </button>
+                <div>
+                  {showButton && showOptions && (
+                    <div>
+                      <button
+                        onClick={handleEditClick}
+                        className="mx-2 w-full rounded bg-purple-300 px-1 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                      >
+                        수정
+                      </button>
+                      <button
+                        onClick={handleDeleteClick}
+                        className="mx-2 w-full rounded bg-purple-300 px-1 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  )}
+                  {showButton && !showOptions && (
+                    <button onClick={() => setShowOptions(true)}>
+                      <IoIosMore size={20} />
+                    </button>
+                  )}
+                </div>
+              </div>
+              <div className="flex-col gap-2">
+                <h2 className="text-4xl font-bold">{data.data.title}</h2>
+                <Link
+                  to={`/?location=${encodeURIComponent(data.data.location)}`}
+                >
+                  <span>{data.data.location}</span>
+                </Link>
+                <Link to={`/profile/${data.data.host.userId}`}>
+                  <div className="flex gap-2">
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={data.data.host.profileImage}
+                      alt="프로필이미지"
+                    />
+                    <span className="block text-sm font-semibold text-slate-400">
+                      {data.data.host.username}
+                    </span>
+                  </div>
+                </Link>
+                <div>{data.data.created_at}</div>
+                <div>{data.data.meeting_date}</div>
+                <div>
+                  {data.data.participants_number}/{data.data.member_limit}
+                </div>
                 <button
                   onClick={handleParticipantClick}
-                  className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                  className="mx-10 w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
                 >
                   참가신청
                 </button>
@@ -138,59 +193,6 @@ const postDetail = () => {
                     meetingId={data?.data.meetingId}
                   />
                 )}
-                <div className="flex gap-2">
-                  <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
-                    {isLiked ? (
-                      <FaHeart color="red" size={30} />
-                    ) : (
-                      <FaHeart color="gray" size={30} />
-                    )}
-                  </button>
-                  <div>
-                    {showButton && showOptions && (
-                      <div>
-                        <button
-                          onClick={handleEditClick}
-                          className="mx-2 w-full rounded bg-purple-300 px-1 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-                        >
-                          수정
-                        </button>
-                        <button
-                          onClick={handleDeleteClick}
-                          className="mx-2 w-full rounded bg-purple-300 px-1 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-                        >
-                          삭제
-                        </button>
-                      </div>
-                    )}
-                    {showButton && !showOptions && (
-                      <button onClick={() => setShowOptions(true)}>
-                        <IoIosMore size={20} />
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <h2 className="text-4xl font-bold">{data.data.title}</h2>
-              <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>
-                <span>{data.data.location}</span>
-              </Link>
-              <Link to={`/profile/${data.data.host.userId}`}>
-                <div className="flex gap-2">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src={data.data.host.profileImage}
-                    alt="프로필이미지"
-                  />
-                  <span className="block text-sm font-semibold text-slate-400">
-                    {data.data.host.username}
-                  </span>
-                </div>
-              </Link>
-              <div>{data.data.created_at}</div>
-              <div>{data.data.meeting_date}</div>
-              <div>
-                {data.data.participants_number}/{data.data.member_limit}
               </div>
             </div>
           </div>
