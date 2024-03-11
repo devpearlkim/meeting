@@ -163,7 +163,7 @@ const postDetail = () => {
                 </div>
               </div>
               <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>
-                <div className="flex flex-col gap-1 px-4">
+                <div className="flex flex-col gap-1">
                   <span className="text-sm font-semibold">장소</span>
                   <div>
                     <FaLocationDot className="inline" />
@@ -236,7 +236,7 @@ const postDetail = () => {
             <ReceivedApplicationsList meetingId={data.data.meetingId} />
           )}
           {/* 디테일페이지 바디부분 */}
-          <div className="flex gap-2 sm:flex-col md:flex-row lg:flex-row">
+          <div className="flex gap-4 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <div className="flex flex-wrap gap-2">
                 {data.data?.categories.map((category) => (

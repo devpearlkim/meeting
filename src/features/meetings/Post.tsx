@@ -98,7 +98,11 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
         </Link>
         <div className="mt-auto flex items-center justify-between gap-4 border-t border-slate-300 px-2 pb-2 pt-4">
           <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
-            {isLiked ? <FaHeart color="red" /> : <FaHeart color="lightgray" />}
+            {isLiked ? (
+              <FaHeart color="red" size={20} />
+            ) : (
+              <FaHeart color="lightgray" size={20} />
+            )}
           </button>
           <button onClick={handleReportClick}>
             <PiSirenLight />
