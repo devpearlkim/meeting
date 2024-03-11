@@ -139,13 +139,13 @@ const postDetail = () => {
                       <div className="flex flex-col">
                         <button
                           onClick={handleEditClick}
-                          className="rounded bg-purple-300 px-2 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                          className="rounded bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400"
                         >
                           수정
                         </button>
                         <button
                           onClick={handleDeleteClick}
-                          className="rounded bg-purple-300 px-2 py-1 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                          className="rounded bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400"
                         >
                           삭제
                         </button>
