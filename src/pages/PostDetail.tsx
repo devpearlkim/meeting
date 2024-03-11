@@ -129,7 +129,7 @@ const postDetail = () => {
                   {isLiked ? (
                     <FaHeart color="red" size={30} />
                   ) : (
-                    <FaHeart color="gray" size={30} />
+                    <FaHeart color="lightgray" size={30} />
                   )}
                 </button>
                 <div>
@@ -180,12 +180,14 @@ const postDetail = () => {
                 <div>
                   {data.data.participants_number}/{data.data.member_limit}
                 </div>
-                <button
-                  onClick={handleParticipantClick}
-                  className="mx-10 w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-                >
-                  참가신청
-                </button>
+                <div className="px-4">
+                  <button
+                    onClick={handleParticipantClick}
+                    className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                  >
+                    참가신청
+                  </button>
+                </div>
                 {showParticipantModal && (
                   <ParticipantModal
                     showParticipantModal={showParticipantModal}
