@@ -75,6 +75,10 @@ const postDetail = () => {
   const loggedInUserId = userInfo?.userId
   const hostUserId = data?.data.host.userId
 
+  useEffect(() => {
+    !userInfo && navigate('/')
+  }, [userInfo])
+
   const handleParticipantClick = async () => {
     if (!isLogin) {
       navigate('/login')
