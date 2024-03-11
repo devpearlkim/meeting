@@ -44,18 +44,18 @@ const ReceivedApplicationsList = ({ meetingId }) => {
   console.log('receivedApplications', receivedApplications)
 
   return (
-    <div className="w-full rounded-md bg-white">
+    <div className="w-full rounded-md bg-white py-8">
       <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
         <table className="min-w-full">
           <thead>
             <tr>
-              <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+              <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold text-gray-600">
                 신청자
               </th>
-              <th className="w-72 border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+              <th className="w-72 border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold text-gray-600">
                 소개글
               </th>
-              <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+              <th className="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold text-gray-600">
                 수락/거절
               </th>
             </tr>
