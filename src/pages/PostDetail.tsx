@@ -76,7 +76,7 @@ const postDetail = () => {
   const hostUserId = data?.data.host.userId
 
   useEffect(() => {
-    !userInfo && navigate('/')
+    !userInfo && navigate('/login')
   }, [userInfo])
 
   const handleParticipantClick = async () => {
