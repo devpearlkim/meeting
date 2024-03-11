@@ -66,9 +66,9 @@ const ReceivedApplicationsList = () => {
               </thead>
               <tbody>
                 {pendingList?.map((apply) => (
-                  <tr key={apply.participantId}>
+                  <tr key={apply.participantid}>
                     <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
-                      {/* <Link to={`/detail/${apply.meeting.meetingId}`}> */}
+                      {/* <Link to={`/profile/${apply.유저의아이디부분}`}> */}
                       <div className="ml-3">
                         <p className="whitespace-no-wrap text-gray-900">
                           {apply.nickname}
