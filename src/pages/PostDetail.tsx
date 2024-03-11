@@ -178,7 +178,7 @@ const postDetail = () => {
                     <div className="flex gap-2">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src={data.data.host.profileImage}
+                        src={data.data.host.profileimage}
                         alt="프로필이미지"
                       />
                       <span className="block text-sm font-semibold text-slate-400">
