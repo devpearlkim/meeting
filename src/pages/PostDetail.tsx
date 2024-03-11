@@ -199,7 +199,9 @@ const postDetail = () => {
           </div>
 
           {/* 모임에 들어온 신청 목록 */}
-          {loggedInUserId === hostUserId && <ReceivedApplicationsList />}
+          {loggedInUserId === hostUserId && (
+            <ReceivedApplicationsList meetingId={data.data.meetingId} />
+          )}
           {/* 디테일페이지 바디부분 */}
           <div className="flex gap-2 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">

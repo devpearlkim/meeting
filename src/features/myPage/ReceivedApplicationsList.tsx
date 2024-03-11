@@ -4,14 +4,14 @@ import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useEffect, useState } from 'react'
 
-const ReceivedApplicationsList = () => {
-  const { data: meetingIds } = useQuery({
-    queryKey: ['createdMeetingIds'],
-    queryFn: getCreatedMeetingIds,
-  })
+const ReceivedApplicationsList = ({ meetingId }) => {
+  // const { data: meetingIds } = useQuery({
+  //   queryKey: ['createdMeetingIds'],
+  //   queryFn: getCreatedMeetingIds,
+  // })
 
   const { data: receivedApplications } = useQuery({
-    queryKey: ['receivedApplications', meetingIds],
+    queryKey: ['receivedApplications', meetingId],
     queryFn: getMeetingsParicipants,
   })
 
