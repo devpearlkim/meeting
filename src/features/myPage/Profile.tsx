@@ -18,7 +18,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col gap-2 p-4">
+    <div className="ml-8 flex w-64 flex-col gap-2 p-4">
       <div className="flex flex-col gap-2">
         <img
           className="h-40 w-40 rounded-full"
