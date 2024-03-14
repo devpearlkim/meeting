@@ -29,7 +29,10 @@ const LoginForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className={'mx-auto w-[20rem] space-y-2 text-slate-950'}
     >
-      <KakaoLogin />
+      <div className="border border-b-2">
+        <span className="font-sm">sns간편로그인</span>
+        <KakaoLogin />
+      </div>
       <div className="flex flex-col">
         <input
           type="text"

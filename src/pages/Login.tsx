@@ -14,7 +14,7 @@ const Login = () => {
 
   if (!token) {
     return (
-      <div>
+      <div className="flex items-center justify-center">
         <LoginForm />
       </div>
     )
