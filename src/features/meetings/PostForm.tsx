@@ -69,7 +69,7 @@ const PostForm = ({ postData }) => {
         onSubmit={methods.handleSubmit(onSubmit)}
         className="mx-auto max-w-md"
       >
-        <div className="mb-4">
+        <div className="mb-4 flex flex-col gap-4">
           <label
             htmlFor="title"
             className="mb-3 block text-base font-medium text-[#07074D]"
@@ -148,7 +148,7 @@ const PostForm = ({ postData }) => {
         <div>
           <button
             type="submit"
-            className="my-4 mt-40 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+            className="my-4 mt-40 rounded-md bg-cyan-400 px-4 py-2 text-white hover:bg-cyan-400"
           >
             작성완료
           </button>

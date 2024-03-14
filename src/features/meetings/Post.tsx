@@ -5,6 +5,7 @@ import { addLike, deleteLike, getPostDetail } from '../../services/apiPost'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
+import { MdDateRange, MdPerson } from 'react-icons/md'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const navigate = useNavigate()
@@ -71,23 +72,26 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
                     src={post?.host?.profileImage}
                     alt="프로필이미지"
                   />
-                  <span className="block text-sm font-semibold text-slate-400">
-                    {post?.host?.username}
+                  <span className="block text-sm font-semibold text-black">
+                    {post?.host?.nickname}
                   </span>
                 </div>
               </Link>
               <div className="flex flex-col gap-1">
                 <Link to={`/?location=${encodeURIComponent(post.location)}`}>
                   <div className="flex">
-                    <FaLocationDot className="inline text-slate-400" />
-                    <span className="block text-sm font-semibold text-slate-400">
+                    <FaLocationDot className="text-neutral-500" />
+                    <span className="block text-sm text-neutral-500">
                       {post.location}
                     </span>
                   </div>
                 </Link>
-                <span className="block text-sm font-semibold text-slate-400">
-                  {post.meeting_date}
-                </span>
+                <div className="flex">
+                  <MdDateRange className="text-neutral-500" />
+                  <span className="block text-sm text-neutral-500">
+                    {post.meeting_date}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -97,28 +101,31 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
               <div className="flex justify-between">
                 <div className="flex gap-1">
                   {post.categories.map((category) => (
-                    <button className="inline-block rounded-full bg-blue-500 px-3 py-1 text-xs text-white">
+                    <button className="inline-block rounded-full bg-cyan-400 px-3 py-1 text-xs text-white">
                       {category.name}
                     </button>
                   ))}
                 </div>
-                <div>
-                  {post.participants_number}/{post.member_limit}
+                <div className="flex">
+                  <MdPerson className="text-neutral-500" />
+                  <span className="block text-sm text-neutral-500">
+                    참여인원 {post.participants_number}/{post.member_limit}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </Link>
-        <div className="mt-auto flex items-center justify-between gap-4 border-t border-slate-300 px-2 pb-2 pt-4">
+        <div className="mt-auto flex items-center justify-between gap-4 border-slate-300 px-2 py-4">
           <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
             {isLiked ? (
-              <FaHeart color="red" size={20} />
+              <FaHeart className="text-red-500" size={20} />
             ) : (
-              <FaHeart color="lightgray" size={20} />
+              <FaHeart className="text-neutral-500" size={20} />
             )}
           </button>
           <button onClick={handleReportClick}>
-            <PiSirenLight />
+            <PiSirenLight className="text-neutral-500" />
           </button>
         </div>
       </div>

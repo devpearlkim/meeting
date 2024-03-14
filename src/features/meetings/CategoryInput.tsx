@@ -97,8 +97,8 @@ const CategoryInput = ({ mode, default_categories }) => {
             type="button"
             className={`inline-block flex-shrink-0 rounded-full px-3 py-2 text-sm ${
               selectedCategories.includes(category.categoryId.toString())
-                ? 'bg-cyan-400 font-semibold text-white'
-                : 'border border-cyan-400 bg-white font-semibold text-cyan-400 hover:bg-slate-50'
+                ? 'bg-sky-500 text-white'
+                : 'border border-sky-500 bg-white text-sky-500 hover:bg-slate-50'
             }`}
           >
             {category.name}

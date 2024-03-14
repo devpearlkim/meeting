@@ -124,13 +124,13 @@ const postDetail = () => {
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
               <div className="flex justify-between pr-4">
-                <h2 className="text-4xl font-bold">{data.data.title}</h2>
+                <h2 className="text-4xl font-bold ">{data.data.title}</h2>
                 <div className="flex gap-2 px-4">
                   <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
                     {isLiked ? (
-                      <FaHeart color="red" size={30} />
+                      <FaHeart className="text-red-500" size={20} />
                     ) : (
-                      <FaHeart color="lightgray" size={30} />
+                      <FaHeart className="text-neutral-500" size={20} />
                     )}
                   </button>
                   <div className="pt-2">
@@ -138,13 +138,13 @@ const postDetail = () => {
                       <div className="flex flex-col">
                         <button
                           onClick={handleEditClick}
-                          className="rounded bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400"
+                          className="text-neutral-500"
                         >
                           수정
                         </button>
                         <button
                           onClick={handleDeleteClick}
-                          className="rounded bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400"
+                          className="text-neutral-500"
                         >
                           삭제
                         </button>
@@ -160,16 +160,20 @@ const postDetail = () => {
               </div>
               <Link to={`/?location=${encodeURIComponent(data.data.location)}`}>
                 <div className="flex flex-col gap-1">
-                  <span className="text-sm font-semibold">장소</span>
+                  <span className="text-sm font-semibold text-neutral-500">
+                    장소
+                  </span>
                   <div>
-                    <FaLocationDot className="inline" />
+                    <FaLocationDot className="inline text-neutral-500" />
                     <span className="mx-1">{data.data.location}</span>
                   </div>
                 </div>
               </Link>
               <Link to={`/profile/${data.data.host.userId}`}>
                 <div className="flex flex-col gap-1">
-                  <span className="text-sm font-semibold">개최자</span>
+                  <span className="text-sm font-semibold text-neutral-500">
+                    개최자
+                  </span>
                   <div>
                     <div className="flex gap-2">
                       <img
@@ -177,34 +181,42 @@ const postDetail = () => {
                         src={data.data.host.profileimage}
                         alt="프로필이미지"
                       />
-                      <span className="block text-sm font-semibold text-slate-400">
-                        {data.data.host.username}
+                      <span className="block text-sm font-semibold text-neutral-500">
+                        {data.data.host.nickname}
                       </span>
                     </div>
                   </div>
                 </div>
               </Link>
               <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold">작성일</span>
+                <span className="text-sm font-semibold text-neutral-500">
+                  작성일
+                </span>
                 <div>
-                  <MdDateRange className="inline" />
-                  <span className="px-1">
+                  <MdDateRange className="inline text-neutral-500" />
+                  <span className="px-1 text-neutral-500">
                     {dayjs(data.data.created_at).format('YYYY-MM-DD')}
                   </span>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold">모임날짜</span>
+                <span className="text-sm font-semibold text-neutral-500">
+                  모임날짜
+                </span>
                 <div>
-                  <MdDateRange className="inline" />
-                  <span className="px-1">{data.data.meeting_date}</span>
+                  <MdDateRange className="inline text-neutral-500" />
+                  <span className="px-1 text-neutral-500">
+                    {data.data.meeting_date}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold">모집인원</span>
+                <span className="text-sm font-semibold text-neutral-500">
+                  모집인원
+                </span>
                 <div>
-                  <MdPerson className="inline" />
-                  <span className="px-1">
+                  <MdPerson className="inline text-neutral-500" />
+                  <span className="px-1 text-neutral-500">
                     {data.data.participants_number}/{data.data.member_limit}
                   </span>
                 </div>
@@ -212,7 +224,7 @@ const postDetail = () => {
               <div className="">
                 <button
                   onClick={handleParticipantClick}
-                  className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
+                  className="w-full rounded bg-cyan-400 px-2 py-3 font-bold text-white outline-none hover:bg-cyan-400 active:bg-cyan-500 disabled:bg-slate-100 disabled:text-slate-400"
                 >
                   참가신청
                 </button>
@@ -239,7 +251,7 @@ const postDetail = () => {
                   <button
                     key={category.categoryId}
                     onClick={() => handleCategoryClick(category.categoryId)}
-                    className="my-2 inline-block flex-shrink-0 rounded-full bg-blue-500 px-3 py-2 text-sm text-white"
+                    className="my-2 inline-block flex-shrink-0 rounded-full bg-cyan-400 px-3 py-2 text-sm text-white"
                   >
                     {category.name}
                   </button>

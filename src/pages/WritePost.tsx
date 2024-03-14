@@ -7,7 +7,6 @@ const WritePost = () => {
 
   return (
     <>
-      <p>포스트작성페이지</p>
       <PostForm postData={postData} />
     </>
   )
