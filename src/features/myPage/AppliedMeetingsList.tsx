@@ -37,7 +37,7 @@ const AppliedMeetingsList = () => {
         <div>모임 신청 내역이 없습니다</div>
       ) : (
         <div>
-          {data.map((apply, index) => (
+          {data?.map((apply, index) => (
             <div key={index}>
               <Post post={apply} />
             </div>
