@@ -15,7 +15,7 @@ const BookMark = () => {
   }, [userId])
 
   return (
-    <div className="flex">
+    <div className="mx-10 flex w-full">
       <Profile />
       <div className="mx-10 flex flex-col">
         <Sidebar path={pathname} userId={userId} />
