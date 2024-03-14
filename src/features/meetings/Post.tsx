@@ -108,7 +108,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
             <div className="my-2">
               <div className="flex justify-between">
                 <div className="flex gap-1">
-                  {post.categories.map((category) => (
+                  {post?.categories.map((category) => (
                     <button className="inline-block rounded-full bg-cyan-400 px-3 py-1 text-xs text-white">
                       {category.name}
                     </button>
