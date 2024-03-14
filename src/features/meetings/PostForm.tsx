@@ -67,12 +67,12 @@ const PostForm = ({ postData }) => {
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="mx-auto max-w-md"
+        className="mx-auto flex max-w-md flex-col gap-4"
       >
-        <div className="mb-4 flex flex-col gap-4">
+        <div className="mb-4">
           <label
             htmlFor="title"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-neutral-500"
           >
             제목
           </label>
@@ -86,7 +86,7 @@ const PostForm = ({ postData }) => {
         <div className="mb-4">
           <label
             htmlFor="description"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-neutral-500"
           >
             내용
           </label>
@@ -99,7 +99,7 @@ const PostForm = ({ postData }) => {
         <div className="mb-4">
           <label
             htmlFor="date"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-neutral-500"
           >
             모임날짜
           </label>
@@ -108,7 +108,7 @@ const PostForm = ({ postData }) => {
         <div className="mb-4">
           <label
             htmlFor="location"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-neutral-500"
           >
             위치
           </label>
@@ -117,7 +117,7 @@ const PostForm = ({ postData }) => {
         <div className="mb-4">
           <label
             htmlFor="count"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-neutral-500"
           >
             모집인원
           </label>
@@ -127,7 +127,7 @@ const PostForm = ({ postData }) => {
         <div>
           <label
             htmlFor="category"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-neutral-500"
           >
             카테고리
           </label>
@@ -139,7 +139,7 @@ const PostForm = ({ postData }) => {
         <div>
           <label
             htmlFor="image"
-            className="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-neutral-500"
           >
             메인이미지
           </label>

@@ -123,7 +123,7 @@ export default function DatePickerDialog({ default_meeting_date }) {
           ref={buttonRef}
           type="button"
           onClick={handleButtonClick}
-          className="rounded bg-blue-500 px-2 py-1 text-white hover:bg-blue-600"
+          className="rounded bg-cyan-400 px-2 py-1 text-white hover:bg-cyan-500"
         >
           날짜선택
         </button>

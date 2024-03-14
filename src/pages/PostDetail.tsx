@@ -21,7 +21,6 @@ const postDetail = () => {
   console.log('상세페이지')
   const navigate = useNavigate()
   const { postId } = useParams()
-  const [showOptions, setShowOptions] = useState(false)
   const [isLogin, setIsLogin] = useState(
     sessionStorage.getItem('token') ? true : false,
   )
@@ -128,14 +127,14 @@ const postDetail = () => {
                 <div className="flex gap-2 px-4">
                   <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
                     {isLiked ? (
-                      <FaHeart className="text-red-500" size={20} />
+                      <FaHeart className="text-red-500" size={30} />
                     ) : (
-                      <FaHeart className="text-neutral-500" size={20} />
+                      <FaHeart className="text-neutral-500" size={30} />
                     )}
                   </button>
                   <div className="pt-2">
-                    {showButton && showOptions && (
-                      <div className="flex flex-col">
+                    {showButton && (
+                      <div className="flex gap-2">
                         <button
                           onClick={handleEditClick}
                           className="text-neutral-500"

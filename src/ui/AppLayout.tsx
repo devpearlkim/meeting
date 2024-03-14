@@ -17,6 +17,7 @@ const HeaderStyle = styled.div`
 `
 
 const MainContent = styled.div`
+  margin-top: 75px;
   flex: 1;
 `
 
