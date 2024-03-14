@@ -121,6 +121,9 @@ const postDetail = () => {
                 className="h-80 w-full rounded object-cover"
                 src={data.data.image || defaultImage}
                 alt="메인이미지"
+                onError={(e) => {
+                  e.target.src = defaultImage
+                }}
               />
             </div>
             <div className="flex flex-col gap-2 md:w-1/2">
@@ -176,6 +179,9 @@ const postDetail = () => {
                         className="h-10 w-10 rounded-full"
                         src={data.data.host.profileimage || defaultProfileImage}
                         alt="프로필이미지"
+                        onError={(e) => {
+                          e.target.src = defaultProfileImage
+                        }}
                       />
                       <span className="block text-sm font-semibold text-neutral-500">
                         {data.data.host.username}
@@ -270,6 +276,9 @@ const postDetail = () => {
                             className="h-10 w-10 rounded-full"
                             src={member.profileImage || defaultProfileImage}
                             alt={member.username}
+                            onError={(e) => {
+                              e.target.src = defaultProfileImage
+                            }}
                           />
                           <span className="ml-3 font-medium">
                             {member.username}

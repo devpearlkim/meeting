@@ -64,6 +64,9 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
             src={post?.image || defaultImage}
             className="h-52 w-full object-cover"
             alt="메인이미지"
+            onError={(e) => {
+              e.target.src = defaultImage
+            }}
           />
           <div className="flex flex-1 flex-col p-3">
             <div className="flex justify-between">
@@ -73,6 +76,9 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
                     className="h-10 w-10 rounded-full"
                     src={post?.host?.profileImage || defaultProfileImage}
                     alt="프로필이미지"
+                    onError={(e) => {
+                      e.target.src = defaultProfileImage
+                    }}
                   />
                   <span className="block text-sm font-semibold text-black">
                     {post?.host?.username}
