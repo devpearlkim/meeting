@@ -108,7 +108,7 @@ const List = () => {
             {hasNextPage && (
               <div
                 ref={ref}
-                className="h-96 bg-slate-900"
+                className="h-96 bg-transparent"
                 style={{ height: 50 }}
               />
             )}

@@ -16,8 +16,8 @@ import { IoIosMore } from 'react-icons/io'
 import { FaLocationDot } from 'react-icons/fa6'
 import { MdDateRange, MdPerson } from 'react-icons/md'
 import dayjs from 'dayjs'
-import defaultImage from '../../assets/images/defaultImage.jpg'
-import defaultProfileImage from '../../assets/images/defaultProfileImage.png'
+import defaultImage from '../assets/images/defaultImage.jpg'
+import defaultProfileImage from '../assets/images/defaultProfileImage.png'
 
 const postDetail = () => {
   console.log('상세페이지')
