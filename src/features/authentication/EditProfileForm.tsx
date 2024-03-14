@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { checkNickname } from '../../services/apiAuth.js'
 import { useNavigate } from 'react-router-dom'

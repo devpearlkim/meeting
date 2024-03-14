@@ -117,14 +117,14 @@ const AppliedMeetingsList = () => {
                     <button
                       onClick={handlePrevPage}
                       disabled={page === 1}
-                      className="rounded-l bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
+                      className="rounded-l bg-cyan-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
                     >
                       Prev
                     </button>
                     <button
                       onClick={handleNextPage}
                       disabled={data?.length < 6}
-                      className="rounded-r bg-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
+                      className="rounded-r bg-cyan-600 px-4 py-2 text-sm font-semibold text-indigo-50 transition duration-150 hover:bg-indigo-500 disabled:bg-slate-400"
                     >
                       Next
                     </button>

@@ -1,26 +1,13 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-// import { getCreatedMeetingIds } from '../../services/apiPost'
 import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useEffect, useState } from 'react'
 
 const ReceivedApplicationsList = ({ meetingId }) => {
-  // const { data: meetingIds } = useQuery({
-  //   queryKey: ['createdMeetingIds'],
-  //   queryFn: getCreatedMeetingIds,
-  // })
-
   const { data: receivedApplications } = useQuery({
     queryKey: ['receivedApplications', meetingId],
     queryFn: getMeetingsParicipants,
   })
-  // const { data: receivedApplications } = useQuery({
-  //   queryKey: ['receivedApplications', meetingId],
-  //   queryFn: getMeetingsParicipants,
-  // })
-
-  console.log('미팅아이디', meetingId)
-
   const [pendingList, setPendingList] = useState([])
 
   useEffect(() => {
@@ -81,13 +68,11 @@ const ReceivedApplicationsList = ({ meetingId }) => {
               pendingList?.map((apply) => (
                 <tr key={apply.participantid}>
                   <td className="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
-                    {/* <Link to={`/profile/${apply.유저의아이디부분}`}> */}
                     <div className="ml-3">
                       <p className="whitespace-no-wrap text-gray-900">
                         {apply.nickname}
                       </p>
                     </div>
-                    {/* </Link> */}
                   </td>
 
                   <td className="w-72 border-b border-gray-200 bg-white px-5 py-5 text-sm">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import dayjs from 'dayjs'
 import {
@@ -8,7 +8,6 @@ import {
   checkCode,
 } from '../../services/apiAuth.js'
 import { useNavigate } from 'react-router-dom'
-import ImageUpload from '../meetings/ImageUpload.js'
 import CategoryInput from '../meetings/CategoryInput.js'
 
 const SignupForm = () => {
@@ -438,12 +437,6 @@ const SignupForm = () => {
             </label>
           </div>
         </div>
-        {/* <div className="pb-40">
-          <label htmlFor="image" className="mb-1 block text-sm font-semibold">
-            프로필 이미지
-          </label>
-          <ImageUpload type={'profile'} />
-        </div> */}
         <input {...register('profileImage', { value: 'null' })} type="hidden" />
         <input {...register('provider', { value: 'local' })} type="hidden" />
 

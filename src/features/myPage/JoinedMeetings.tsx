@@ -6,8 +6,6 @@ import SkeletonPost from '../meetings/SkeletonPost'
 import ReportModal from '../meetings/ReportModal'
 
 const JoinedMeetings = () => {
-  // 추후 useParams로 userId가져와서 해당 유저 정보 조회
-
   const [showModal, setShowModal] = useState(false)
   const [reportedPostId, setReportedPostId] = useState(null)
   const [page, setPage] = useState(1)
@@ -30,7 +28,7 @@ const JoinedMeetings = () => {
 
   return (
     <>
-      <div className="relative min-h-screen w-full overflow-hidden bg-pink-300">
+      <div className="relative min-h-screen w-full overflow-hidden">
         <div className="min-h-28">
           <div className="mx-auto flex flex-col flex-wrap items-center justify-center py-4">
             <span className="font-semibold">참여중인 모임목록</span>

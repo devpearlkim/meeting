@@ -1,10 +1,8 @@
-import React, { ChangeEventHandler, useEffect, useRef, useState } from 'react'
-import { format, isBefore, isValid, parse } from 'date-fns'
+import { ChangeEventHandler, useEffect, useRef, useState } from 'react'
+import { format, isValid, parse } from 'date-fns'
 import { DayPicker, SelectSingleEventHandler } from 'react-day-picker'
 import { usePopper } from 'react-popper'
-import toast from 'react-hot-toast'
 import { useFormContext } from 'react-hook-form'
-import LocationInput from './LocationInput'
 
 export default function DatePickerDialog({ default_meeting_date }) {
   const [selected, setSelected] = useState<Date>()
@@ -22,7 +20,6 @@ export default function DatePickerDialog({ default_meeting_date }) {
     if (default_meeting_date) {
       const parsedDate = parse(default_meeting_date, 'yyyy-MM-dd', new Date())
       setSelected(parsedDate)
-      // setValue('meeting_date', format(selected, 'yyyy-MM-dd'))
     }
   }, [default_meeting_date])
 

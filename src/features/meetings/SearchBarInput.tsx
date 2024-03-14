@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom'
 const SearchBarInput = () => {
   const { register } = useFormContext()
   const searchParams = new URLSearchParams(useLocation().search)
-  // const initialSearch = searchParams.get('search') ?? ''
 
   return (
     <div className="">

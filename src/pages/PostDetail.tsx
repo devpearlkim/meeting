@@ -6,13 +6,10 @@ import {
   deleteLike,
   deletePost,
 } from '../services/apiPost'
-import { getMeetingParicipants } from '../services/apiParticipant'
 import { useEffect, useState } from 'react'
 import ParticipantModal from '../features/meetings/ParticipantModal.js'
-import toast from 'react-hot-toast'
 import ReceivedApplicationsList from '../features/myPage/ReceivedApplicationsList.js'
 import { FaHeart } from 'react-icons/fa'
-import { IoIosMore } from 'react-icons/io'
 import { FaLocationDot } from 'react-icons/fa6'
 import { MdDateRange, MdPerson } from 'react-icons/md'
 import dayjs from 'dayjs'
@@ -42,7 +39,6 @@ const postDetail = () => {
   }
 
   const handleDeleteClick = () => {
-    // 삭제 기능 실행
     deletePost(postId)
   }
 
@@ -67,11 +63,6 @@ const postDetail = () => {
   const handleCategoryClick = (categoryId) => {
     navigate(`/?category=${categoryId}`)
   }
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>
-  // }
-
   const [showParticipantModal, setShowParticipantModal] = useState(false)
   const loggedInUserId = userInfo?.userId
   const hostUserId = data?.data.host.userId
@@ -240,12 +231,9 @@ const postDetail = () => {
               )}
             </div>
           </div>
-
-          {/* 모임에 들어온 신청 목록 */}
           {loggedInUserId === hostUserId && (
             <ReceivedApplicationsList meetingId={data.data.meetingId} />
           )}
-          {/* 디테일페이지 바디부분 */}
           <div className="my-4 flex gap-4 sm:flex-col md:flex-row lg:flex-row">
             <div className="md:w-1/2">
               <div className="flex flex-wrap gap-2">
@@ -264,7 +252,6 @@ const postDetail = () => {
             <div className="md:w-1/2">
               <div className="mr-20 overflow-hidden rounded-lg bg-slate-200 shadow-lg">
                 <ul className="divide-y divide-gray-200">
-                  {/* {members.map((member, index) => ( */}
                   {data.data.participants.map((member, index) => (
                     <Link to={`/profile/${member.userid}`}>
                       <li
