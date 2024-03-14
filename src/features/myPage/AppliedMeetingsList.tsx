@@ -37,11 +37,14 @@ const AppliedMeetingsList = () => {
         <div>모임 신청 내역이 없습니다</div>
       ) : (
         <div>
-          {data?.map((apply, index) => (
-            <div key={index}>
-              <Post post={apply} />
-            </div>
-          ))}
+          {Array.isArray(data) &&
+            data
+              ?.filter((apply) => apply.status === 'pending')
+              .map((apply, index) => (
+                <div key={index}>
+                  <Post post={apply.meeting} />
+                </div>
+              ))}
           <span>신청내역</span>
           <div className="w-full rounded-md bg-white p-8">
             <div className="-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8">
