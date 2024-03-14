@@ -70,24 +70,21 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
           />
           <div className="flex flex-1 flex-col p-3">
             <div className="flex justify-between">
-              {post?.host ?? (
-                <Link to={`/profile/${post?.host?.userId}`}>
-                  <div className="flex gap-2">
-                    <img
-                      className="h-10 w-10 rounded-full"
-                      src={post?.host?.profileImage || defaultProfileImage}
-                      alt="프로필이미지"
-                      onError={(e) => {
-                        e.target.src = defaultProfileImage
-                      }}
-                    />
-                    <span className="block text-sm font-semibold text-black">
-                      {post?.host?.username}
-                    </span>
-                  </div>
-                </Link>
-              )}
-
+              <Link to={`/profile/${post?.host?.userId}`}>
+                <div className="flex gap-2">
+                  <img
+                    className="h-10 w-10 rounded-full"
+                    src={post?.host?.profileImage || defaultProfileImage}
+                    alt="프로필이미지"
+                    onError={(e) => {
+                      e.target.src = defaultProfileImage
+                    }}
+                  />
+                  <span className="block text-sm font-semibold text-black">
+                    {post?.host?.username}
+                  </span>
+                </div>
+              </Link>
               <div className="flex flex-col gap-1">
                 <Link to={`/?location=${encodeURIComponent(post.location)}`}>
                   <div className="flex">
@@ -117,32 +114,28 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
                     </button>
                   ))}
                 </div>
-                {post.participants_number ?? (
-                  <div className="flex">
-                    <MdPerson className="text-neutral-500" />
-                    <span className="block text-sm text-neutral-500">
-                      참여인원 {post.participants_number}/{post.member_limit}
-                    </span>
-                  </div>
-                )}
+                <div className="flex">
+                  <MdPerson className="text-neutral-500" />
+                  <span className="block text-sm text-neutral-500">
+                    참여인원 {post.participants_number}/{post.member_limit}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </Link>
-        {post?.isLiked ?? (
-          <div className="mt-auto flex items-center justify-between gap-4 border-slate-300 px-2 py-4">
-            <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
-              {isLiked ? (
-                <FaHeart className="text-red-500" size={20} />
-              ) : (
-                <FaHeart className="text-neutral-500" size={20} />
-              )}
-            </button>
-            <button onClick={handleReportClick}>
-              <PiSirenLight className="text-neutral-500" />
-            </button>
-          </div>
-        )}
+        <div className="mt-auto flex items-center justify-between gap-4 border-slate-300 px-2 py-4">
+          <button onClick={isLiked ? deleteLikeAPI : addLikeAPI}>
+            {isLiked ? (
+              <FaHeart className="text-red-500" size={20} />
+            ) : (
+              <FaHeart className="text-neutral-500" size={20} />
+            )}
+          </button>
+          <button onClick={handleReportClick}>
+            <PiSirenLight className="text-neutral-500" />
+          </button>
+        </div>
       </div>
     </div>
   )
