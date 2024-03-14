@@ -28,9 +28,9 @@ const ImageUpload = ({ type }) => {
       <main className="">
         <article className="relative flex h-full flex-col rounded-md bg-white">
           <section className="flex flex-col">
-            <header className="flex flex-col items-center justify-center border-2 border-dashed border-gray-400 py-12">
-              <p className="mb-3 flex flex-wrap justify-center font-semibold text-gray-900">
-                여기 이미지를 드래그 또는 업로드 버튼 클릭
+            <header className="flex flex-col items-center justify-center border-2 border-dashed border-neutral-400 py-12">
+              <p className="mb-3 flex flex-wrap justify-center font-semibold text-neutral-400">
+                이미지를 드래그 또는 업로드 버튼 클릭
               </p>
               <input
                 id="hidden-input"
@@ -41,7 +41,7 @@ const ImageUpload = ({ type }) => {
               <button
                 id="button"
                 type="button"
-                className="mt-2 rounded-sm bg-gray-200 px-3 py-1 hover:bg-gray-300 focus:outline-none"
+                className="mt-2 rounded bg-cyan-200 px-3 py-1 hover:bg-cyan-400 focus:outline-none"
                 onClick={() => document.getElementById('hidden-input').click()}
               >
                 이미지업로드
@@ -50,7 +50,7 @@ const ImageUpload = ({ type }) => {
 
             {file && (
               <div className="h-24 w-full pt-8">
-                <article className="group cursor-pointer rounded-md bg-gray-100 focus:outline-none ">
+                <article className="group cursor-pointer rounded-md bg-neutral-100 focus:outline-none ">
                   <div className="flex flex-col">
                     <img
                       alt="upload preview"
@@ -64,7 +64,7 @@ const ImageUpload = ({ type }) => {
                       <div className="flex">
                         <button
                           type="button"
-                          className="delete ml-auto rounded-md p-1 text-gray-800 hover:bg-gray-300 focus:outline-none"
+                          className="delete ml-auto rounded-md p-1 text-neutral-400 hover:bg-neutral-300 focus:outline-none"
                           onClick={handleCancel}
                         >
                           <svg

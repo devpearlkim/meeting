@@ -19,7 +19,7 @@ const MyMeetings = () => {
       <Profile />
       <div className="mx-10 flex w-full flex-col">
         <Sidebar path={pathname} userId={userId} />
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 bg-slate-800">
           {userInfo?.userId == userId ? (
             <>
               <CreatedMeetings />

@@ -16,6 +16,8 @@ import { IoIosMore } from 'react-icons/io'
 import { FaLocationDot } from 'react-icons/fa6'
 import { MdDateRange, MdPerson } from 'react-icons/md'
 import dayjs from 'dayjs'
+import defaultImage from '../../assets/images/defaultImage.jpg'
+import defaultProfileImage from '../../assets/images/defaultProfileImage.png'
 
 const postDetail = () => {
   console.log('상세페이지')
@@ -117,7 +119,7 @@ const postDetail = () => {
             <div className="md:w-1/2">
               <img
                 className="h-80 w-full rounded object-cover"
-                src={data.data.image}
+                src={data.data.image || defaultImage}
                 alt="메인이미지"
               />
             </div>
@@ -149,11 +151,6 @@ const postDetail = () => {
                         </button>
                       </div>
                     )}
-                    {showButton && !showOptions && (
-                      <button onClick={() => setShowOptions(true)}>
-                        <IoIosMore size={20} />
-                      </button>
-                    )}
                   </div>
                 </div>
               </div>
@@ -177,11 +174,11 @@ const postDetail = () => {
                     <div className="flex gap-2">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src={data.data.host.profileimage}
+                        src={data.data.host.profileimage || defaultProfileImage}
                         alt="프로필이미지"
                       />
                       <span className="block text-sm font-semibold text-neutral-500">
-                        {data.data.host.nickname}
+                        {data.data.host.username}
                       </span>
                     </div>
                   </div>
@@ -271,11 +268,11 @@ const postDetail = () => {
                         <div className="flex items-center">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={member.profileImage}
-                            alt={member.nickname}
+                            src={member.profileImage || defaultProfileImage}
+                            alt={member.username}
                           />
                           <span className="ml-3 font-medium">
-                            {member.nickname}
+                            {member.username}
                           </span>
                         </div>
                       </li>

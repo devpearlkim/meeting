@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getUserProfile } from '../../services/apiUser'
+import defaultProfileImage from '../../assets/images/defaultProfileImage.png'
 
 const Profile = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
@@ -21,7 +22,7 @@ const Profile = () => {
       <div className="flex flex-col gap-2">
         <img
           className="h-40 w-40 rounded-full"
-          src={data?.profileImage}
+          src={data?.profileImage || defaultProfileImage}
           alt="프로필이미지"
         />
         <span className="block pl-4 font-semibold">{data?.nickname}</span>

@@ -6,6 +6,8 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { MdDateRange, MdPerson } from 'react-icons/md'
+import defaultImage from '../../assets/images/defaultImage.jpg'
+import defaultProfileImage from '../../assets/images/defaultProfileImage.png'
 
 const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
   const navigate = useNavigate()
@@ -59,7 +61,7 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
       <div className="my-3 flex w-[320px] flex-col overflow-hidden rounded-lg bg-white shadow">
         <Link to={`/detail/${post.meetingId}`} key={post.meetingId}>
           <img
-            src={post?.image}
+            src={post?.image || defaultImage}
             className="h-52 w-full object-cover"
             alt="메인이미지"
           />
@@ -69,11 +71,11 @@ const Post = ({ post, setShowModal, reportedPostId, setReportedPostId }) => {
                 <div className="flex gap-2">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={post?.host?.profileImage}
+                    src={post?.host?.profileImage || defaultProfileImage}
                     alt="프로필이미지"
                   />
                   <span className="block text-sm font-semibold text-black">
-                    {post?.host?.nickname}
+                    {post?.host?.username}
                   </span>
                 </div>
               </Link>

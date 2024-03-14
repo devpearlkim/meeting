@@ -30,7 +30,7 @@ const JoinedMeetings = () => {
 
   return (
     <>
-      <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+      <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-pink-300">
         <div className="min-h-28">
           <div className="mx-auto flex flex-col flex-wrap justify-center py-4">
             <span className="font-semibold">참여중인 모임목록</span>
