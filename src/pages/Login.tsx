@@ -16,7 +16,7 @@ const Login = () => {
     return (
       <div className="mt-9 flex w-full flex-col items-center justify-center">
         <LoginForm />
-        <div className="flex justify-between">
+        <div className="mt-4 flex justify-between gap-36 text-sm text-neutral-500">
           <button>비밀번호찾기</button>
           <button>회원가입</button>
         </div>
