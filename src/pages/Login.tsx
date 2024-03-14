@@ -14,7 +14,7 @@ const Login = () => {
 
   if (!token) {
     return (
-      <div className="flex w-full flex-col items-center justify-center">
+      <div className="mt-9 flex w-full flex-col items-center justify-center">
         <LoginForm />
         <div className="flex justify-between">
           <button>비밀번호찾기</button>
