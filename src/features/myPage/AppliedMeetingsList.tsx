@@ -4,6 +4,7 @@ import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
+import Post from '../meetings/Post'
 
 const AppliedMeetingsList = () => {
   const [page, setPage] = useState(1)
@@ -36,6 +37,11 @@ const AppliedMeetingsList = () => {
         <div>모임 신청 내역이 없습니다</div>
       ) : (
         <div>
+          {data.map((apply, index) => (
+            <div key={index}>
+              <Post post={apply} />
+            </div>
+          ))}
           <span>신청내역</span>
           <div className="w-full rounded-md bg-white p-8">
             <div className="-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8">
