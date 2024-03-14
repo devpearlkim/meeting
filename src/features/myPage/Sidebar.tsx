@@ -27,12 +27,12 @@ const Sidebar = ({ path, userId }) => {
 
   return (
     <div className="">
-      <ul className="flex justify-around border border-slate-200">
+      <ul className="flex w-full justify-around border border-slate-200">
         {sidebarItems.map((item, idx) => (
           <li
             key={idx}
             className={
-              path === item.path ? 'p-3 font-semibold text-blue-500' : listStyle
+              path === item.path ? 'p-3 font-semibold text-cyan-500' : listStyle
             }
           >
             <Link to={item.path}>{item.text}</Link>

@@ -275,13 +275,13 @@ const postDetail = () => {
                           <img
                             className="h-10 w-10 rounded-full"
                             src={member.profileImage || defaultProfileImage}
-                            alt={member.username}
+                            alt={member.nickname}
                             onError={(e) => {
                               e.target.src = defaultProfileImage
                             }}
                           />
                           <span className="ml-3 font-medium">
-                            {member.username}
+                            {member.nickname}
                           </span>
                         </div>
                       </li>

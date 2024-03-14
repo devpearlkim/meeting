@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getCreatedMeetings } from '../../services/apiPost'
-import Post from '../../features/meetings/Post'
+import Post from '../meetings/Post'
 import SkeletonPost from '../meetings/SkeletonPost'
-import ReportModal from '../../features/meetings/ReportModal'
+import ReportModal from '../meetings/ReportModal'
 
 const CreatedMeetings = () => {
   // 추후 useParams로 userId가져와서 해당 유저 정보 조회

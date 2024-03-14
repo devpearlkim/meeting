@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getLikedMeetings } from '../../services/apiPost'
-import Post from '../../features/meetings/Post'
+import Post from '../meetings/Post'
 import SkeletonPost from '../meetings/SkeletonPost'
-import ReportModal from '../../features/meetings/ReportModal'
+import ReportModal from '../meetings/ReportModal'
 
 const LikedMeetings = () => {
   // 서버에서 isLike값을 줌->프론트에서 상태관리 하지 않아 로그인한 유저들 것만 조회가능
