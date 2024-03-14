@@ -39,13 +39,12 @@ const AppliedMeetingsList = () => {
         <div>
           {data.map(
             (apply, index) =>
-              apply.status === 'pending' && (
+              apply.status === 'canceled' && (
                 <div key={index}>
                   <Post post={apply.meeting} />
                 </div>
               ),
           )}
-          <span>신청내역</span>
           <div className="w-full rounded-md bg-white p-8">
             <div className="-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8">
               <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
