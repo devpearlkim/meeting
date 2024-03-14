@@ -55,7 +55,7 @@ export default function CalendarInput() {
             <CalendarToday />
           </IconButton>
           <input
-            className="border-r-2 py-4 font-bold outline-none"
+            className="border-r py-4 font-bold outline-none"
             size={10}
             placeholder="시작기간"
             value={

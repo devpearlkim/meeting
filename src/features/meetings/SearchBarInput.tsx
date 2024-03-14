@@ -12,7 +12,7 @@ const SearchBarInput = () => {
         type="text"
         {...register('search')}
         placeholder="키워드입력"
-        className="w-48 rounded-l-3xl border-r-2 p-4 font-semibold outline-none hover:rounded-3xl hover:bg-slate-100"
+        className="w-80 rounded-l-3xl border-r p-4 font-semibold outline-none hover:rounded-3xl hover:bg-slate-200"
       />
     </div>
   )

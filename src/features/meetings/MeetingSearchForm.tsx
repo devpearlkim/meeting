@@ -48,7 +48,7 @@ const MeetingSearchFrom = () => {
         <div className="flex justify-center">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex w-fit justify-around rounded-3xl border-2 border-slate-200"
+            className="flex w-fit justify-around rounded-3xl border border-slate-200"
           >
             <div className="flex">
               <SearchBarInput />

@@ -44,7 +44,6 @@ const SignupForm = () => {
     setValue,
     clearErrors,
   } = formItems
-  // const { errors } = formState
 
   const onSubmit = async (data) => {
     const { passwordConfirm, verificationCode, ...formData } = data
@@ -439,12 +438,13 @@ const SignupForm = () => {
             </label>
           </div>
         </div>
-        <div className="pb-40">
+        {/* <div className="pb-40">
           <label htmlFor="image" className="mb-1 block text-sm font-semibold">
             프로필 이미지
           </label>
           <ImageUpload type={'profile'} />
-        </div>
+        </div> */}
+        <input {...register('profileImage', { value: 'null' })} type="hidden" />
         <input {...register('provider', { value: 'local' })} type="hidden" />
 
         <div>

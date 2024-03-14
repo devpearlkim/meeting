@@ -68,11 +68,11 @@ const List = () => {
     <>
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <div className="min-h-28">
-          <div className="mx-auto max-w-screen-lg py-4">
+          <div className="mx-auto max-w-screen-lg">
             <MeetingSearchForm />
-            <div className="flex justify-between pt-2">
+            <div className="flex justify-between pt-4">
               <Link to="/write">
-                <button className="rounded-md bg-sky-500 px-4 py-2 text-white">
+                <button className="rounded-md bg-cyan-400 px-4 py-2 text-white">
                   글쓰기
                 </button>
               </Link>
@@ -81,7 +81,7 @@ const List = () => {
                 onChange={handleSortChange}
                 value={sort}
               >
-                <option value="default">기본</option>
+                <option value="default">오래된순</option>
                 <option value="current">최신순</option>
               </select>
             </div>
