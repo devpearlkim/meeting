@@ -66,7 +66,7 @@ const List = () => {
 
   return (
     <>
-      <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+      <div className="relative flex min-h-screen flex-col justify-center gap-6 overflow-hidden">
         <div className="min-h-28">
           <div className="mx-auto max-w-screen-lg">
             <MeetingSearchForm />
