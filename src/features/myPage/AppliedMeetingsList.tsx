@@ -41,7 +41,7 @@ const AppliedMeetingsList = () => {
             (apply, index) =>
               apply.status === 'canceled' && (
                 <div key={index}>
-                  <Post post={apply.meeting} />
+                  <Post post={apply.meeting} type={'checkApply'} />
                 </div>
               ),
           )}
