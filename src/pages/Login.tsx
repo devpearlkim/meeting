@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import LoginForm from '../features/authentication/LoginForm'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -18,7 +18,9 @@ const Login = () => {
         <LoginForm />
         <div className="mt-4 flex justify-between gap-36 text-sm text-neutral-500">
           <button>비밀번호찾기</button>
-          <button>회원가입</button>
+          <Link to={'/signup'}>
+            <button>회원가입</button>
+          </Link>
         </div>
       </div>
     )

@@ -36,7 +36,7 @@ const AppliedMeetingsList = () => {
       {!data ? (
         <div>모임 신청 내역이 없습니다</div>
       ) : (
-        <div>
+        <div className="flex justify-center">
           {data.map(
             (apply, index) =>
               apply.status === 'canceled' && (
