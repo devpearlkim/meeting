@@ -35,7 +35,7 @@ const LikedMeetings = () => {
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <div className="min-h-28">
           <div className="mx-auto py-4">
-            <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex flex-wrap justify-between gap-8">
               {list.map((post) => (
                 <Post
                   key={post.meetingId}
