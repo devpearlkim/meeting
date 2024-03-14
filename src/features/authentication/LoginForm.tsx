@@ -27,9 +27,9 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className={'mx-auto w-[20rem] space-y-2 text-slate-950'}
+      className={'mx-auto w-[20rem] space-y-6 text-slate-950'}
     >
-      <div className="border border-b-2">
+      <div className="border-b-2">
         <span className="font-sm">sns간편로그인</span>
         <KakaoLogin />
       </div>
