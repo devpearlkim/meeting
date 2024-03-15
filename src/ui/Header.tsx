@@ -12,21 +12,25 @@ const Header = () => {
   return (
     <div className="mx-44 flex justify-between px-20">
       <Link to={'/'}>
-        <h1 className="text-xl font-semibold">JW</h1>
+        <h1 className="text-2xl font-bold text-cyan-400">JW</h1>
       </Link>
       <div className="flex justify-end gap-10">
         <div>
           {userId ? (
             <Link to={`/profile/${userId}`}>
-              <span>마이페이지</span>
+              <button className="font-semibold">마이페이지</button>
             </Link>
           ) : (
             <Link to={'/login'}>
-              <button>로그인</button>
+              <button className="font-semibold">로그인</button>
             </Link>
           )}
         </div>
-        {userId && <button onClick={handleLogout}>로그아웃</button>}
+        {userId && (
+          <button className="font-semibold" onClick={handleLogout}>
+            로그아웃
+          </button>
+        )}
       </div>
     </div>
   )
