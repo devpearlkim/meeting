@@ -10,7 +10,7 @@ const Header = () => {
   }
 
   return (
-    <div className="mx-44 flex justify-between px-20 py-4">
+    <div className="mx-44 mt-4 flex justify-between px-20">
       <Link to={'/'}>
         <h1 className="text-2xl font-bold">JW</h1>
       </Link>
@@ -18,7 +18,7 @@ const Header = () => {
         <div>
           {userId ? (
             <Link to={`/profile/${userId}`}>
-              <button className="mt-2 font-semibold text-neutral-800">
+              <button className="mt-1 font-semibold text-neutral-800">
                 마이페이지
               </button>
             </Link>
