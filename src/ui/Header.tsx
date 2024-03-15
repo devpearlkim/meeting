@@ -10,7 +10,7 @@ const Header = () => {
   }
 
   return (
-    <div className="flex justify-between px-20">
+    <div className="mx-44 flex justify-between px-20">
       <Link to={'/'}>
         <h1 className="text-xl font-semibold">JW</h1>
       </Link>
