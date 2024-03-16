@@ -87,8 +87,6 @@ const SignupForm = () => {
     } finally {
       setIsSending(false)
     }
-
-    // setIsNotPass(true)
   }
 
   const sendVerification = async (email) => {

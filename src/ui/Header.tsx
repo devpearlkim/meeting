@@ -10,7 +10,7 @@ const Header = () => {
   }
 
   return (
-    <div className="mx-44 mt-4 flex justify-between px-20">
+    <header className="mx-44 flex justify-between px-20">
       <Link to={'/'}>
         <h1 className="text-2xl font-bold">JW</h1>
       </Link>
@@ -37,7 +37,7 @@ const Header = () => {
           </button>
         )}
       </div>
-    </div>
+    </header>
   )
 }
 
