@@ -38,7 +38,6 @@ export async function getPost({ queryKey, pageParam }) {
     params.location = location
   }
 
-  console.log('params는: ', params)
   try {
     const response = await axios.get(
       `${backendURI}/meetings`,
@@ -51,7 +50,6 @@ export async function getPost({ queryKey, pageParam }) {
         },
       },
     )
-    console.log('response : ', response.data)
     return response.data
   } catch (error) {
     throw new Error('Error fetching meetings')
@@ -226,7 +224,6 @@ export async function getJoinedMeetings({ queryKey }) {
         },
       },
     )
-    console.log(response.data.data)
 
     return response.data.data
   } catch (error) {

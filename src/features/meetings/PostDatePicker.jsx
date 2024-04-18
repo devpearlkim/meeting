@@ -29,9 +29,6 @@ export default function DatePickerDialog({ default_meeting_date }) {
     }
   }, [selected])
 
-  console.log('default_meeting_date', default_meeting_date)
-  console.log('selected', selected)
-
   const popper = usePopper(popperRef.current, popperElement, {
     placement: 'bottom-start',
   })
@@ -68,10 +65,7 @@ export default function DatePickerDialog({ default_meeting_date }) {
     const date = parse(e.currentTarget.value, 'y-MM-dd', new Date())
     let nextDate = new Date()
     nextDate.setDate(nextDate.getDate() + 1)
-    // if (isBefore(date, nextDate)) {
-    //   toast.error('오늘 이후의 날짜를 선택하세요')
-    //   return
-    // }
+
     if (isValid(date)) {
       setSelected(date)
     } else {
@@ -89,7 +83,6 @@ export default function DatePickerDialog({ default_meeting_date }) {
 
   const handleDaySelect: SelectSingleEventHandler = (date) => {
     setSelected(date)
-    // setValue('meeting_date', format(date, 'yyyy-MM-dd'))
     if (date) {
       setInputValue(format(date, 'y-MM-dd'))
       closePopper()
@@ -133,7 +126,6 @@ export default function DatePickerDialog({ default_meeting_date }) {
           {...popper.attributes.popper}
           ref={setPopperElement}
           role="dialog"
-          // aria-label="DayPicker calendar"
         >
           <DayPicker
             initialFocus={isPopperOpen}

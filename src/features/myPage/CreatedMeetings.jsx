@@ -19,8 +19,6 @@ const CreatedMeetings = () => {
   })
 
   useEffect(() => {
-    console.log('list', list)
-    console.log('개설모임 data', data)
     Array.isArray(data) && setList((prevList) => [...prevList, ...data])
   }, [data])
 

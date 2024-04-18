@@ -42,6 +42,7 @@ module.exports = {
     'react/self-closing-comp': 'warn',
     'react/react-in-tsx-scope': 'off',
     'react/button-has-type': 'off',
+    'react/function-component-definition': 'off',
     quotes: [2, 'single'],
   },
   overrides: [

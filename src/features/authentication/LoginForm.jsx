@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
-import { login } from '../../services/apiAuth'
-import { getProfile } from '../../services/apiUser'
+import { login } from '../../services/apiAuth.js'
+import { getProfile } from '../../services/apiUser.js'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import KakaoLogin from './KakaoLogin.jsx'

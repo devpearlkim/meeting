@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import ImageUpload from '../meetings/ImageUpload.js'
 import CategoryInput from '../meetings/CategoryInput.js'
 import { useQuery } from '@tanstack/react-query'
-import { getProfile } from '../../services/apiUser'
-import { editProfile } from '../../services/apiAuth'
+import { getProfile } from '../../services/apiUser.js'
+import { editProfile } from '../../services/apiAuth.js'
 import toast from 'react-hot-toast'
 
-const EditProfileForm = () => {
+function EditProfileForm() {
   const { data, isFetching } = useQuery({
     queryKey: ['myInfo'],
     queryFn: getProfile,
@@ -40,12 +40,9 @@ const EditProfileForm = () => {
 
   const {
     register,
-    setError,
     formState: { errors },
     getValues,
     handleSubmit,
-    trigger,
-    setValue,
     clearErrors,
   } = formItems
 

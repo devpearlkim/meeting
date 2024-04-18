@@ -13,8 +13,6 @@ const ParticipantModal = ({
   const handleSubmit = () => {
     setShowParticipantModal(false)
     setParticipantReason('')
-    console.log('신청이유', participantReason)
-    console.log('미팅번호', meetingId)
     addParticipant({ meetingId, description: participantReason })
   }
 

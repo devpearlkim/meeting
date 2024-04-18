@@ -18,7 +18,6 @@ const LikedMeetings = () => {
     queryFn: getLikedMeetings,
   })
 
-  console.log('좋아요모임조회', list)
   useEffect(() => {
     Array.isArray(data) && setList((prevList) => [...prevList, ...data])
   }, [data])

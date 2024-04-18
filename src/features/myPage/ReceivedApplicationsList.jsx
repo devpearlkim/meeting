@@ -40,8 +40,6 @@ const ReceivedApplicationsList = ({ meetingId }) => {
     })
   }
 
-  console.log('receivedApplications', receivedApplications)
-
   return (
     <div className="w-full rounded-md bg-white py-8">
       <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">

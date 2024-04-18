@@ -5,10 +5,10 @@ import {
   addLike,
   deleteLike,
   deletePost,
-} from '../services/apiPost'
+} from '../services/apiPost.js'
 import { useEffect, useState } from 'react'
-import ParticipantModal from '../features/meetings/ParticipantModal.js'
-import ReceivedApplicationsList from '../features/myPage/ReceivedApplicationsList.js'
+import ParticipantModal from '../features/meetings/ParticipantModal.jsx'
+import ReceivedApplicationsList from '../features/myPage/ReceivedApplicationsList.jsx'
 import { FaHeart } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { MdDateRange, MdPerson } from 'react-icons/md'
@@ -17,17 +17,19 @@ import defaultImage from '../assets/images/defaultImage.jpg'
 import defaultProfileImage from '../assets/images/defaultProfileImage.png'
 
 const postDetail = () => {
-  console.log('상세페이지')
   const navigate = useNavigate()
   const { postId } = useParams()
   const [isLogin, setIsLogin] = useState(
     sessionStorage.getItem('token') ? true : false,
   )
 
-  const { isLoading, error, data } = useQuery<any>({
-    queryKey: ['postDetail', postId],
-    queryFn: getPostDetail,
-  })
+  const { isLoading, error, data } =
+    useQuery <
+    any >
+    {
+      queryKey: ['postDetail', postId],
+      queryFn: getPostDetail,
+    }
 
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   const showButton = userInfo?.userId === data?.data?.host.userId
@@ -76,29 +78,6 @@ const postDetail = () => {
       navigate('/login')
       return
     }
-
-    const participants = data?.data.participants
-    // 409오류로 대체
-    // const meetingParticipants = await getMeetingParicipants(data.data.meetingId)
-
-    // if (
-    //   loggedInUserId === hostUserId ||
-    //   participants.some((participant) => participant?.userid === loggedInUserId)
-    // ) {
-    //   toast.error('이미 참여중인 모임입니다')
-    //   return
-    // }
-    // if (
-    //   Array.isArray(meetingParticipants?.data) &&
-    //   meetingParticipants?.data.some(
-    //     (participant) =>
-    //       participant.status === 'pending' &&
-    //       participant.userid === loggedInUserId,
-    //   )
-    // ) {
-    //   toast.error('이미 신청한 모임입니다')
-    //   return
-    // }
     setShowParticipantModal(true)
   }
 

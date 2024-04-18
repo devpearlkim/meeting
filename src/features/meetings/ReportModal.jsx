@@ -33,7 +33,6 @@ const ReportModal = ({
     setReportReason('')
   }
 
-  console.log(reportedPostId)
   return (
     <>
       {showModal && (

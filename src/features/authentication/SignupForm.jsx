@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import dayjs from 'dayjs'
@@ -78,11 +79,7 @@ const SignupForm = () => {
       const response = await checkCode({ code, email })
       setShowCodeInput(false)
       setEmailChecked(true)
-      console.log('인증코드 확인')
-      console.log(response)
     } catch (err) {
-      console.log('err')
-      console.log(err)
       setError('verificationCode', { type: 'manual', message: err.message })
     } finally {
       setIsSending(false)

@@ -15,7 +15,6 @@ const CategoryInput = ({ mode, default_categories }) => {
   )
 
   useEffect(() => {
-    console.log('location.search에 따른 setCategory세팅')
     setSelectedCategories(currentCategories[0]?.split('%') ?? [])
   }, [location.search])
 
@@ -25,7 +24,6 @@ const CategoryInput = ({ mode, default_categories }) => {
         category.categoryId.toString(),
       )
       setSelectedCategories([...defaultCategoryIds])
-      // setValue('categories', selectedCategories) 얘는안됨
       setValue('categories', [...defaultCategoryIds])
     }
   }, [default_categories])
@@ -52,7 +50,6 @@ const CategoryInput = ({ mode, default_categories }) => {
     if (mode === 'signup') {
       const newCategories = updatedCategories
       setSelectedCategories(updatedCategories)
-      console.log(newCategories.map((item) => parseInt(item)))
       setValue(
         'categoryIds',
         newCategories.map((item) => parseInt(item)),
