@@ -39,7 +39,6 @@ const ImageUpload = ({ type }) => {
                 onChange={(e) => handleFileInputChange(e)}
               />
               <button
-                id="button"
                 type="button"
                 className="mt-2 rounded bg-cyan-200 px-3 py-1 hover:bg-cyan-400 focus:outline-none"
                 onClick={() => document.getElementById('hidden-input').click()}

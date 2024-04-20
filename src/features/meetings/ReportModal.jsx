@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PiSirenLight } from 'react-icons/pi'
 import { reportMeeting } from '../../services/apiReport'
+import Modal from '../../pages/Modal'
 
 const ReportModal = ({
   showModal,
@@ -34,7 +35,7 @@ const ReportModal = ({
   }
 
   return (
-    <>
+    <Modal>
       {showModal && (
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-screen items-center justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
@@ -129,7 +130,7 @@ const ReportModal = ({
           </div>
         </div>
       )}
-    </>
+    </Modal>
   )
 }
 

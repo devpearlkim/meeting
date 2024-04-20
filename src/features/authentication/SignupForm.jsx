@@ -163,7 +163,6 @@ const SignupForm = () => {
             </p>
           }
           <button
-            type="button"
             onClick={() => {
               setIsSending(true)
               const email = getValues().email
