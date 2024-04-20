@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import kakao_login_button from '../../assets/images/kakao_login_button.png'
+import ErrorBoundary from '../error/ErrorBoundary'
 
 const KakaoLogin = () => {
   const navigate = useNavigate()
@@ -18,4 +19,8 @@ const KakaoLogin = () => {
   )
 }
 
-export default KakaoLogin
+export default (
+  <ErrorBoundary>
+    <KakaoLogin />
+  </ErrorBoundary>
+)

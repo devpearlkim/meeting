@@ -15,6 +15,7 @@ import { MdDateRange, MdPerson } from 'react-icons/md'
 import dayjs from 'dayjs'
 import defaultImage from '../assets/images/defaultImage.jpg'
 import defaultProfileImage from '../assets/images/defaultProfileImage.png'
+import ErrorBoundary from '../features/error/ErrorBoundary.jsx'
 
 const postDetail = () => {
   const navigate = useNavigate()
@@ -263,4 +264,8 @@ const postDetail = () => {
   )
 }
 
-export default postDetail
+export default (
+  <ErrorBoundary>
+    <postDetail />
+  </ErrorBoundary>
+)

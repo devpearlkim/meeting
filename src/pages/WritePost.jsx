@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import PostForm from '../features/meetings/PostForm'
+import ErrorBoundary from '../features/error/ErrorBoundary'
 
 const WritePost = () => {
   const location = useLocation()
@@ -12,4 +13,8 @@ const WritePost = () => {
   )
 }
 
-export default WritePost
+export default (
+  <ErrorBoundary>
+    <WritePost />
+  </ErrorBoundary>
+)

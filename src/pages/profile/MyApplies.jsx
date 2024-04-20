@@ -11,7 +11,7 @@ const MyApplies = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    userInfo?.userId != userId && navigate(`/profile/${userId}`)
+    userInfo?.userId !== userId && navigate(`/profile/${userId}`)
   }, [userId])
 
   return (

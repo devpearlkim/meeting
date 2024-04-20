@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import LoginForm from '../features/authentication/LoginForm'
 import { Link, useNavigate } from 'react-router-dom'
+import ErrorBoundary from '../features/error/ErrorBoundary'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -28,4 +29,8 @@ const Login = () => {
   return null
 }
 
-export default Login
+export default (
+  <ErrorBoundary>
+    <Login />
+  </ErrorBoundary>
+)

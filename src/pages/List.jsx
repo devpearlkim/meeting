@@ -8,6 +8,7 @@ import { throttle } from 'lodash'
 import Post from '../features/meetings/Post'
 import SkeletonPost from '../features/meetings/SkeletonPost'
 import ReportModal from '../features/meetings/ReportModal'
+import ErrorBoundary from '../features/error/ErrorBoundary'
 
 const List = () => {
   const [searchFormValues, setSearchFormValues] = useState({})
@@ -125,4 +126,8 @@ const List = () => {
   )
 }
 
-export default List
+export default (
+  <ErrorBoundary>
+    <List />
+  </ErrorBoundary>
+)

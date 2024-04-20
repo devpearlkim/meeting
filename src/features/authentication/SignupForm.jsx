@@ -10,6 +10,7 @@ import {
 } from '../../services/apiAuth.js'
 import { useNavigate } from 'react-router-dom'
 import CategoryInput from '../meetings/CategoryInput.js'
+import ErrorBoundary from '../error/ErrorBoundary.jsx'
 
 const SignupForm = () => {
   const [showCodeInput, setShowCodeInput] = useState(false)
@@ -456,4 +457,8 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+export default (
+  <ErrorBoundary>
+    <SignupForm />
+  </ErrorBoundary>
+)

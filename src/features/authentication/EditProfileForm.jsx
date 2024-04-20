@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getProfile } from '../../services/apiUser.js'
 import { editProfile } from '../../services/apiAuth.js'
 import toast from 'react-hot-toast'
+import ErrorBoundary from '../error/ErrorBoundary.jsx'
 
 function EditProfileForm() {
   const { data, isFetching } = useQuery({
@@ -306,4 +307,8 @@ function EditProfileForm() {
   )
 }
 
-export default EditProfileForm
+export default (
+  <ErrorBoundary>
+    <EditProfileForm />
+  </ErrorBoundary>
+)

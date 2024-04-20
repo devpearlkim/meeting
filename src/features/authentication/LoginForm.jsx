@@ -4,6 +4,7 @@ import { getProfile } from '../../services/apiUser.js'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import KakaoLogin from './KakaoLogin.jsx'
+import ErrorBoundary from '../error/ErrorBoundary.jsx'
 
 const LoginForm = () => {
   const {
@@ -69,4 +70,8 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default (
+  <ErrorBoundary>
+    <LoginForm />
+  </ErrorBoundary>
+)

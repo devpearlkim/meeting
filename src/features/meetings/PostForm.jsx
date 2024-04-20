@@ -8,6 +8,7 @@ import ImageUpload from './ImageUpload'
 import { addPost, editPost } from '../../services/apiPost'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import ErrorBoundary from '../error/ErrorBoundary'
 
 const PostForm = ({ postData }) => {
   const [isLogin, setIsLogin] = useState(
@@ -59,7 +60,12 @@ const PostForm = ({ postData }) => {
       toast.error('카테고리를 입력해주세요')
       return
     }
-    postData ? editPost(data, postData.meetingId) : addPost(data)
+
+    if (postData) {
+      editPost(data, postData.meetingId)
+    } else {
+      addPost(data)
+    }
     navigate('/')
   }
 
@@ -158,4 +164,8 @@ const PostForm = ({ postData }) => {
   )
 }
 
-export default PostForm
+export default (
+  <ErrorBoundary>
+    <PostForm />
+  </ErrorBoundary>
+)
