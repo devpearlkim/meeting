@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getMeetingsParicipants } from '../../services/apiParticipant'
 import { changeParticipantStatus } from '../../services/apiParticipant'
 import { useEffect, useState } from 'react'
+import Button from '../../ui/Button'
 
 const ReceivedApplicationsList = ({ meetingId }) => {
   const { data: receivedApplications } = useQuery({
@@ -79,23 +80,20 @@ const ReceivedApplicationsList = ({ meetingId }) => {
                     </p>
                   </td>
                   <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                    <button
+                    <Button
                       onClick={() =>
                         acceptMeetingApplication(apply.participantid)
                       }
                       className="mr-4 inline-block rounded-md bg-green-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-green-600"
-                    >
-                      수락
-                    </button>
-
-                    <button
+                      text="수락"
+                    />
+                    <Button
                       onClick={() =>
                         rejectMeetingApplication(apply.participantid)
                       }
                       className="inline-block rounded-md bg-red-500 px-3 py-1 font-semibold leading-tight text-white transition duration-150 hover:bg-red-600"
-                    >
-                      거절
-                    </button>
+                      text="거절"
+                    />
                   </td>
                 </tr>
               ))

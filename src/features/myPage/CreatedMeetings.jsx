@@ -4,6 +4,7 @@ import { getCreatedMeetings } from '../../services/apiPost'
 import Post from '../meetings/Post'
 import SkeletonPost from '../meetings/SkeletonPost'
 import ReportModal from '../meetings/ReportModal'
+import Button from '../../ui/Button'
 
 const CreatedMeetings = () => {
   const [showModal, setShowModal] = useState(false)
@@ -53,13 +54,11 @@ const CreatedMeetings = () => {
             )}
             {Array.isArray(data) && data.length === 6 && (
               <div className="mx-auto mt-4 flex justify-center">
-                <button
+                <Button
                   onClick={handleLoadMore}
                   disabled={isFetching}
-                  className="rounded-md bg-purple-500 px-4 py-2 text-white disabled:opacity-50"
-                >
-                  {isFetching ? '로딩 중...' : '더보기'}
-                </button>
+                  text={isFetching ? '로딩중' : '더보기'}
+                />
               </div>
             )}
           </div>

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import KakaoLogin from './KakaoLogin.jsx'
 import ErrorBoundary from '../error/ErrorBoundary.jsx'
 import Input from '../../ui/Input.jsx'
+import Button from '../../ui/Button.jsx'
 
 const LoginForm = () => {
   const {
@@ -53,12 +54,7 @@ const LoginForm = () => {
         errorMessage={errors?.password?.message}
         required
       />
-      <button
-        type="submit"
-        className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-      >
-        로그인
-      </button>
+      <Button onClick={handleSubmit(onSubmit)} text="로그인" />
     </form>
   )
 }

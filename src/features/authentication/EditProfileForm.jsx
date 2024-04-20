@@ -10,6 +10,7 @@ import { editProfile } from '../../services/apiAuth.js'
 import toast from 'react-hot-toast'
 import ErrorBoundary from '../error/ErrorBoundary.jsx'
 import Input from '../../ui/Input.jsx'
+import Button from '../../ui/Button.jsx'
 
 function EditProfileForm() {
   const { data, isFetching } = useQuery({
@@ -194,12 +195,7 @@ function EditProfileForm() {
                 default_categories={data?.categories}
               />
             </div>
-            <button
-              type="submit"
-              className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-            >
-              수정완료
-            </button>
+            <Button onClick={handleSubmit(onSubmit, onError)} text="수정완료" />
           </form>
         </FormProvider>
       )}

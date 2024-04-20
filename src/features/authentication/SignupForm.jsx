@@ -11,6 +11,7 @@ import {
 import CategoryInput from '../meetings/CategoryInput.js'
 import ErrorBoundary from '../error/ErrorBoundary.jsx'
 import Input from '../../ui/Input.jsx'
+import Button from '../../ui/Button.jsx'
 
 const SignupForm = () => {
   const [showCodeInput, setShowCodeInput] = useState(false)
@@ -161,17 +162,15 @@ const SignupForm = () => {
               errorMessage={errors?.verificationCode?.message}
               required
             />
-            <button
-              type="button"
+            <Button
               onClick={() => {
                 const code = getValues().verificationCode
                 checkVerification({ code, email: getValues().email })
               }}
+              text="확인"
               disabled={!getValues().verificationCode || remainingTime === 0}
-              className="my-2 -ml-16 rounded bg-purple-300 px-2 py-1 text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-400"
-            >
-              확인
-            </button>
+            />
+
             {remainingTime > 0 && (
               <p className="my-1 block text-xs text-red-400">
                 {errors?.verificationCode?.message}
@@ -182,17 +181,14 @@ const SignupForm = () => {
                 인증코드가 만료되었습니다.
               </p>
             )}
-            <button
-              type="button"
+            <Button
               onClick={() => {
-                const email = getValues().email
+                const { email } = getValues()
                 setValue('verificationCode', '')
                 sendVerification(email)
               }}
-              className="my-2 rounded bg-purple-300 px-2 py-1 text-xs text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-400"
-            >
-              재전송
-            </button>
+              text="재전송"
+            />
           </div>
         )}
 
@@ -303,13 +299,7 @@ const SignupForm = () => {
           </label>
           <CategoryInput mode={'signup'} />
         </div>
-
-        <button
-          type="submit"
-          className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
-        >
-          회원가입하기
-        </button>
+        <Button onClick={handleSubmit(onSubmit, onError)} text="회원가입하기" />
       </form>
     </FormProvider>
   )

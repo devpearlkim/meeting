@@ -9,6 +9,7 @@ import { addPost, editPost } from '../../services/apiPost'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import ErrorBoundary from '../error/ErrorBoundary'
+import Button from '../../ui/Button'
 
 const PostForm = ({ postData }) => {
   const [isLogin, setIsLogin] = useState(
@@ -152,12 +153,12 @@ const PostForm = ({ postData }) => {
           <ImageUpload />
         </div>
         <div>
-          <button
-            type="submit"
-            className="my-4 mt-40 rounded-md bg-cyan-400 px-4 py-2 text-white hover:bg-cyan-400"
-          >
-            작성완료
-          </button>
+          <Button
+            onClick={methods.handleSubmit(onSubmit)}
+            className="my-4 mt-40 rounded-md bg-cyan-400 px-4 py-2 text-white
+          hover:bg-cyan-400"
+            text="작성완료"
+          />
         </div>
       </form>
     </FormProvider>

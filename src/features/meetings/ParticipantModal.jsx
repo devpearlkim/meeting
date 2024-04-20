@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { PiSirenLight } from 'react-icons/pi'
 import { addParticipant } from '../../services/apiParticipant'
 import Modal from '../../pages/Modal'
+import Button from '../../ui/Button'
 
 const ParticipantModal = ({
   showParticipantModal,
@@ -84,21 +85,17 @@ const ParticipantModal = ({
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button
+                <Button
                   onClick={handleSubmit}
-                  type="button"
                   disabled={!participantReason.length}
+                  text="제출"
                   className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                >
-                  제출
-                </button>
-                <button
+                />
+                <Button
                   onClick={() => setShowParticipantModal(false)}
-                  type="button"
+                  text="취소"
                   className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
-                >
-                  취소
-                </button>
+                />
               </div>
             </div>
           </div>

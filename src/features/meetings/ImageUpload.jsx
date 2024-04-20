@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
+import Button from '../../ui/Button'
 
 const ImageUpload = ({ type }) => {
   const { setValue } = useFormContext()
@@ -38,13 +39,11 @@ const ImageUpload = ({ type }) => {
                 className="hidden"
                 onChange={(e) => handleFileInputChange(e)}
               />
-              <button
-                type="button"
+              <Button
                 className="mt-2 rounded bg-cyan-200 px-3 py-1 hover:bg-cyan-400 focus:outline-none"
                 onClick={() => document.getElementById('hidden-input').click()}
-              >
-                이미지업로드
-              </button>
+                text="이미지업로드"
+              />
             </header>
 
             {file && (
@@ -61,10 +60,10 @@ const ImageUpload = ({ type }) => {
                         {file.name}
                       </h1>
                       <div className="flex">
-                        <button
-                          type="button"
-                          className="delete ml-auto rounded-md p-1 text-neutral-400 hover:bg-neutral-300 focus:outline-none"
+                        <Button
                           onClick={handleCancel}
+                          text=""
+                          className="delete ml-auto rounded-md p-1 text-neutral-400 hover:bg-neutral-300 focus:outline-none"
                         >
                           <svg
                             className="pointer-events-none ml-auto h-4 w-4 fill-current"
@@ -78,7 +77,7 @@ const ImageUpload = ({ type }) => {
                               d="M3 6l3 18h12l3-18h-18zm19-4v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711z"
                             />
                           </svg>
-                        </button>
+                        </Button>
                       </div>
                     </section>
                   </div>
