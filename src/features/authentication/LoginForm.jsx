@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import KakaoLogin from './KakaoLogin.jsx'
 import ErrorBoundary from '../error/ErrorBoundary.jsx'
+import Input from '../../ui/Input.jsx'
 
 const LoginForm = () => {
   const {
@@ -34,34 +35,26 @@ const LoginForm = () => {
         <span className="font-sm text-neutral-500">sns간편로그인</span>
         <KakaoLogin />
       </div>
-      <div className="flex flex-col">
-        <input
-          type="text"
-          id="email"
-          placeholder="이메일"
-          className={`${
-            errors?.email
-              ? 'w-full rounded-md border border-red-400 p-2 px-4 py-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-              : 'py-4text-sm w-full rounded-md border border-slate-300 p-2 px-4 py-4 outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
-          }`}
-          {...register('email', { required: '필수 입력사항 입니다' })}
-        />
-      </div>
-      <div className="flex flex-col">
-        <input
-          type="password"
-          id="password"
-          placeholder="비밀번호"
-          className={`${
-            errors?.password
-              ? 'w-full rounded-md border border-red-400 p-2 px-4 py-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-              : 'w-full rounded-md border border-slate-300 p-2 px-4 py-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
-          }`}
-          {...register('password', { required: '필수 입력사항 입니다' })}
-        />
-      </div>
+      <Input
+        id="email"
+        type="text"
+        placeholder="이메일"
+        register={register}
+        error={!!errors.email}
+        errorMessage={errors?.email?.message}
+        required
+      />
+      <Input
+        id="password"
+        type="password"
+        placeholder="비밀번호"
+        register={register}
+        error={!!errors.password}
+        errorMessage={errors?.password?.message}
+        required
+      />
       <button
-        onClick={onSubmit}
+        type="submit"
         className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"
       >
         로그인

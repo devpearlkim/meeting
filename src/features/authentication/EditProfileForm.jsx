@@ -9,6 +9,7 @@ import { getProfile } from '../../services/apiUser.js'
 import { editProfile } from '../../services/apiAuth.js'
 import toast from 'react-hot-toast'
 import ErrorBoundary from '../error/ErrorBoundary.jsx'
+import Input from '../../ui/Input.jsx'
 
 function EditProfileForm() {
   const { data, isFetching } = useQuery({
@@ -80,158 +81,58 @@ function EditProfileForm() {
             onSubmit={handleSubmit(onSubmit, onError)}
             className={'mx-auto w-[20rem] space-y-6 text-slate-950'}
           >
-            <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="password"
-                className={`${
-                  errors?.password
-                    ? 'mb-1 block text-sm font-semibold text-red-700'
-                    : 'mb-1 block text-sm font-semibold'
-                }`}
-              >
-                비밀번호 재설정
-              </label>
-              <span className="my-1 block text-xs text-slate-600">
-                영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.
-              </span>
-              <input
-                type="password"
-                id="password"
-                placeholder="비밀번호"
-                {...register('password', {
-                  required: '필수 입력 항목입니다.',
-                  pattern: {
-                    value:
-                      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message:
-                      '비밀번호는 영문, 숫자를 포함하여 8자 이상이어야 합니다.',
-                  },
-                })}
-                className={`${
-                  errors?.password
-                    ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-                    : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
-                }`}
-              ></input>
-              {
-                <p className="my-1 block text-xs text-red-400">
-                  {errors?.password?.message}
-                </p>
+            <Input
+              id="password"
+              type="password"
+              placeholder="비밀번호"
+              register={register}
+              error={!!errors.password}
+              errorMessage={errors?.password?.message}
+              required
+              pattern={{
+                value:
+                  /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                message:
+                  '비밀번호는 영문, 숫자를 포함하여 8자 이상이어야 합니다.',
+              }}
+            />
+            <Input
+              id="passwordConfirm"
+              type="password"
+              placeholder="비밀번호 확인"
+              register={register}
+              error={!!errors.passwordConfirm}
+              errorMessage={errors?.passwordConfirm?.message}
+              required
+              validate={(value) =>
+                value === getValues().password || '비밀번호와 일치하지 않습니다'
               }
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="passwordConfirm"
-                className={`${
-                  errors?.passwordConfirm
-                    ? 'mb-1 block text-sm font-semibold text-red-700'
-                    : 'mb-1 block text-sm font-semibold'
-                }`}
-              >
-                비밀번호 확인
-              </label>
-              <input
-                type="password"
-                id="passwordConfirm"
-                placeholder="비밀번호 확인"
-                {...register('passwordConfirm', {
-                  required: '필수 입력 항목입니다.',
-                  validate: (value) =>
-                    value === getValues().password ||
-                    '비밀번호와 일치하지 않습니다',
-                })}
-                className={`${
-                  errors?.passwordConfirm
-                    ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-                    : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
-                }`}
-              ></input>
-              {
-                <p className="my-1 block text-xs text-red-400">
-                  {errors?.passwordConfirm?.message}
-                </p>
-              }
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="username"
-                className={`${
-                  errors?.username
-                    ? 'mb-1 block text-sm font-semibold text-red-700'
-                    : 'mb-1 block text-sm font-semibold'
-                }`}
-              >
-                이름
-              </label>
-              <input
-                type="text"
-                id="username"
-                placeholder="이름"
-                {...register('username', {
-                  required: '필수 입력 항목입니다.',
-                })}
-                className={`${
-                  errors?.username
-                    ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-                    : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
-                }`}
-              ></input>
-              {
-                <p className="my-1 block text-xs text-red-400">
-                  {errors?.username?.message}
-                </p>
-              }
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="nickname"
-                className={`${
-                  errors?.nickname
-                    ? 'mb-1 block text-sm font-semibold text-red-700'
-                    : 'mb-1 block text-sm font-semibold'
-                }`}
-              >
-                닉네임
-              </label>
-              <span className="my-1 block text-xs text-slate-600">
-                다른 유저와 겹치지 않도록 입력해주세요(2~20자)
-              </span>
-              <input
-                type="text"
-                id="nickname"
-                placeholder="별명 (2~20자)"
-                {...register('nickname', {
-                  required: '필수 입력 항목입니다.',
-                  minLength: {
-                    value: 2,
-                    message: '2자 이상 입력해주세요.',
-                  },
-                  maxLength: {
-                    value: 20,
-                    message: '20자 이하로 입력해주세요.',
-                  },
-                  validate: async (value) => {
-                    const isUsable = await checkDuplicate(value)
-                    return isUsable || '다른 사용자가 사용중인 닉네임입니다'
-                  },
-                  onChange: () => clearErrors('nickname'),
-                })}
-                className={`${
-                  errors?.nickname
-                    ? 'w-full rounded-md border border-red-400 p-2 px-4 text-sm outline-none ring-red-300 focus:ring-2 disabled:border-red-300 disabled:bg-red-50'
-                    : 'w-full rounded-md border border-slate-300 p-2 px-4 text-sm outline-none ring-blue-400 focus:ring-2 disabled:border-slate-500 disabled:bg-slate-300'
-                }`}
-              ></input>
-              {
-                <p className="my-1 block text-xs text-red-400">
-                  {errors?.nickname?.message}
-                </p>
-              }
-            </div>
-
+            />
+            <Input
+              id="username"
+              type="text"
+              placeholder="이름"
+              register={register}
+              error={!!errors.username}
+              errorMessage={errors?.username?.message}
+              required
+            />
+            <Input
+              id="nickname"
+              type="text"
+              placeholder="별명 (2~20자)"
+              register={register}
+              error={!!errors.nickname}
+              errorMessage={errors?.nickname?.message}
+              required
+              minLength={2}
+              maxLength={20}
+              validate={async (value) => {
+                const isUsable = await checkDuplicate(value)
+                return isUsable || '다른 사용자가 사용중인 닉네임입니다'
+              }}
+              onChange={() => clearErrors('nickname')}
+            />
             <div className="flex flex-col gap-1.5">
               <label
                 className={`${
@@ -293,7 +194,6 @@ function EditProfileForm() {
                 default_categories={data?.categories}
               />
             </div>
-
             <button
               type="submit"
               className="w-full rounded bg-purple-300 px-2 py-3 font-bold text-white outline-none hover:bg-purple-400 active:bg-purple-500 disabled:bg-slate-100 disabled:text-slate-400"

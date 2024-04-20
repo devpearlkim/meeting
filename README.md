@@ -13,7 +13,7 @@
 &nbsp;&nbsp;-[v] 리액트라우터돔 v6로 변경 (4/20)  
 &nbsp;&nbsp;-[v] 프로텍티드 라우팅 적용 (4/20)  
 -[] 공통컴포넌트 분리  
-&nbsp;&nbsp;-[] 인풋  
+&nbsp;&nbsp;-[v] 인풋 (4/20)  
 &nbsp;&nbsp;-[] 버튼  
 -[] 쿼리키 점검  
 -[] tailwind 정리
